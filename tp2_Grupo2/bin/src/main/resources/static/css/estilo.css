@@ -187,45 +187,6 @@ h2, h4{
 /*Fin Página Paseos*/
 
 /*Comienzo Página Sucursales*/
-.titulosucursal{
-	font-family:Helvetica;
-	color: white;
-	text-align: center;
-	background-color:#641e16;
-	font-size:50px;
-	
-}
-.mal{
-	text-align: justify;
-	margin:20px;
-}
-.sub1,.sub2,.sub3,.sub4,.sub5,.maltrato,.reporte,.consejos{
-	font-size:30px;
-	color:#ce4257;
-	text-align:center;
-}
-.basta{
-	font-family:Helvetica;
-	color: white;
-	text-align: center;
-	background-color:#641e16;
-	font-size:35px;
-	margin:20px;
-}
-.sucu{
-	display:flex;
-}
-.izq{
-	margin:15px;
-	padding-right:50px;
-	
-	
-}
-.der{
-	padding-left:50px;
-	margin:15px;
-	
-}
 
 /*Fin Página Sucursales*/
 
@@ -320,7 +281,3 @@ hr{
 }	
 
 /********************************Fin Página Contactos**********************************/
-
-
-
-
