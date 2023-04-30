@@ -57,6 +57,23 @@ body{
 
 /*Fin Encabezado*/
 
+/*****************CODIGO CSS PIE DE PAGINA  ****************************/
+footer {
+	clear: both; 
+	text-align: center;
+	font-style: italic;	
+	font-weight: bold;
+	margin: 0px;
+	border: 5px;
+	padding: 6px;	
+	background-color:#7b241c;
+	font-family: 'IBM Plex Mono', monospace;
+	font-size: 18px;
+	color:white;
+}
+/****************************************************************************/
+
+
 /*Comienzo Página Index*/
 
 .cuerpo {
@@ -173,6 +190,94 @@ h2, h4{
 
 /*Fin Página Sucursales*/
 
-/*Comienzo Página Contactos*/
+/*******************************Comienzo Página Contactos****************************/
+	
+#tituloContacto {
+	font-size: 50px;	
+	font-family: Helvetica;
+	text-align: center;	
+}
 
-/*Fin Página Contactos*/
+form {	
+
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	border: 6px groove #fffe9e;
+	padding-left: 30px;
+	border-radius: 6px;	
+	font-size: 20px;	
+	
+}
+
+label {
+	text-align: left;
+	padding-right: 10px;
+	line-height: 30px;
+	display: inline-block;
+	width: 15%;	
+}
+
+input[type="text"], input[type="email"], textarea {
+		width: 80%;
+		padding: 5px;
+		margin-bottom: 10px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		box-sizing: border-box;
+		font-size: 16px;		
+}
+
+input[type="submit"] {	
+	width: 96%;
+	padding: 10px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 3px;	
+	font-size: 20px;	
+}
+
+hr{
+	height: 4px;
+	background-color: blue;
+}
+
+#direccion {	
+	font-size: 35px;
+	text-align: center;
+}
+
+#redes {
+	
+	
+	font-weight: bold;
+	font-size: 33px;	
+	margin: auto;
+	padding-top: 25px;	
+	padding-bottom: 25px;
+	text-align: center;	
+	font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Rowdies', cursive;
+}
+
+#redes li{
+	
+	list-style: none;
+	display:inline-block;
+	
+}	
+
+#contenedor{
+	/*background-image: url("../images/fondoFormulario.jpg");*/
+	margin: auto;	
+	padding-bottom: 15px;
+}
+
+#redes li a {
+	margin: 50px;		
+}	
+
+/********************************Fin Página Contactos**********************************/

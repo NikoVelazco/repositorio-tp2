@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="icon" href="../static/images/perroico.png">
+    	<link rel="icon" href="../static/images/perroico.png"> 
+     	<link href='../static/css/estilo.css' rel='stylesheet' type='text/css'>
 		<title>Contáctenos</title>
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Rowdies:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header>
-				<h1>PATITAS FELICES</h1>				
-								
-				<nav>
-					<ul>
-						<li><a href="index.html">Inicio</a></li>
-						<li><a href="productos.html">Productos</a></li>
-						<li><a href="consejossalud.html">Consejos de Salud</a></li>
-						<li><a href="paseos.html">Servicios de paseos</a></li>
-						<li><a href="sucursales.html">Sucursales</a></li>
-						<li><a href="contactos.html">Contáctanos</a></li>
-					</ul>
-				</nav>
-		</header>	
-		<section>
-				<h1>Contáctenos</h1>
-				<p>3915 Av. General Belgrano, 388-4221750.<br>
-				Lunes a Viernes: 9:00 a.m a 8:00 p.m.<br>
-				Sabado y Domingo: 9:00 a.m a 12:30 p.m.<br>
-				<a href='https://accounts.google.com'>contactos@mail.com.ar</a></p>	
+	<div>
+		<header id="encabezado">
+			<h1 id="titulo-index">Patitas Felices</h1>
+			
+			<img id="imagen" src="../static/images/patitasfelices.png" alt="Logo Patitas Felices" title="Mis amigos son los perros">
+			
+			<nav>
 				<ul>
-					<li><a href='https://facebook.com'>Facebook</a>
-					<li><a href='https://instagram.com'>Instagram</a>
-					<li><a href='https://twitter.com'>Twitter</a>
-				</ul><hr> 
-				<form>
-					<label>Nombre: <input type="text" placeholder="Ingrese su nombre"> </label><br><br>
-					<label>Email: <input type="email" placeholder="Ingrese un email válido"> </label><br><br>
-					<label>Ciudad: <input type="text" placeholder="Ingrese su ciudad"> </label><br><br>
-					<label>Mensaje: <textarea  rows="6" cols="50"></textarea></label><br><br>
+					<li><a href="index.html">Inicio</a></li>
+					<li><a href="productos.html">Productos</a></li>
+					<li><a href="consejossalud.html">Consejos de Salud</a></li>
+					<li><a href="paseos.html">Servicios de paseos</a></li>
+					<li><a href="sucursales.html">Sucursales</a></li>
+					<li><a href="contactos.html">Contáctanos</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<section id='contenedor'>
+		<div id='tituloContacto'><h1> Contáctenos</h1></div> <hr>
+		
+			<div >
+				
 					
-					<input type="submit">
-				</form>
-				<br> 					
-		</section><hr>
+				<div id='direccion'>
+					<p >3915 Av. General Belgrano, 388-4221750.<br>
+					Lunes a Viernes: 9:00 a.m a 8:00 p.m.<br>
+					Sabado y Domingo: 9:00 a.m a 12:30 p.m.<br>
+					<a href='https://accounts.google.com'>contactos@mail.com.ar</a></p>
+				</div>
+				<div id='redes'>
+					<ul>
+						<li><a href='https://facebook.com'>Facebook</a>
+						<li><a href='https://instagram.com'>Instagram</a>
+						<li><a href='https://twitter.com'>Twitter</a>
+					</ul>
+				</div>
+			
+			</div> 
+			<div id="formulario">
+					<form >				
+						
+						<label for="nombre">Nombre:</label>
+						<input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"> <br>
+									
+						<label for="email">Email:</label>
+						<input type="email" id="email" name="email" placeholder="Ingrese un email válido"><br>
+						
+						<label for="apellido">Ciudad:</label>
+						<input type="text" id="apellido" name="apellido" placeholder="Ingrese su ciudad"><br>
+				
+						<label for="mensaje">Mensaje:</label>
+						<textarea id="mensaje" name="mensaje" rows="5" cols="50"></textarea>						
+				
+						<input type="submit" value="Enviar">
+						
+					</form>			
+				</div>
+						
+		</section> 
 		
 		<footer>
-				<p>Copyright 2023 - Patitas Felices - Diseñado por Grupo 2 – Jujuy – República Argentina</p>
+				<p>  Copyright 2023 - Patitas Felices - Diseñado por Grupo 2 – Jujuy – República Argentina</p>
 		</footer>
+	</div>
 	</body>
-</html>
+</html> 
