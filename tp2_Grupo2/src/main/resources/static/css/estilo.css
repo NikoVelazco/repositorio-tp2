@@ -90,6 +90,46 @@ body{
 /*Fin Página Consejos de Salud*/
 
 /*Comienzo Página Paseos*/
+.paseo{
+	box-sizing: border-box;
+    background-color: #F5B7B1;
+    width: 100%;
+    padding: 100px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+.paseo h1{
+	color: rgb(20, 20, 20);
+	text-align: center;
+	padding-top: 0px;
+	padding:30px;
+}
+.paseo table {
+	padding: 12px;
+  border-spacing: 10px;
+  border-collapse: collapse;
+  width:100%;
+  background-image: linear-gradient(60deg,rgb(207, 170, 253),rgb(223, 165, 254), rgb(157, 219, 255) );
+  
+}
+.paseo table th{
+	 padding:20px 15px ;
+	 text-transform: uppercase;
+	 border: 1px solid rgb(0, 0, 0);
+	 background-color: rgb(244, 254, 129);
+	 border-width: 2px;
+}
+.paseo table td {
+  padding: 15px;
+  border: 1px solid rgb(0, 0, 0);
+  border-width: 2px;
+  
+}
+
+.paseo table tbody tr:hover{
+	background:rgb(207, 138, 253);
+}
+
 
 /*Fin Página Paseos*/
 
