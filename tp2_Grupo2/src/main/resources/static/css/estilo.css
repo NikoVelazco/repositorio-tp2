@@ -83,6 +83,42 @@ body{
 
 /*Comienzo Página Productos*/
 
+
+#contenedor55 {
+	    background-color: #f5b7b1;
+		border: black 10px solid;
+		font-style: Arial, Times New Roman;
+		text-align: center;
+		font-size: 40px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+}
+
+#contenedor55 > div {
+  width: 50%;
+}
+	
+
+
+h2, h4{
+	color: #641e16;
+	text-align: center;
+	
+	}
+	
+#titulo{
+	color: white;
+	font-family: verdana, sans-serif;
+	font-size: 70px;
+	font-style: italic;
+	text-align: center;
+	text-transform:uppercase;
+	background-color: #7b241c ;
+	border: black 6px solid;
+	
+	}
+
 /*Fin Página Productos*/
 
 /*Comienzo Página Consejos de Salud*/
