@@ -12,22 +12,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header id="encabezado">
-			<h1 id="titulo-index">Patitas Felices</h1>
-			
-			<img id="imagen" src="../static/images/patitasfelices.png" alt="Logo Patitas Felices" title="Mis amigos son los perros">
-			
-			<nav>
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="productos.html">Productos</a></li>
-					<li><a href="consejossalud.html">Consejos de Salud</a></li>
-					<li><a href="paseos.html">Servicios de paseos</a></li>
-					<li><a href="sucursales.html">Sucursales</a></li>
-					<li><a href="contactos.html">Contáctanos</a></li>
-				</ul>
-			</nav>
-		</header>
+		<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 class="titulosucursal">NUESTRAS SUCURSALES</h1>
 		<div class="sucu">
 			<section class="izq">
@@ -97,9 +82,7 @@
 			</article>
 		</div>
 		
-		<footer>
-			<p>Copyright 2023 - Patitas Felices - Diseñado por Grupo 2 - Jujuy - Republica Argentina</p>
-		</footer>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
 			
 	</body>
 </html>
