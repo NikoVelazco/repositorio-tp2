@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" href="@{/images/perroico.png">
+		<link rel="icon" th:href="@{/images/perroico.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,16 +14,16 @@
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 class="titulosucursal">NUESTRAS SUCURSALES</h1>
-		<section id="content-sucursal">
-			<table id="tabla-sucursal">
+		<section id="contenedor-tabla">
+			<table id="tabla-general">
 				<tr>
-					<th clas="th-sucursal">Nombre</th>
-					<th clas="th-sucursal">Direccion</th>
-					<th clas="th-sucursal">Provincia</th>
-					<th clas="th-sucursal">Fundacion</th>
-					<th clas="th-sucursal">E-mail</th>
-					<th clas="th-sucursal">Telefono</th>
-					<th clas="th-sucursal">Acciones</th>
+					<th class="th-sucursal">Nombre</th>
+					<th class="th-sucursal">Direccion</th>
+					<th class="th-sucursal">Provincia</th>
+					<th class="th-sucursal">Fundacion</th>
+					<th class="th-sucursal">E-mail</th>
+					<th class="th-sucursal">Telefono</th>
+					<th class="th-sucursal">Acciones</th>
 				</tr>
 				<tr th:each="sucu:${sucursales}">
 					<td class="td-sucursal" th:text="${sucu.nombre}"></td>
@@ -39,7 +39,7 @@
 				</tr>
 			</table>
 		</section>
-		<div id="enlace-sucursal">
+		<div id="enlace-altam">
 			<a th:href="@{/sucursal/nuevo}">REGISTRAR SUCURSAL</a>
 		</div>
 		<h2 class="basta">TOMEMOS CONCIENCIA. ¡BASTA DEL MALTRATO ANIMAL!</h2>
