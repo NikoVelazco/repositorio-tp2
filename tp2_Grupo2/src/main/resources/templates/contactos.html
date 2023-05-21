@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="icon" href="../static/images/perroico.png"> 
-     	<link href='../static/css/estilo.css' rel='stylesheet' type='text/css'>
+    	<link rel="icon" th:href="@{/images/perroico.png}"> 
+     	<link th:href='@{/css/estilo.css}' rel='stylesheet' type='text/css'>
 		<title>Contáctenos</title>
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Rowdies:wght@700&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@
 			
 			</div> 
 			<div id="formulario">
-					<form >				
+					<form id="formulario-contacto">				
 						
 						<label for="nombre">Nombre:</label>
 						<input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"> <br>
