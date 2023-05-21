@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+	<link rel="icon" th:href="@{/images/perroico.png}">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registro Nueva Sucursal</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+	<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header th:replace="~{layouts/header :: header}"> </header>
+		<h1 class="titulo-paseo" th:text="${edicion}?'Modificar Sucursal':'Registrar Nueval Sucursal'"></h1>
+		<section id="form-general">
+			<form id="form-login" th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+				<label class="label-general" for="nombre">Nombre</label>
+				<input type="text" id="input-general" name="sucursal_nombre" th:field="*{nombre}">
+				<label class="label-general" for="direccion">Dirección</label>
+				<input type="text" id="input-general" name="sucursal_direccion" th:field="*{direccion}">
+				<label class="label-general" for="provincia">Provincia</label>
+				<select id="input-general" name="sucursal_provincia" th:field="*{provincia}">
+					<option value="Jujuy">Jujuy</option>
+					<option value="Salta">Salta</option>
+					<option value="Misiones">Misiones</option>
+					<option value="Córdoba">Córdoba</option>
+					<option value="Buenos Aires">Buenos Aires</option>
+					<option value="Corrientes">Corrientes</option>
+				</select>
+				<label class="label-general" for="fecha">Fundación</label>
+				<input type="date" id="input-general" name="sucursal_fecha" th:field="*{fechaInicio}"><br>
+				<br>
+				<label class="label-general" for="email">Email</label>
+				<input type="text" id="input-general" name="sucursal_email" th:field="*{email}">
+				<label class="label-general" for="telefono">Teléfono</label>
+				<input type="text" id="input-general" name="sucursal_telefono" th:field="*{telefono}">
+				<p><input type="submit" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
+			</form>
+		</section>
+		<footer th:replace="~{layouts/footer :: footer}"></footer>
+</body>
+</html>
