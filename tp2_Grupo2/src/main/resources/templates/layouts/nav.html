@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8">		
+	</head>
+	<body>
+		<nav th:fragment="nav">
+				<ul>
+					<li><a th:href="@{/index}">Inicio</a></li>
+					<li><a th:href="@{/productos/listado}">Productos</a></li>
+					<li><a th:href="@{/consejos/listado}">Consejos de Salud</a></li> <!-- peticion a la pagina consejossalud -->
+					<li><a th:href="@{/paseos}">Servicios de paseos</a></li>
+					<li><a th:href="@{/sucursales}">Sucursales</a></li>
+					<li><a th:href="@{/contactos}">Contáctanos</a></li>
+				</ul>
+		</nav>
+		
+	</body>
+</html>
