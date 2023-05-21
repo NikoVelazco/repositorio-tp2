@@ -17,6 +17,9 @@
 
 body{
 	background-color: #F5B7B1;
+	position: relative; /*agregado nuevo*/
+	padding-bottom: 35px; /*agregado nuevo*/
+	min-height: 100vh; /*agregado nuevo*/
 }
 /*Comienzo Encabezado*/
 
@@ -71,6 +74,9 @@ body{
 
 /*****************CODIGO CSS PIE DE PAGINA  ****************************/
 footer {
+	position: absolute; /*agregado nuevo*/
+	width: 100%; /*agregado nuevo*/
+	bottom:0; /*agregado nuevo*/
 	clear: both; 
 	text-align: center;
 	font-style: italic;	
@@ -150,9 +156,26 @@ h2, h4{
 
 /*Fin Página Productos*/
 
-/*Comienzo Página Consejos de Salud*/
+/************************************Comienzo Página Consejos de Salud***************************/
 
-/*Fin Página Consejos de Salud*/
+.enlace_consejo{
+	margin:0px;
+	padding: 0px;
+	text-align: center;	
+}
+
+.enlace_consejo a {
+	font-size: 22px;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+.enlace_consejo a:hover{
+	color: yellow;
+}
+
+
+/***********************************************Fin Página Consejos de Salud************************/
 
 /*Comienzo Página Paseos*/
 .titulo-paseo{
@@ -303,22 +326,23 @@ h2, h4{
 /*******************************Comienzo Página Contactos****************************/
 	
 #tituloContacto {
-	font-size: 50px;	
+	font-size: 35px;	/*cambio tamaño y color del titulo*/
 	font-family: Helvetica;
+	color: #641e16;  /*cambio tamaño y color del titulo*/
 	text-align: center;	
 }
 
-#formulario-contacto {	
+.formularioGeneral {	/*cambio */
 
 	width: 100%;
-	max-width: 500px;
+	max-width: 800px;/*nueva modificacion*/
 	margin: auto;
 	padding-bottom: 20px;
 	padding-top: 20px;
-	border: 6px groove #fffe9e;
+	 /*cambio para quitar bordes*/
 	padding-left: 30px;
 	border-radius: 6px;	
-	font-size: 20px;	
+	font-size: 18px; /*Cambio para letra del formulario*/	
 	
 }
 
@@ -330,7 +354,8 @@ label {
 	width: 15%;	
 }
 
-input[type="text"], input[type="email"], textarea {
+/*modificacion para la longitud formulario consejos*/
+input[type="text"], input[type="email"], input[type="number"], textarea, .selectGeneral { /*agregado de clase*/
 		width: 80%;
 		padding: 5px;
 		margin-bottom: 10px;
@@ -350,13 +375,9 @@ input[type="submit"] {
 	font-size: 20px;	
 }
 
-hr{
-	height: 4px;
-	background-color: blue;
-}
 
 #direccion {	
-	font-size: 35px;
+	font-size: 28px; /*cambio*/
 	text-align: center;
 }
 
@@ -364,7 +385,7 @@ hr{
 	
 	
 	font-weight: bold;
-	font-size: 33px;	
+	font-size: 27px;	/*cambio*/	
 	margin: auto;
 	padding-top: 25px;	
 	padding-bottom: 25px;
@@ -380,7 +401,7 @@ hr{
 	
 }	
 
-#contenedor{
+#contenedorContactos{ /*cambio de nombre*/
 	/*background-image: url("../images/fondoFormulario.jpg");*/
 	margin: auto;	
 	padding-bottom: 15px;
