@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<header th:fragment="header" id="encabezado">
+			<h1 id="titulo-index">Patitas Felices</h1>
+			<img id="imagen" th:src="@{/images/patitasfelices.png}" alt="Logo Patitas Felices" title="Mis amigos son los perros">
+           <nav>
+				<ul>
+					<li><a th:href="@{/index}">Inicio</a></li>
+					<li><a th:href="@{/productos}">Productos</a></li>
+					<li><a th:href="@{/consejos/listado}">Consejos de Salud</a></li>
+					<li><a th:href="@{/paseo/listado}">Servicios de paseos</a></li>
+					<li><a th:href="@{/sucursal/listado}">Sucursales</a></li>
+					<li><a th:href="@{/contactos}">Contáctanos</a></li>
+				</ul>
+			</nav>
+		</header>
+	</body>
+</html>
