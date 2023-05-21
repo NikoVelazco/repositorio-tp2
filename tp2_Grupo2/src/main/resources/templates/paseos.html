@@ -1,54 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" href="../static/images/perroico.png">
+		<link rel="icon" th:href="@{/images/perroico.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Paseos</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/estilo.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">		
 	</head>
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
-		 <section class="paseo">
-                <h1>Servicios de Paseos</h1>
-        		 <table>
-        		 <thead>
-        			<tr>
-        				<th>Día</th>
-        				<th>Lunes</th>
-        				<th>Martes</th>
-        				<th>Miércoles</th>
-        		        <th>Jueves</th>
-        			    <th>Viernes</th>
-        				<th>Sábado</th>
-        			 </tr>
-        		  </thead>
-        		  <tbody>
-        			  <tr>
-        				 <td><b>Horario</b></td>
-        				 <td>9 a 12 - 16 a 18</td>
-        				 <td>9 a 12 - 16 a 18</td>
-        				 <td>9 a 12 - 16 a 18</td>
-        				 <td>9 a 12 - 16 a 18</td>
-        				 <td>9 a 12 - 16 a 18</td>
-        				 <td>9 a 12 - 16 a 18</td>
-        	         </tr>
-        		      <tr>
-        				 <td><b>Paseador</b></td>
-        				 <td>Cristian Ortega</td>
-        				 <td>Nicolás Velazco</td>
-        				 <td>Sara Mercado</td>
-        				 <td>Alicia Roberts</td>
-        				 <td>Noeli Mamaní </td>
-        				 <td>Nicolás Velazco</td>
-        		     </tr>
-        		  </tbody>
-        	    </table>
-		    </section>
-        	<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<h1 class="titulo-paseo">NUESTROS PASEADORES</h1>
+		<section id="contenedor-tabla">
+			<table id="tabla-general">
+				<tr>
+					<th class="th-sucursal">Legajo</th>
+					<th class="th-sucursal">Nombre</th>
+					<th class="th-sucursal">Años de Experiencia</th>
+					<th class="th-sucursal">Teléfono</th>
+					<th class="th-sucursal">E-mail</th>
+					<th class="th-sucursal">Horarios</th>
+					<th class="th-sucursal">Acciones</th>
+				</tr>
+				<tr th:each="pas: ${paseos}">
+					<td class="td-sucursal" th:text="${pas.legajo}"></td>
+					<td class="td-sucursal" th:text="${pas.nombre}"></td>
+					<td class="td-sucursal" th:text="${pas.anioExperiencia}"></td>
+					<td class="td-sucursal" th:text="${pas.telefono}"></td>
+					<td class="td-sucursal" th:text="${pas.email}"></td>
+					<td class="td-sucursal" th:text="${pas.horario}"></td>
+					<td class="td-sucursal">
+						<a th:href="@{/paseo/modificar/}+${pas.legajo}">Modificar</a>
+						<a th:href="@{/paseo/eliminar/}+${pas.legajo}">Eliminar</a>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<div id="enlace-altam">
+			<a th:href="@{/paseo/nuevo}">REGISTRAR PASEADOR</a>
+		</div>
+        <footer th:replace="~{layouts/footer :: footer}"></footer>
       </body>
 </html>
