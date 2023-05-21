@@ -20,10 +20,10 @@
 						  
 		  	<section class="izquierda">
 				<article th:each="conse: ${consejosLista}">
-			  		<h2>Categoría: <span th:text="${conse.categoria}"></span></h2>			 
-					<h3>Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
-					<h3>Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
-					<h3>Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
+			  		<h2 class ="categoriaConsejo">Categoría: <span th:text="${conse.categoria}"></span></h2>			 
+					<h3 class ="categoriaDatoConsejo">Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
+					<h3 class ="categoriaDatoConsejo">Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
+					<h3 class ="categoriaDatoConsejo">Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
 					<p th:text="${conse.descripcion}"></p><br>
 						<a th:href="@{/consejos/modificar/}+${conse.idConsejo}">Editar</a>
 						<a th:href="@{/consejos/eliminar/}+${conse.idConsejo}">Eliminar</a>		  		

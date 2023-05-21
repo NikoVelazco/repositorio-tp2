@@ -250,6 +250,14 @@ h3{
 	color: yellow;
 }
 
+.categoriaConsejo {
+	font-size: 33px;
+	font-weight: bold;
+}
+.categoriaDatoConsejo{
+	font-size: 18px
+}
+
 
 /***********************************************Fin Página Consejos de Salud************************/
 
