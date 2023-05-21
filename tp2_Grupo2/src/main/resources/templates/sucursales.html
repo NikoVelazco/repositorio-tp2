@@ -14,52 +14,34 @@
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 class="titulosucursal">NUESTRAS SUCURSALES</h1>
-		<div class="sucu">
-			<section class="izq">
-				<article>
-				
-					<h3 class="sub1">Patitas Felices en Buenos Aires:</h3>
-					<p>Dirección: Pedro de Mendoza N° 1835 </p>
-					<p>Horario: De lunes a viernes de 13:45 hs a 15:45 hs. Sabados y Domingos de 14:00 hs a 16:00 hs</p>
-					<p>Telefono: 1139423453</p>
-				</article>
-				<article>
-					<h3 class="sub2">Patitas Felices en Cordoba:</h3>
-					<p>Dirección: Av. Colon N° 1775, Barrio Alberdi </p>
-					<p>Horario: De lunes a viernes de 09:00 hs a 13:00 hs. Sabados y Domingos de 09:00 hs a 11:00 hs</p>
-					<p>Telefono: 35139423453</p>
-				</article>
-				<article>
-					<h3 class="sub3">Patitas Felices en Salta:</h3>
-					<p>Dirección:  Alvarado N° 697 </p>
-					<p>Horario: De lunes a viernes de 10:45 hs a 12:45 hs. Sabados y Domingos de 11:00 hs a 13:00 hs</p>
-					<p>Telefono: 38739423453</p>
-				</article>
-				
-			</section>
-			<sector class="der">
-				<article>
-					<h3 class="sub4">Patitas Felices en Palermo:</h3>
-					<p>Dirección:  Fitz Roy N° 2120, B° Palermo-Ciudad de Buenos Aires</p>
-					<p>Horario: De lunes a viernes de 09:00 hs a 18:00 hs. Sabados y Domingos de 09:00 hs a 13:00 hs</p>	
-					<p>Telefono: 1165239909</p>
-				</article>
-				<article>
-					<h3 class="sub5">Patitas Felices en San Isidro:</h3>
-					<p>Dirección: Avenida Centenario N° 1302, San Isidro, Buenos Aires</p>
-					<p>Horario: De lunes a viernes de 8:00 hs a 19:00 hs. Sabados y Domingos de 09:00 hs a 13:00 hs</p>	
-					<p>Telefono: 119878781122</p>
-				</article>
-				<article>
-					<h3 class="sub4">Patitas Felices en Misiones:</h3>
-					<p>Dirección: Calle Rondeau N° 880</p>
-					<p>Horario: De lunes a viernes de 09:00 hs a 18:00 hs. Sabados y Domingos de 09:00 hs a 13:00 hs</p>	
-					<p>Telefono: 37698541212</p>
-					
-				</article>
-			</sector>
+		<section id="content-sucursal">
+			<table id="tabla-sucursal">
+				<tr>
+					<th clas="th-sucursal">Nombre</th>
+					<th clas="th-sucursal">Direccion</th>
+					<th clas="th-sucursal">Provincia</th>
+					<th clas="th-sucursal">Fundacion</th>
+					<th clas="th-sucursal">E-mail</th>
+					<th clas="th-sucursal">Telefono</th>
+					<th clas="th-sucursal">Acciones</th>
+				</tr>
+				<tr th:each="sucu:${sucursales}">
+					<td class="td-sucursal" th:text="${sucu.nombre}"></td>
+					<td class="td-sucursal" th:text="${sucu.direccion}"></td>
+					<td class="td-sucursal" th:text="${sucu.provincia}"></td>
+					<td class="td-sucursal" th:text="${#temporals.format(sucu.fechaInicio, 'dd/MM/yyy')}"></td>
+					<td class="td-sucursal" th:text="${sucu.email}"></td>
+					<td class="td-sucursal" th:text="${sucu.telefono}"></td>
+					<td class="td-sucursal">
+						<a th:href="@{/sucursal/modificar/}+${sucu.nombre}">Modificar</a>
+						<a th:href="@{/sucursal/eliminar/}+${sucu.nombre}">Eliminar</a>
+					</td>
+				</tr>
+			</table>
+		</section>
+		<div id="enlace-sucursal">
+			<a th:href="@{/sucursal/nuevo}">REGISTRAR SUCURSAL</a>
 		</div>
-		
 		<h2 class="basta">TOMEMOS CONCIENCIA. ¡BASTA DEL MALTRATO ANIMAL!</h2>
 		<div class="mal">
 			<article>
