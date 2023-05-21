@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="stylesheet" th:href="@{/css/estilo.css}"/>
+    	<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
     	
 		<title>Productos</title>
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -13,21 +13,50 @@
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header th:replace="~{layouts/header :: header}"> </header>
+			<header th:replace="layouts/header :: header"> </header>
 		<h1 id="titulo">Productos disponibles</h1>
  
 <div id="contenedor55">
   <div>
   
+   <a th:href="@{/productos/nuevo}">Nuevo Producto </a>
+  	<table class="nuevoprod">
+  			<tr class="opcionestab">
+  				
+  				
+  				<th >Nombre</th>
+  				<th >Codigo</th>
+ 				<th >Precio</th>
+  				<th >Categoria</th>
+  				<th >Descuento</th>
+  				<th >Acciones</th>
+  								
+  			</tr>
+  			
+  			<tr class="infotabla" th:each="produ: ${productos}">
+  			 	        		
+  				<td th:text="${produ.nombre}"></td> 
+  				<td th:text="${produ.codigo}"></td>
+  				<td th:text="${produ.precio}"></td> 
+  				<td th:text="${produ.categoria}"></td>
+  				<td th:text="${produ.descuento}"></td>
+  				<td>
+  					<a th:href="@{/productos/modificar/}+${produ.nombre}">Editar</a>
+  					<a th:href="@{/productos/eliminar/}+${produ.nombre}">Eliminar</a>
+  				</td>
+  			</tr>
+  	</table>
+  
+ 
   <section>
   
 		<h2 >Alimento para adultos Advance</h2>
 		<h4 >Precio $2500 la bolsa de 15 kg</h4>
 		
-		<img  src=../static/images/advancealim.png 
+		<img  th:src="@{/images/advancealim.png}" 
 		 alt= "Foto de la bolsa de alimento Advance"
- 		width="350"
- 		height="341"
+ 		width="250"
+ 		height="241"
 		>
 </section>
 
@@ -36,10 +65,10 @@
 		<h2 >Alimento para adultos Pedigree</h2>
 		<h4 >Precio $3000 la bolsa de 15 kg</h4>
 
-		<img  src=../static/images/pedigree.jpeg
+		<img  th:src="@{/images/pedigree.jpeg}"
 		 alt= "Foto de la bolsa de alimento Pedigree"
-		 width="350"
-		 height="341">
+		 width="250"
+		 height="241">
  </section>
  
     <section>	 
@@ -47,10 +76,10 @@
 		<h2 >Pelota para perros </h2>
 		<h4 > Precio $2500 </h4>
 
-		<img  src=../static/images/pelota.jpg
+		<img  th:src="@{/images/pelota.jpg}"
 		 alt= "Foto de una pelota para perros"
-		 width="350"
-		 height="341"
+		 width="250"
+		 height="241"
 		 >
 </section>
     
@@ -61,10 +90,10 @@
 		<h2 >Alimento para adultos Criadores</h2>
 		<h4 >Precio $3500 la bolsa de 15 kg</h4>
 
-		<img  src=../static/images/criadoresalim.jpg
+		<img  th:src="@{/images/criadoresalim.jpg}"
 		 alt= "Foto de la bolsa de alimento Criadores"
- 		width="350"
- 		height="341"
+ 		width="250"
+ 		height="241"
 			>
 	</section>
 		
@@ -73,10 +102,10 @@
  		<h2 >Juguete para perros</h2>
  		<h4 >  Precio $1500 </h4>
 
-	 	<img  src=../static/images/juguete%20pollo.webp
+	 	<img  th:src="@{/images/juguete%20pollo.webp}"
  		alt= "Foto de juguete con forma de pollo"
-         width="350"
- 	 	 height="341"
+         width="250"
+ 	 	 height="241"
 			 >
 	</section>
 
@@ -85,21 +114,19 @@
 		<h2 >Buzo para perros</h2>
 	 	<h4 >Precio $3000 la bolsa de 15 kg</h4>
 
-		<img  src=../static/images/buzito.webp
+		<img  th:src="@{/images/buzito.webp}"
 		 alt= "Foto de buzo para perros"
-		 width="350"
-		 height="341"
+		 width="250"
+		 height="241"
 		 >
 	</section>
   </div>
 </div>
 	 
-		 <footer th:replace="~{layouts/footer :: footer}"></footer>
+		 <footer th:replace="layouts/footer :: footer"> 			
+		</footer>
 </body>
 </html>
 
 
 
-
-</body>
-</html>
