@@ -4,8 +4,8 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="icon" href="../static/images/perroico.png"> 
-     	<link href='../static/css/estilo.css' rel='stylesheet' type='text/css'>
+    	<link rel="icon" th:href="@{/images/perroico.png}">
+     	<link rel="stylesheet" th:href='@{/css/estilo.css}' type='text/css'>
 		<title>Contáctenos</title>
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Rowdies:wght@700&display=swap" rel="stylesheet">
@@ -15,10 +15,12 @@
 	</head>
 	<body>
 	<div>
-	 <header th:replace="~{layouts/header :: header}"> </header>
-		<section id='contenedor'>
-		<div id='tituloContacto'><h1> Contáctenos</h1></div> <hr>
 		
+		<header th:replace="~{layouts/header :: header}"> </header>
+		
+		
+		<section id='contenedorContactos'>
+		<div id='tituloContacto'><h1> Contáctenos</h1></div> <br>		
 			<div >
 				
 					
@@ -37,8 +39,8 @@
 				</div>
 			
 			</div> 
-			<div id="formulario">
-					<form >				
+			<div >
+					<form class="formularioGeneral">				
 						
 						<label for="nombre">Nombre:</label>
 						<input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"> <br>
@@ -59,7 +61,7 @@
 						
 		</section> 
 		
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<footer th:replace="~{layouts/footer :: footer}"> </footer>
 	</div>
 	</body>
 </html> 

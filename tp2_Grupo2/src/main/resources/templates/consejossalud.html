@@ -1,64 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" href="../static/images/perroico.png">
+		<link rel="icon" th:href="@{/images/perroico.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Consejos de Salud</title>
-		<link rel="stylesheet" type="text/css" href="../static/css/estilo.css">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-	 <header th:replace="~{layouts/header :: header}"> </header>
-		<div class="cuerpo">
-			<section class="izquierda">
-			<h2>Consejos de Salud</h2>
-		  	<article>
-		  		<h3>Mantén al día las vacunas de tu perro</h3>
-		  		<p>Es importante asegurarse de que tu perro esté al día en sus vacunas para prevenir enfermedades y mantener su salud en óptimas condiciones.</p>
-		  	</article>
-		  	<article>
-		  		<h3>Controla la alimentación de tu perro</h3>
-		  		<p>Proporciona a tu perro una dieta equilibrada y adecuada a sus necesidades nutricionales para mantener su peso ideal y prevenir enfermedades.</p>
-		  	</article>
-		  	<article>
-		  		<h3>Mantén a tu perro bien hidratado</h3>
-			    <p>Asegúrate de llevar agua y un tazón portátil para tu perro durante los paseos. 
-			       Si hace calor, es especialmente importante que tu perro tenga acceso constante a agua fresca para evitar el riesgo de deshidratación.
-                </p>
-		  	</article>
-		  	<article>
-		  		<h3>Realiza chequeos médicos regulares</h3>
-		  		<p>Lleva a tu perro al veterinario para chequeos médicos regulares, de esta manera podrás detectar problemas de salud temprano y tratarlos antes de que se conviertan en una situación más grave</p>
-		  	</article>
-		  	<article>
-		  		<h3>Ejercita a tu perro</h3>
-		  		<p>Los perros necesitan ejercicio regular para mantenerse saludables y felices. Caminar, correr o jugar con tu perro también puede fortalecer el vínculo entre ambos.</p>
-		  	</article>
-		  	<article>
-		  		<h3>Cuida la higiene de tu perro</h3>
-		  		<p>Mantén a tu perro limpio y libre de pulgas y garrapatas. Lávalo regularmente con champú y revisa su pelaje y piel para detectar cualquier problema.</p>
-		  	</article>
-		  
-		  		<article>
-		  		    <h3>Realiza chequeos regulares con el veterinario</h3>
-		    		<p>Lleva a tu perro al veterinario para chequeos regulares y asegúrate de mantener al día las vacunas y desparasitaciones. 
-		    		Si tu perro presenta algún síntoma extraño, como vómitos, diarrea o falta de apetito, llévalo al veterinario de inmediato.</p>
-		  		</article>
-		  
-		  		<article>
-		    		<h3>Cuida su higiene</h3>
-		    		<p>Es importante mantener a tu perro limpio y cuidado para prevenir problemas de salud. Cepilla regularmente su pelo para evitar enredos y para mantener su pelaje saludable.
-		    		 También es importante bañarlo regularmente para evitar problemas de piel.</p>
-		  		</article>
-		  		<article>
-		  			<h3>Proporciona un ambiente seguro</h3>
-		  			<p>Mantén tu casa segura para tu perro, evita objetos peligrosos al alcance de su boca y asegúrate de que no tenga acceso a productos tóxicos.</p>
-		  		</article>
-			</section>
+		
+		<header th:replace="~{layouts/header :: header}"> </header>
+		
+		<a th:href="@{/consejos/nuevo}">NUEVO CONSEJO</a>		
+		
+		<div class="cuerpo">		  
+		  	<section class="izquierda">
+				<article th:each="conse: ${consejosLista}">
+			  		<h2>Categoría: <span th:text="${conse.categoria}"></span></h2>			 
+					<h3>Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
+					<h3>Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
+					<h3>Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
+					<p th:text="${conse.descripcion}"></p><br>
+						<a th:href="@{/consejos/modificar/}+${conse.idConsejo}">Editar</a>
+						<a th:href="@{/consejos/eliminar/}+${conse.idConsejo}">Eliminar</a>		  		
+			  		
+			  	</article>
+	
+			</section> 
 			<aside class="derecha">
 				<h2>¿Por qué es importante llevar al veterinario a nuestro perro?</h2>
 				<p>Los veterinarios son profesionales de la salud animal que se encargan de diagnosticar y tratar enfermedades en animales. Estos profesionales tienen un amplio conocimiento en fisiología, anatomía, farmacología, nutrición y salud pública de los animales.
@@ -70,6 +42,6 @@
 				</p>
 			</aside>
 		</div>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<footer th:replace="~{layouts/footer :: footer}"> </footer>
 	</body>
 </html>
