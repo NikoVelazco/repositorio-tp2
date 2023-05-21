@@ -143,16 +143,92 @@ h2, h4{
 	}
 	
 #titulo{
-	color: white;
-	font-family: verdana, sans-serif;
-	font-size: 70px;
-	font-style: italic;
-	text-align: center;
+font-style: italic;
 	text-transform:uppercase;
 	background-color: #7b241c ;
 	border: black 6px solid;
-	
+	font-size: 45px;	
+	font-family: Helvetica;
+	color: #ffffff;
+	text-align: center;	
 	}
+	
+	#label{
+ 	width:120px;
+    float:left;
+    text-align:left;}   
+    
+.formuprod{
+	  
+  	width: 600px;
+   	padding: 35px;
+  	border: 1px solid #CCC;
+  	border-radius: 15px;
+ 	
+	text-transform:uppercase;
+	background-color: #7b241c ;
+	border: black 7px solid;
+     font-family: Helvetica;
+	color: #ffffff;
+	text-align: center;
+	font-size-adjust: 11px;	
+}
+
+h3{
+	font-family: Helvetica;
+	font-size: 35px;
+    display: flex;
+	
+}
+
+.nuevoprod{
+	font-family: Helvetica;
+	font-size: 35px;
+	padding: 12px;
+  
+  border-color: black;
+  border-spacing:20px;
+  table-layout: auto;
+  border-style: solid;
+  border-collapse: collapse;
+  width:100%;
+  background-color: #da6d81;
+
+	
+}
+.nuevoprod th{
+	
+	background-color:maroon;
+	 border: 1px solid rgb(0, 0, 0);
+  border-width: 2px;
+	
+	
+}
+.nuevoprod td {
+  padding: 15px;
+  border: 1px solid rgb(0, 0, 0);
+  border-width: 2px;
+  
+}
+.opcionestab{
+	font-family: Helvetica;
+	font-size: 40px;
+	color:  #ffffff;
+	 border-style: solid;
+	
+	
+}
+
+	
+
+.infotabla{
+	font-family: Helvetica;
+	font-size: 30px;
+	color:#400040; 
+	
+	
+}
+	
 
 /*Fin Página Productos*/
 
