@@ -1,0 +1,129 @@
+
+package ar.edu.unju.fi.model;
+
+public class Producto {
+
+	//Propiedades de la clase Producto
+		private String nombre;
+		private int codigo;
+		private double precio;
+		private String categoria;
+		private int descuento;
+	
+		
+		//Constructor por defecto
+		public Producto() {
+			
+		}
+		
+		/**
+		 * Constructor con párametros
+		 * @param nombre Nombre del producto
+		 * @param codigo Código del producto
+		 * @param precio Precio del producto
+		 * @param categoria Categoría del producto
+		 * @param descuento Descuento del producto
+		 */
+		public Producto(String nombre, int codigo, double precio, String categoria, int descuento) {
+			//inicializamos las propiedades con los valores pasados por párametros
+			this.nombre=nombre;
+			this.codigo=codigo;
+			this.precio=precio;
+			this.categoria=categoria;
+			this.descuento=descuento;
+		}
+		
+		//Getters y Setters para las propiedades de la clase
+		/**
+		 * Obtiene el nombre del producto
+		 * @return el nombre del producto
+		 */
+		public String getNombre() {
+			return nombre;
+		}
+		
+		/**
+		 * Establece el nombre del producto
+		 * @param nombre el nuevo nombre
+		 */
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+
+		/**
+		 * Obtiene el código del producto
+		 * @return el código del producto
+		 */
+		public int getCodigo() {
+			return codigo;
+		}
+		
+		/**
+		 * Establece el código del producto
+		 * @param codigo nuevo código
+		 */
+		public void setCodigo(int codigo) {
+			this.codigo = codigo;
+		}
+		
+		/**
+		 * Obtiene el precio del producto
+		 * @return el precio del producto
+		 */
+		public double getPrecio() {
+			return precio;
+		}
+		
+		/**
+		 * Establece el precio del producto
+		 * @param precio nuevo precio
+		 */
+		public void setPrecio(double precio) {
+			this.precio = precio;
+		}
+		
+		/**
+		 * Obtiene la categoría del producto
+		 * @return la categoría del producto
+		 */
+		public String getCategoria() {
+			return categoria;
+		}
+		
+		/**
+		 * Estable la categoría del producto
+		 * @param categoria nueva categoría
+		 */
+		public void setCategoria(String categoria) {
+			this.categoria = categoria;
+		}
+		
+		/**
+		 * Obtiene el descuento del producto
+		 * @return descuento del producto
+		 */
+		public int getDescuento() {
+			return descuento;
+		}
+		
+		/**
+		 * Estable descuento del producto
+		 * @param descuento nuevo descuento
+		 */
+		public void setDescuento(int descuento) {
+			this.descuento = descuento;
+		}
+		
+		
+		/**
+		 * Calcula el descuento del producto, el descuento es entero entre (0-50)
+		 * @return retorna el nuevo precio
+		 */
+		public double calcularDescuento() {
+			this.precio = this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
+			return precio;
+		}
+}
+
+
+
