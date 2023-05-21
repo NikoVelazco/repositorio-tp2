@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  	<head>
+			<link rel="icon" th:href="@{/images/perroico.png}">
+			<meta charset="UTF-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<title>Inicio</title>
+	 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+			<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+	
+		</head>
+	<body>
+	<header th:replace="~{layouts/header :: header}"> </header>
+	
+	   <h3 class="titform" th:text="${edicion}?'Modificar Producto':'Nuevo Producto'"></h3><br><br>
+	   
+	<div id="formularioPro">
+	<!--th:action="@{/nombre Controlador donde envia info el enviar}" th:object="${el objeto creado}" method="post"   -->
+					<form class="formuprod" th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
+						
+						<label for="nombre" >Nombre:</label>
+						<input type="text" id="nombre" name="nombre_produ" th:field="*{nombre}"  > <br><br>
+							
+						<label for="codigo">Código:</label>
+						<input type="number" id="codigo" name="codigo_produ" th:field="*{codigo}" required min="1"><br><br>
+						
+						<label for="precio">Precio:</label>
+						<input type="number" id="precio" name="precio_produ" th:field="*{precio}" step="0.01" required min="1" ><br><br>
+				
+						<label for="categoria" >Categoría:</label>
+						<select class="selectGeneral" id="categoria" name="categoria_produ"  th:field="*{categoria}" >
+						
+							<option value="ALIMENTO" th:selected="${produ.categoria == 'ALIMENTO'}">Alimento</option>
+								
+							
+							<option value="JUGUETES" th:selected="${produ.categoria == 'JUGUETES'}">Juguetes</option>
+							<option value="ROPA" th:selected = "${produ.categoria == 'ROPA'}">Ropa</option>
+							<option value="OTROS" th:selected = "${produ.categoria == 'OTROS'}">Otros</option>
+						</select><br>	
+						<label for="descuento">Descuento:</label>
+						<input type="number" id="descuento" name="descuento_produ" th:field="*{descuento}" min="0" max="50" required><br><br>				
+				
+						<p><input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'"></p>
+						
+					</form>	
+				
+	</div>
+	
+	<footer th:replace="~{layouts/footer :: footer}"> </footer>
+	</body>
+</html>
+
