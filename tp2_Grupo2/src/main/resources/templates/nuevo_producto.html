@@ -33,12 +33,10 @@
 						<label for="categoria" >Categoría:</label>
 						<select class="selectGeneral" id="categoria" name="categoria_produ"  th:field="*{categoria}" >
 						
-							<option value="ALIMENTO" th:selected="${produ.categoria == 'ALIMENTO'}">Alimento</option>
-								
-							
-							<option value="JUGUETES" th:selected="${produ.categoria == 'JUGUETES'}">Juguetes</option>
-							<option value="ROPA" th:selected = "${produ.categoria == 'ROPA'}">Ropa</option>
-							<option value="OTROS" th:selected = "${produ.categoria == 'OTROS'}">Otros</option>
+							<option value="advancealim.png" th:selected="${produ.categoria == 'advancealim.png'}">Alimento</option>
+								<option value="pelota.jpg" th:selected="${produ.categoria == 'juguete.pollo.webp'}">Juguetes</option>
+								<option value="campera.jpg" th:selected = "${produ.categoria == 'campera.jpg'}">Ropa</option>
+								<option value="disfraz.webp" th:selected = "${produ.categoria == 'diszfraz.webp'}">Otros</option>
 						</select><br>	
 						<label for="descuento">Descuento:</label>
 						<input type="number" id="descuento" name="descuento_produ" th:field="*{descuento}" min="0" max="50" required><br><br>				

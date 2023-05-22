@@ -120,6 +120,7 @@ footer {
 
 
 #contenedor55 {
+	
 	    background-color: #f5b7b1;
 		border: black 10px solid;
 		font-style: Arial, Times New Roman;
@@ -494,6 +495,27 @@ input[type="submit"] {
 #redes li a {
 	margin: 50px;		
 }	
+
+#contenedor55 {
+    text-align: center;
+  }
+
+  .productosInfo {
+    display: flex;
+    align-items: center;
+    display: block;
+  }
+
+  .producto {
+    margin-bottom: 20px;
+    display: block;
+  }
+   .linkProducto{
+  display: block; 
+  
+  text-align: center;
+  font-size: 25px;
+  }
 
 /********************************Fin Página Contactos**********************************/
 
