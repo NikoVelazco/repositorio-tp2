@@ -35,6 +35,7 @@ public class ProductoController {
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarProductoPage(@ModelAttribute("produ") Producto producto){
 		ModelAndView modelView =new ModelAndView("productos"); 
+		producto.setPrecio(producto.calcularDescuento());
 		listaProductos.getProductos().add(producto); 
 		modelView.addObject("productos",listaProductos.getProductos());
 		return modelView;
@@ -65,7 +66,7 @@ public class ProductoController {
 	public String getModificarProducto(@ModelAttribute("produ") Producto producto){
 		for(Producto produ : listaProductos.getProductos()) {
 			if(produ.getNombre().equals(producto.getNombre())) {
-				produ.setPrecio(producto.getPrecio());
+				produ.setPrecio(producto.calcularDescuento());
 				produ.setCodigo(producto.getCodigo());
 				produ.setCategoria(producto.getCategoria());
 				produ.setDescuento(producto.getDescuento());			

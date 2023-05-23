@@ -129,12 +129,15 @@ footer {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
+        display: flex;
+   		justify-content: center;
+    	align-items: center;
 }
-
-#contenedor55 > div {
+/*
+#contenedor55 > div {   // se modifico la vista de productos
   width: 50%;
 }
-	
+	*/
 
 
 h2, h4{
@@ -144,7 +147,7 @@ h2, h4{
 	}
 	
 #titulo{
-font-style: italic;
+	font-style: italic;
 	text-transform:uppercase;
 	background-color: #7b241c ;
 	border: black 6px solid;
@@ -152,6 +155,7 @@ font-style: italic;
 	font-family: Helvetica;
 	color: #ffffff;
 	text-align: center;	
+	
 	}
 	
 	#label{
@@ -165,8 +169,7 @@ font-style: italic;
    	padding: 35px;
   	border: 1px solid #CCC;
   	border-radius: 15px;
- 	
-	text-transform:uppercase;
+ 	text-transform:uppercase;
 	background-color: #7b241c ;
 	border: black 7px solid;
      font-family: Helvetica;
@@ -182,51 +185,10 @@ h3{
 	
 }
 
-.nuevoprod{
-	font-family: Helvetica;
-	font-size: 35px;
-	padding: 12px;
-  
-  border-color: black;
-  border-spacing:20px;
-  table-layout: auto;
-  border-style: solid;
-  border-collapse: collapse;
-  width:100%;
-  background-color: #da6d81;
-
-	
-}
-.nuevoprod th{
-	
-	background-color:maroon;
-	 border: 1px solid rgb(0, 0, 0);
-  border-width: 2px;
-	
-	
-}
-.nuevoprod td {
-  padding: 15px;
-  border: 1px solid rgb(0, 0, 0);
-  border-width: 2px;
-  
-}
-.opcionestab{
-	font-family: Helvetica;
-	font-size: 40px;
-	color:  #ffffff;
-	 border-style: solid;
-	
-	
-}
-
-	
-
-.infotabla{
-	font-family: Helvetica;
-	font-size: 30px;
-	color:#400040; 
-	
+.linkProducto{
+	font-size: 50px;
+	color: #800000;
+	text-decoration: none;
 	
 }
 	

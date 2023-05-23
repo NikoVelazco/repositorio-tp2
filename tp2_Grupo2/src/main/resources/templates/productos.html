@@ -19,7 +19,7 @@
 <div id="contenedor55">
   <div>
   
-   <a th:href="@{/productos/nuevo}">Nuevo Producto </a>
+   
   	  	<section class="productosInfo"th:each="produ: ${productos}">
   		<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
   		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span></h4>
@@ -31,7 +31,7 @@
   		<p></p> <br>
   	</section>
   	
-<a class="linkProducto" th:href="@{/productos/nuevo}">Nuevo Producto </a><p></p> <br>	<br>
+<a class="linkProducto" th:href="@{/productos/nuevo}">AGREGAR NUEVO PRODUCTO </a><p></p> <br>	<br>
 
   </div>
 </div>

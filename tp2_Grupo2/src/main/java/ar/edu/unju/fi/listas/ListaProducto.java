@@ -11,9 +11,9 @@ public class ListaProducto {
 	
 	public ListaProducto() {
 		productos = new ArrayList<Producto>();
-		productos.add(new Producto("Advanced", 01, 6500, "advancealim.png",0));
-		productos.add(new Producto("Juguete Pollo", 02, 2500, "juguete pollo.webp",0));
-		productos.add(new Producto("Pedigree", 03, 5500, "pedigree.jpeg",0));
+		productos.add(new Producto("Advanced", 01, 6500, "advancealim.jpg",0));
+		productos.add(new Producto("Juguete Pollo", 02, 2500, "juguete pollo.jpg",0));
+		productos.add(new Producto("Pedigree", 03, 5500, "pedigree.jpg",0));
 		productos.add(new Producto("Campera", 04, 4500, "campera.jpg",0));
 		
 	}
