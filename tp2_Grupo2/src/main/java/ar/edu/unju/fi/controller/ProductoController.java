@@ -41,12 +41,12 @@ public class ProductoController {
 		return modelView;
 	}
 	
-	@GetMapping ("/modificar/{nombre}")
-	public String getModificarProductoPage(Model model, @PathVariable(value="nombre") String nombre) {
+	@GetMapping ("/modificar/{codigo}")
+	public String getModificarProductoPage(Model model, @PathVariable(value="codigo") String codigo) {
 		Producto productoEncontrado = new Producto();
 		boolean edicion = true;
 		for(Producto produ : listaProductos.getProductos()) {
-			if (produ.getNombre().equals(nombre)) {
+			if (produ.getCodigo()==Integer.parseInt(codigo)) {
 				productoEncontrado = produ;
 				break;
 			}			
@@ -65,9 +65,9 @@ public class ProductoController {
 	@PostMapping("/modificar")
 	public String getModificarProducto(@ModelAttribute("produ") Producto producto){
 		for(Producto produ : listaProductos.getProductos()) {
-			if(produ.getNombre().equals(producto.getNombre())) {
-				produ.setPrecio(producto.calcularDescuento());
-				produ.setCodigo(producto.getCodigo());
+			if(produ.getCodigo()==producto.getCodigo()) {
+				produ.setNombre(producto.getNombre());
+				produ.setPrecio(producto.getPrecio());				
 				produ.setCategoria(producto.getCategoria());
 				produ.setDescuento(producto.getDescuento());			
 				

@@ -13,8 +13,9 @@
 	</head>
 	<body>
 	 <header th:replace="~{layouts/header :: header}"> </header>
-	 <div class="enlace_consejo">		
-				<a th:href="@{/consejos/nuevo}">AGREGAR NUEVO CONSEJO</a>
+	 <div class="enlace_consejo">
+	 <h1 class="titulo-paseo">Consejos de salud</h1>		
+				
 			</div>	
 		<div class="cuerpo">
 						  
@@ -41,6 +42,9 @@
 				   Recuerda que los veterinarios son profesionales altamente capacitados y que están comprometidos con la salud y el bienestar de los animales. Si tienes dudas acerca del cuidado de tu mascota, no dudes en preguntarle a tu veterinario de confianza.
 				</p>
 			</aside>
+		</div>
+		<div id="enlace-altam">
+			<a th:href="@{/consejos/nuevo}">AGREGAR NUEVO CONSEJO</a>
 		</div>
 		<footer th:replace="~{layouts/footer :: footer}"></footer>
 	</body>
