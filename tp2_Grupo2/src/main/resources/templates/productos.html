@@ -13,42 +13,39 @@
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-			<header th:replace="layouts/header :: header"> </header>
+			<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 id="titulo">Productos disponibles</h1>
  
-<div id="contenedor55">
-  <div>
-  
-   
-  	  	<section class="productosInfo"th:each="produ: ${productos}">
-  		<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
-  		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span></h4>
-  		<p class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </p>
-  		<p class="codigoProd">Descuento: <span th:text="${produ.descuento}"> </span></p>
-   		<img alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
-  			<a th:href="@{/productos/modificar/}+${produ.nombre}" >Editar</a>
-  			<a th:href="@{/productos/eliminar/}+${produ.nombre}">Eliminar</a> 
-  		<p></p> <br>
-  	</section>
-  	
-<a class="linkProducto" th:href="@{/productos/nuevo}">AGREGAR NUEVO PRODUCTO </a><p></p> <br>	<br>
-
-  </div>
-</div>
-	 
+	<div id="contenedor55">
+	  <div>
+	  
+	   
+	  	  	<section class="productosInfo"th:each="produ: ${productos}">
+		  		<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
+		  		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span></h4>
+		  		<p class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </p>
+		  		<p class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></p>
+		  		<p class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span></p>
+		   		<img alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
+		  			<a th:href="@{/productos/modificar/}+${produ.nombre}" >Editar</a>
+		  			<a th:href="@{/productos/eliminar/}+${produ.nombre}">Eliminar</a> 
+		  			<br>
+	  		</section>
+	
+	
+	  </div>
+	  
+	  
+	</div>
+		 
+	 <div id="enlace-altam">
+			<a class="enlace-altam" th:href="@{/productos/nuevo}">AGREGAR NUEVO PRODUCTO </a>
+	</div>
 		
-		 <footer th:replace="layouts/footer :: footer"> 			
-		</footer>
+	<footer th:replace="~{layouts/footer :: footer}"> 	</footer>
 </body>
 	
- 
-
-	 
-		 <footer th:replace="layouts/footer :: footer"> 			
-		
-		
-		</footer>
-</body>
+ 	
 </html>
 
 

@@ -12,7 +12,7 @@
 	</head>
 <body>
 		<header th:replace="~{layouts/header :: header}"> </header>
-		<h2 th:text="${edicion}?'Modificar Consejo':'Nuevo Consejo'"></h2>
+		<h1 class="titulo-paseo" th:text="${edicion}?'Modificar Consejo de Salud':'Nuevo Consejo de Salud'"></h1>
 		<div >
 					  <form class="formularioGeneral" th:action="${edicion}?@{/consejos/modificar}:@{/consejos/guardar}" th:object="${consejoAuxiliar}" method="post">
 		<!-- peticion que se dispara al presionar guardar, consejoAuxiliar nombre variable tipo Consejo, post metodo para enviar informacion -->				
