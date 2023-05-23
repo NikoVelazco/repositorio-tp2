@@ -27,8 +27,8 @@
 		  		<p class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></p>
 		  		<p class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span></p>
 		   		<img alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
-		  			<a th:href="@{/productos/modificar/}+${produ.nombre}" >Editar</a>
-		  			<a th:href="@{/productos/eliminar/}+${produ.nombre}">Eliminar</a> 
+		  			<a th:href="@{/productos/modificar/}+${produ.codigo}" >Editar</a>
+		  			<a th:href="@{/productos/eliminar/}+${produ.codigo}">Eliminar</a> 
 		  			<br>
 	  		</section>
 	
