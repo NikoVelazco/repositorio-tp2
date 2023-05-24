@@ -35,7 +35,6 @@ public class ProductoController {
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarProductoPage(@ModelAttribute("produ") Producto producto){
 		ModelAndView modelView =new ModelAndView("productos"); 
-		producto.setPrecio(producto.calcularDescuento());
 		listaProductos.getProductos().add(producto); 
 		modelView.addObject("productos",listaProductos.getProductos());
 		return modelView;
@@ -69,8 +68,7 @@ public class ProductoController {
 				produ.setNombre(producto.getNombre());
 				produ.setPrecio(producto.getPrecio());				
 				produ.setCategoria(producto.getCategoria());
-				produ.setDescuento(producto.getDescuento());			
-				
+				produ.setDescuento(producto.getDescuento());				
 			}
 		}
 		return "redirect:/productos/listado";
@@ -81,15 +79,16 @@ public class ProductoController {
 	 * @param codigo es codigo del objeto a eliminar
 	 * @return pagina productos usando redirect para usar /productos/listado 
 	 */
-	@GetMapping("/eliminar/{nombre}")
-	public String getEliminarProducto (@PathVariable(value="nombre") String nombre){
+	@GetMapping("/eliminar/{codigo}")
+	public String getEliminarProducto (@PathVariable(value="codigo") String codigo){
+		Producto productoEncontrado = new Producto();
 		for(Producto produ : listaProductos.getProductos()){
-			if(produ.getNombre().equals(nombre)){
-				listaProductos.getProductos().remove(produ);
+			if(produ.getCodigo()==Integer.parseInt(codigo)){
+				productoEncontrado = produ;
 				break;			
 			}			
 		}
-		
+		listaProductos.getProductos().remove(productoEncontrado);
 		return "redirect:/productos/listado";		
 	}
 	
