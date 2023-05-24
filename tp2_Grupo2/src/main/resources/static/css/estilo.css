@@ -462,22 +462,6 @@ input[type="submit"] {
     text-align: center;
   }
 
-  .productosInfo {
-    display: flex;
-    align-items: center;
-    display: block;
-  }
-
-  .producto {
-    margin-bottom: 20px;
-    display: block;
-  }
-   .linkProducto{
-  display: block; 
-  
-  text-align: center;
-  font-size: 25px;
-  }
 
 /********************************Fin Página Contactos**********************************/
 

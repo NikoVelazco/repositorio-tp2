@@ -22,10 +22,10 @@
 	   
 	  	  	<section class="productosInfo"th:each="produ: ${productos}">
 		  		<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
-		  		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span></h4>
+		  		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span>$</h4>
 		  		<p class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </p>
 		  		<p class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></p>
-		  		<p class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span></p>
+		  		<p class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span>$</p>
 		   		<img alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
 		  			<a th:href="@{/productos/modificar/}+${produ.codigo}" >Editar</a>
 		  			<a th:href="@{/productos/eliminar/}+${produ.codigo}">Eliminar</a> 
