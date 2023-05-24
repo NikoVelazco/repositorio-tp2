@@ -8,18 +8,20 @@ public class Paseo {
 	private String telefono;
 	private String email;
 	private String horario;
+	private String descripcion;
 	
 	public Paseo() {
 		
 	}
 	
-	public Paseo(String legajo, String nombre, String anioExperiencia, String telefono, String email, String horario) {
+	public Paseo(String legajo, String nombre, String anioExperiencia, String telefono, String email, String horario, String descripcion) {
 		this.legajo=legajo;
 		this.nombre=nombre;
 		this.anioExperiencia=anioExperiencia;
 		this.telefono=telefono;
 		this.email=email;
 		this.horario=horario;
+		this.descripcion=descripcion;
 	}
 	
 	
@@ -70,6 +72,15 @@ public class Paseo {
 	public void setHorario(String horario) {
 		this.horario = horario;
 	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
 	
 	
 }

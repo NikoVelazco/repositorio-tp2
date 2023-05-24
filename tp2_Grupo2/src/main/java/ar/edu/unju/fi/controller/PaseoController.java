@@ -62,6 +62,7 @@ public class PaseoController {
 				pas.setTelefono(paseo.getTelefono());
 				pas.setEmail(paseo.getEmail());
 				pas.setHorario(paseo.getHorario());
+				pas.setDescripcion(paseo.getDescripcion());
 			}
 		}
 		return "redirect:/paseo/listado";
@@ -77,9 +78,4 @@ public class PaseoController {
 		}
 		return "redirect:/paseo/listado";
 	}
-	/**
-	@GetMapping("/sucursales")
-	public String getSucursalPage() {
-		return "sucursales";
-	}**/
 }
