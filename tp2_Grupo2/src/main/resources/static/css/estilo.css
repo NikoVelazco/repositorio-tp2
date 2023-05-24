@@ -268,19 +268,23 @@ h3{
 	/** padding:20px 15px ;**/
 	 text-transform: uppercase;
 	 border: 1px solid rgb(0, 0, 0);
-	 background-color: rgb(244, 254, 129);
+	 background-color:#641e16;
 	 border-width: 2px;
+	 color: white;
 }
 #contenedor-tabla table td {
   padding: 5px;
   border: 1px solid rgb(0, 0, 0);
   border-width: 2px;
-  
+  background-color: #f5b7b1;
 }
 #enlace-altam{
-	margin:0px;
-	padding: 0px;
+	margin:20px;
+	padding: 10px;
 	text-align: center;
+	border: 1px solid #641e16;
+	background-color: #641e16;
+	border-radius: 10px;
 }
 
 #enlace-altam a{
@@ -291,6 +295,30 @@ h3{
 
 #enlace-altam a:hover{
 	color: yellow;
+}
+
+#enlace-acciones a{
+	font-size: 20px;
+	color: white;
+	text-decoration: none;
+	border: 1px solid #641e16;
+	background-color: #641e16;
+	border-radius: 10px;
+}
+
+#enlace-acciones a:hover{
+	color: yellow;
+}
+
+.sucursales-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sucursal {
+    width: 45%;
+    margin: 20px;
 }
 /* FIN CSS PÁGINA PASEO */
 

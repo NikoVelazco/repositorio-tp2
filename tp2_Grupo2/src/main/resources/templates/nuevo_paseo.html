@@ -29,6 +29,8 @@
 				<input type="text" id="input-general" name="paseo_email" th:field="*{email}">
 				<label class="label-general" for="horario">Horario</label>
 				<input type="text" id="input-general" name="paseo_horario" th:field="*{horario}">
+				<label class="label-general" for="Descripcion">Descripcion</label>
+				<textarea id="input-general" name="pase_descripcion"  rows="5" cols="50" required th:field="*{descripcion}"></textarea>
 				<p><input type="submit" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
 			</form>
 		</section>

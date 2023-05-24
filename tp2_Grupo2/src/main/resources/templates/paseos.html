@@ -14,34 +14,40 @@
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 class="titulo-paseo">NUESTROS PASEADORES</h1>
+		<div id="enlace-altam">
+			<a th:href="@{/paseo/nuevo}">REGISTRAR PASEADOR</a>
+		</div>
+		<div class="sucursales-container">
+        <div th:each="pas, iterStat : ${paseos}" class="sucursal">
+            <section class="articulo" th:class="${iterStat.index % 2 == 0} ? 'izq' : 'der'">
+                <h3 class="sub1" th:text="${pas.nombre}"></h3>
+                <p >Legajo: <span th:text="${pas.legajo}"></span></p>
+                <p >Años de Experiencia: <span th:text="${pas.anioExperiencia}"></span></p>
+                <p >Teléfono: <span th:text="${pas.telefono}"></span></p>
+                <p >Email: <span th:text="${pas.email}"></span></p>
+                <p >Horarios: <span th:text="${pas.horario}"></span></p>
+                <p>Descripción: <span th:text="${pas.descripcion}"></span></p>
+                	<div id="enlace-acciones">
+                		<a th:href="@{/paseo/modificar/}+${pas.legajo}">Modificar</a>
+					<a th:href="@{/paseo/eliminar/}+${pas.legajo}">Eliminar</a>
+                	</div>
+            </section>
+        </div>
+    </div>
 		<section id="contenedor-tabla">
 			<table id="tabla-general">
 				<tr>
 					<th class="th-sucursal">Legajo</th>
 					<th class="th-sucursal">Nombre</th>
-					<th class="th-sucursal">Años de Experiencia</th>
-					<th class="th-sucursal">Teléfono</th>
-					<th class="th-sucursal">E-mail</th>
-					<th class="th-sucursal">Horarios</th>
-					<th class="th-sucursal">Acciones</th>
+					<th class="th-sucursal">Horario</th>
 				</tr>
 				<tr th:each="pas: ${paseos}">
 					<td class="td-sucursal" th:text="${pas.legajo}"></td>
 					<td class="td-sucursal" th:text="${pas.nombre}"></td>
-					<td class="td-sucursal" th:text="${pas.anioExperiencia}"></td>
-					<td class="td-sucursal" th:text="${pas.telefono}"></td>
-					<td class="td-sucursal" th:text="${pas.email}"></td>
 					<td class="td-sucursal" th:text="${pas.horario}"></td>
-					<td class="td-sucursal">
-						<a th:href="@{/paseo/modificar/}+${pas.legajo}">Modificar</a>
-						<a th:href="@{/paseo/eliminar/}+${pas.legajo}">Eliminar</a>
-					</td>
 				</tr>
 			</table>
 		</section>
-		<div id="enlace-altam">
-			<a th:href="@{/paseo/nuevo}">REGISTRAR PASEADOR</a>
-		</div>
         <footer th:replace="~{layouts/footer :: footer}"></footer>
       </body>
 </html>

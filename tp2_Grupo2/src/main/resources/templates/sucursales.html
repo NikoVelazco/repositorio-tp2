@@ -14,6 +14,9 @@
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
 		<h1 class="titulosucursal">NUESTRAS SUCURSALES</h1>
+		<div id="enlace-altam">
+			<a th:href="@{/sucursal/nuevo}">REGISTRAR SUCURSAL</a>
+		</div>
 		<section id="contenedor-tabla">
 			<table id="tabla-general">
 				<tr>
@@ -39,9 +42,6 @@
 				</tr>
 			</table>
 		</section>
-		<div id="enlace-altam">
-			<a th:href="@{/sucursal/nuevo}">REGISTRAR SUCURSAL</a>
-		</div>
 		<h2 class="basta">TOMEMOS CONCIENCIA. ¡BASTA DEL MALTRATO ANIMAL!</h2>
 		<div class="mal">
 			<article>
