@@ -100,18 +100,34 @@ footer {
 
 .izquierda{
 	flex: 1;
-	padding-right: 50px;
+	padding-right: 0px;
 	margin: 30px;
 	font-size: 21px;
 	font-family: 'Zilla Slab', serif;
 }
 
+.izquierda, .titulo-paseo{
+	margin: 0px;
+}
+
 .derecha{
 	flex: 1;
-	padding-left: 50px;
+	padding-left: 0px;
 	margin: 30px;
 	font-size: 21px;
 	font-family: 'Zilla Slab', serif;
+}
+
+.p-index{
+	margin: 40px;
+}
+
+.t-index{
+	margin: 15px;
+}
+
+.derecha, .titulo-paseo{
+	margin: 0px;
 }
 
 /*Fin Página Index*/
