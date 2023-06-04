@@ -1,15 +1,39 @@
 
 package ar.edu.unju.fi.model;
 
+import org.springframework.stereotype.Component;
+
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+@Component 
+
 public class Producto {
 
 	//Propiedades de la clase Producto
-		private String nombre;
-		private int codigo;
-		private double precio;
-		private String categoria;
-		private int descuento;
+	@NotEmpty(message="El nombre no puede ser vacio") /* se añaden las validaciones del fromulario  */
+	private String nombre;
 	
+	@NotNull(message="Debe escribir un codigo de producto")
+	@Positive(message="Solo se permiten valores positivos")
+	private int codigo;
+	
+	@Min(value=5,message="el valor minimo permitido es 5")
+	@Max(value=10000,message="El valor maximo permitido es 100000")
+	@Positive(message="Solo se permiten valores positivos")
+	private double precio;
+	
+	@NotBlank(message="Debe seleccionar una categoria")
+	private String categoria;
+	
+	@Min(value=0,message="el valor minimo permitido es 1")
+	@Max(value=50,message="El valor maximo permitido es 50")
+	private int descuento;
+
 		
 		//Constructor por defecto
 		public Producto() {
