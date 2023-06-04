@@ -1,7 +1,11 @@
 package ar.edu.unju.fi.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,20 +15,33 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import ar.edu.unju.fi.listas.ListaConsejo;
 import ar.edu.unju.fi.model.Consejo;
+import jakarta.validation.Valid;
 
+/**
+ * capa Controladora para la pagina consejossalud
+ * @author Cristian Ortega
+ *
+ */
+
+@Component
 
 @Controller
-@RequestMapping("/consejos") /*peticion general para la pagina consejos*/
+@RequestMapping("/consejos") /*peticion general para la pagina consejossalud*/
 public class ConsejosSaludController {
 
 	/**
-	 * se construye el objeto listaConsejos tipo arraylist que se usara en /guardar
+	 * Autowired  inyecta el objeto listaConsejos dentro del contendor. El objeto es instanciado 	  
 	 */
-	ListaConsejo listaConsejos =new ListaConsejo();	
-	
+	@Autowired
+	private ListaConsejo listaConsejos;	
 	/**
-	 * Model es el nexo a la pagina
-	 * Metodo que captura la peticion http en forma de URL 
+	 * Autowired inyecta el objeto consejoI dentro del contendor. El objeto es instanciado
+	 */
+	@Autowired
+	private Consejo consejoI;
+	
+	/**	 
+	 * Peticion para dirigirse a la pagina  consejossalud
 	 * agrega a la pagina un atributo llamado consejosLista, que es un arraylist con objetos Consejo
 	 * @return la pagina consejossalud
 	 */
@@ -37,15 +54,17 @@ public class ConsejosSaludController {
 	}
 	
 	/**
-	 * Peticion para ingresar a nuevo consejo
-	 * @param model para que vincule la variable tipo Consejo al formulario
-	 * @return pagina para nuevo consejo y una variable llamada consejoAuxiliar de tipo Consejo
-	 * y la variable edicion que identifica la accion dentro de la pagina nuevo_consejo
+	 * Peticion para ingresar a la pagina nuevo_consejo
+	 * @param model vincula la variable tipo Consejo al formulario
+	 * @return pagina nuevo_consejo y una variable llamada consejoAuxiliar de tipo Consejo
+	 * la variable edicion identifica la accion dentro de la pagina nuevo_consejo
+	 * si es false se va a ingresar un nuevo consejo;
+	 * si es true se va a modificar un consejo;
 	 */
 	@GetMapping("/nuevo")
 	public String getConsejosSaludAltaPage(Model model){
 		boolean edicion = false;
-		model.addAttribute("consejoAuxiliar",new Consejo()); /*se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina*/
+		model.addAttribute("consejoAuxiliar",consejoI); /*se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina*/
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
 			
@@ -53,15 +72,22 @@ public class ConsejosSaludController {
 	
 	/**
 	 * Peticion para guardar el objeto consejoAuxiliar en el array list
-	 * @param consejo es un objeto de la clase Consejo que guarda los valores de consejoNuevo
+	 * @param consejo objeto de clase Consejo que guarda los valores de consejoNuevo
 	 * modelView objeto ModelAndView asociado a la pagina consejossalud, 
-	 * se usa getConsejos para traer el arraylist y leugo con add se agrega el objeto consejo
-	 * se agrega a modelView (la pagina consejossalud) la lista actualizada 	 
+	 * se usa getConsejos para traer el arraylist y luego con add se agrega el objeto consejo
+	 * se agrega a modelView (la pagina consejossalud) la lista actualizada
+	 * @Valid activa las validaciones dentro del modelo 	 
 	 * @return modelView (consejossalud)
+	 * 
 	 */
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarConsejoPage(@ModelAttribute("consejoAuxiliar") Consejo consejo){
-		ModelAndView modelView =new ModelAndView("consejossalud"); 
+	public ModelAndView getGuardarConsejoPage(@Valid @ModelAttribute("consejoAuxiliar") Consejo consejo, BindingResult result){   /*resutl objeto para capturar el resultado de la validacion*/
+		ModelAndView modelView =new ModelAndView("consejossalud");
+		if (result.hasErrors()) { /*resutado de la validacion*/
+			modelView.setViewName("nuevo_consejo"); /*si hay error, se mantien la vista*/
+			modelView.addObject("consejoAuxiliar",consejo);/*devuelve el objeto a la vista con los ingresados*/
+			return modelView;
+		}
 		listaConsejos.getConsejos().add(consejo); 
 		modelView.addObject("consejosLista",listaConsejos.getConsejos());
 		return modelView;
@@ -72,9 +98,9 @@ public class ConsejosSaludController {
 	 * Peticion para encontrar objeto consejo dentro de listaConsejos mediante el idConsejo
 	 * @param model usado para enviar el objeto encontrado a la pagina 
 	 * @param id se usa para la busqueda del objeto, se lo transforma a entero para hacer la busqueda
-	 * @return a la pagina nuevo_consejo el objeto encontrado con el nombre consejoNuevo
+	 * @return pagina nuevo_consejo y el objeto encontrado (con el nombre consejoNuevo)
 	 * consejoNuevo es el nombre del objeto usado en la pagina nuevo_consejo
-	 * tambien regresa una varible logica usada en formulario para identificar la accion a realizar
+	 * edicion: varible logica usada en formulario para identificar la accion a realizar(guardar/eliminar)
 	 */
 	
 	@GetMapping ("/modificar/{codigo}")
@@ -93,10 +119,10 @@ public class ConsejosSaludController {
 	}
 
 	/**
-	 * Peticion para guardar el objeto modificado. consejoAuxiliar tiene los valores cambiados
-	 * @param consejo objeto que guarda los valores de consejoNuevo de la pagina
+	 * Peticion para guardar el objeto consejoAuxiliar con valores modificados
+	 * @param consejo objeto que guarda los valores de consejoAuxiliar de la pagina
 	 * 
-	 * @return pagina consejossalud usando redirect para usar /consejos/listado 
+	 * @return pagina consejossalud usando redirect  
 	 */
 	@PostMapping("/modificar")
 	public String getModificarConsejo(@ModelAttribute("consejoAuxiliar") Consejo consejo){
@@ -113,9 +139,9 @@ public class ConsejosSaludController {
 	}
 	
 	/**
-	 * Recibe codigo del objeto a eliminar
-	 * @param codigo es codigo del objeto a eliminar
-	 * @return pagina consejossalud usando redirect para usar /consejos/listado 
+	 * Peticion para eliminar un objeto tipo Consejo 
+	 * @param codigo: guarda el atributo idConsejo del objeto a eliminar
+	 * @return pagina consejossalud usando redirect 
 	 */
 	@GetMapping("/eliminar/{codigo}")
 	public String getEliminarConsejo (@PathVariable(value="codigo") String codigo){
@@ -128,6 +154,7 @@ public class ConsejosSaludController {
 		}
 		listaConsejos.getConsejos().remove(consejoEncontrado);
 		return "redirect:/consejos/listado";		
-	}
-	
+	}	
 }
+
+

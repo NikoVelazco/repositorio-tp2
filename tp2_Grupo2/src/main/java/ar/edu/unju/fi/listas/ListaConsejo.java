@@ -2,9 +2,10 @@ package ar.edu.unju.fi.listas;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import org.springframework.stereotype.Component;
 import ar.edu.unju.fi.model.Consejo;
 
+@Component 
 /**Se define una clase ListaConsejos
  * la clase tiene un atributo llamado consejos, tipo List 
  * consejos guarda una lista de objetos de la clase Consejo
@@ -40,13 +41,11 @@ private List<Consejo> consejos;
 	}
 
 	/**
-	 * Metodod para guardar el objeto consejos
+	 * Metodo para guardar el objeto consejos en la lista
 	 * @param consejos objeto a ser guardado 
 	 */
 	public void setConsejos(List<Consejo> consejos) {
 		this.consejos = consejos;
-	}
-	
-	
+	}	
 
 }
