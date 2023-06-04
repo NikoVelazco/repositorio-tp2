@@ -58,7 +58,10 @@
 						
 		</section> 
 		
-		<footer th:replace="~{layouts/footer :: footer}"> </footer>
 	</div>
+	<div class="container-fluid pie-pagina">
+    		<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	</div>
+    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html> 

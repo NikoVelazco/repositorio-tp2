@@ -42,7 +42,10 @@
 			<a class="enlace-altam" th:href="@{/productos/nuevo}">AGREGAR NUEVO PRODUCTO </a>
 	</div>
 		
-	<footer th:replace="~{layouts/footer :: footer}"> 	</footer>
+	<div class="container-fluid pie-pagina">
+    		<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	</div>
+    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 	
  	

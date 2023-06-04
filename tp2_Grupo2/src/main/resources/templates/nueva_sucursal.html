@@ -41,6 +41,9 @@
 				<p><input type="submit" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
 			</form>
 		</section>
-		<footer th:replace="~{layouts/footer :: footer}"></footer>
+		<div class="container-fluid pie-pagina">
+    		<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	</div>
+    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Inicio</title>
 		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
@@ -56,6 +56,9 @@
 		  		</article>
       		</aside>
       	</div>
-      	<footer th:replace="~{layouts/footer :: footer}"></footer>
+      	<div class="container-fluid pie-pagina">
+    		<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	</div>
+    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>
