@@ -12,44 +12,43 @@
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
-	<body>
-	 <header th:replace="~{layouts/header :: header}"> </header>
-	 <div class="enlace_consejo">
-	 <h1 class="titulo-paseo">Consejos de salud</h1>		
-				
-			</div>	
-		<div class="cuerpo">
-						  
-		  	<section class="izquierda">
-				<article th:each="conse: ${consejosLista}">
-			  		<h2 class ="categoriaConsejo">Categoría: <span th:text="${conse.categoria}"></span></h2>			 
-					<h3 class ="categoriaDatoConsejo">Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
-					<h3 class ="categoriaDatoConsejo">Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
-					<h3 class ="categoriaDatoConsejo">Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
-					<p th:text="${conse.descripcion}"></p><br>
-						<a th:href="@{/consejos/modificar/}+${conse.idConsejo}">Editar</a>
-						<a th:href="@{/consejos/eliminar/}+${conse.idConsejo}">Eliminar</a>		  		
-			  		
-			  	</article>
-	
-			</section> 
-			<aside class="derecha">
-				<h2>¿Por qué es importante llevar al veterinario a nuestro perro?</h2>
-				<p>Los veterinarios son profesionales de la salud animal que se encargan de diagnosticar y tratar enfermedades en animales. Estos profesionales tienen un amplio conocimiento en fisiología, anatomía, farmacología, nutrición y salud pública de los animales.
-				   Además, los veterinarios pueden trabajar en diferentes áreas como clínica, cirugía, patología, epidemiología, investigación, salud pública y docencia.
-				   Para convertirse en veterinario, se requiere obtener un título universitario en veterinaria y cumplir con los requisitos de licencia y certificación correspondientes en cada país.
-				   Es importante tener en cuenta que la atención veterinaria no solo se limita a la enfermedad, también incluye servicios preventivos como vacunación, desparasitación, control de plagas y esterilización.
-				   Si tienes una mascota, es recomendable buscar un veterinario de confianza y llevar a tu mascota para chequeos médicos regulares. De esta manera, podrás detectar cualquier problema de salud en su etapa inicial y tomar medidas preventivas.
-				   Recuerda que los veterinarios son profesionales altamente capacitados y que están comprometidos con la salud y el bienestar de los animales. Si tienes dudas acerca del cuidado de tu mascota, no dudes en preguntarle a tu veterinario de confianza.
-				</p>
-			</aside>
-		</div>
-		<div id="enlace-altam">
-			<a th:href="@{/consejos/nuevo}">AGREGAR NUEVO CONSEJO</a>
+	<body>		
+			  <header th:replace="~{layouts/header :: header}"> </header>			  
+		 	  <div class="container-fluid enlace_consejo"> 
+		 			<div class="row justify-content-center titulo-paseo">		 	  			
+			 	 			<h1 >CONSEJOS DE SALUD</h1> 			 					
+					</div>	
+			 </div>	
+			 <div class="container-fluid">
+			 <div class="cuerpo row" >	
+				 <div class= "col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-7 col-xxl-6 order-2 order-md-1 order-sm-2 order-xs-2 ">			 
+						<article th:each="conse: ${consejosLista}">
+					  		<h2 class ="categoriaConsejo">Categoría: <span th:text="${conse.categoria}"></span></h2>			 
+							<h3 class ="categoriaDatoConsejo">Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
+							<h3 class ="categoriaDatoConsejo">Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
+							<h3 class ="categoriaDatoConsejo">Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
+							<p th:text="${conse.descripcion}"></p><br>							
+								<a class="btn btn-outline-secondary" th:href="@{/consejos/modificar/}+${conse.idConsejo}" role="button">Editar</a>								
+								<a class="btn btn-outline-danger" th:href="@{/consejos/eliminar/}+${conse.idConsejo}" role="button">Eliminar</a>				  		
+					  	</article>				
+				 </div>
+				 <div class= "col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-5 col-xxl-6 order-1 order-md-2 order-sm-1 order-xs-1 ">				
+						<h2 class ="categoriaConsejo">¿Por qué es importante llevar al veterinario a nuestro perro?</h2>
+						<p>Los veterinarios son profesionales de la salud animal que se encargan de diagnosticar y tratar enfermedades en animales. Estos profesionales tienen un amplio conocimiento en fisiología, anatomía, farmacología, nutrición y salud pública de los animales.
+						   Además, los veterinarios pueden trabajar en diferentes áreas como clínica, cirugía, patología, epidemiología, investigación, salud pública y docencia.
+						   Para convertirse en veterinario, se requiere obtener un título universitario en veterinaria y cumplir con los requisitos de licencia y certificación correspondientes en cada país.
+						   Es importante tener en cuenta que la atención veterinaria no solo se limita a la enfermedad, también incluye servicios preventivos como vacunación, desparasitación, control de plagas y esterilización.
+						   Si tienes una mascota, es recomendable buscar un veterinario de confianza y llevar a tu mascota para chequeos médicos regulares. De esta manera, podrás detectar cualquier problema de salud en su etapa inicial y tomar medidas preventivas.
+						   Recuerda que los veterinarios son profesionales altamente capacitados y que están comprometidos con la salud y el bienestar de los animales. Si tienes dudas acerca del cuidado de tu mascota, no dudes en preguntarle a tu veterinario de confianza.
+						</p>			
+				 </div>			
+		  	 </div>
+			 <a  id="enlace-altam" class="btn btn-primary d-grid col-3 mx-auto" th:href="@{/consejos/nuevo}" role="button">AGREGAR NUEVO CONSEJO</a>
+			 
 		</div>
 		<div class="container-fluid pie-pagina">
-    		<footer th:replace="~{layouts/footer :: footer}"></footer>
-    	</div>
-    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>
+	    </div>
+	    <script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 	</body>
 </html>
