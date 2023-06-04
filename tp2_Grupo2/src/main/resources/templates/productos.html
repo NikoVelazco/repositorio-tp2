@@ -52,8 +52,9 @@
 	 	<a  id="enlace-altam" class="btn btn-primary justify-content-md-end" th:href="@{/productos/nuevo}" role="button">AGREGAR NUEVO PRODUCTO</a>		
 			
 	</div>
-		
-	<footer th:replace="~{layouts/footer :: footer}"> 	</footer>
+		<div class="container-fluid pie-pagina">
+	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>
+	    </div>
 	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 	
