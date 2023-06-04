@@ -1,11 +1,28 @@
 package ar.edu.unju.fi.model;
 
-public class Consejo {
-	private int idConsejo;
+import org.springframework.stereotype.Component;
+
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
+@Component 
+public class Consejo {	
+	
+	@Positive(message="El id debe ser un numero positivo") /*validacion para que el idConsejo sea mayor que cero*/
+	private int idConsejo;	
+	@NotBlank(message="Debe seleccionar una categoria") /*validacion para que no se ingrese atributo en blanco*/
 	private String categoria;
+	@NotBlank(message="Debe seleccionar un rango edad") /*validacion para que no se ingrese atributo en blanco*/
 	private String edadMascota;	
-	private String sexoMascota;		
+	@NotBlank(message="Debe seleccionar una opcion de sexo de mascota") /*validacion para que no se ingrese atributo en blanco*/
+	private String sexoMascota;
+	@Size(min=15,message="Descripcion minima de 15 caracteres") /*validacion para que se ingrese atributo con mas de 15 caracteres*/
 	private String descripcion;
+	
 	
 	/*Constructor por defecto*/
 	public Consejo() {
@@ -14,7 +31,7 @@ public class Consejo {
 
 	/**
 	 * Constructor parametrizado
-	 * @param idConsejo
+	 * @param idConsejo numero de identificacion del consejo, usado como clave primaria
 	 * @param categoria ALIMENTACION, SALUD, CUIDADOS, VARIOS
 	 * @param edad CACHORRO, JOVEN, ADULTO, INDISTINTO
 	 * @param sexoMascota MACHO, HEMBRA, INDISTINTO	
@@ -40,7 +57,7 @@ public class Consejo {
 
 	
 	/**
-	 * Metodo para guardar un numero de id en el atributo idConsejo
+	 * Metodo para guardar un numero en el atributo idConsejo
 	 * @param idConsejo
 	 */
 	public void setIdConsejo(int idConsejo) {
@@ -109,6 +126,6 @@ public class Consejo {
 	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}	
+	}
 
 }
