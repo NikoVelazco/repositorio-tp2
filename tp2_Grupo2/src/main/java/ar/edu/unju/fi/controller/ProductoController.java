@@ -1,7 +1,10 @@
 
 package ar.edu.unju.fi.controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,13 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.model.Producto;
+import jakarta.validation.Valid;
 import ar.edu.unju.fi.listas.ListaProducto;
+
+
+@Component
 
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
 	
-	ListaProducto listaProductos = new ListaProducto();
+	@Autowired
+	ListaProducto listaProductos;
+	
+	@Autowired
+	Producto productos;
 	
 	@GetMapping("/listado")
 	public String getListadoProductosPage(Model model) {		
@@ -33,12 +44,19 @@ public class ProductoController {
 			
 	}
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarProductoPage(@ModelAttribute("produ") Producto producto){
+	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("produ") Producto producto, BindingResult result ){ /*resutl objeto para consultar si existe error*/
 		ModelAndView modelView =new ModelAndView("productos"); 
+		if(result.hasErrors()) {
+			modelView.setViewName("nuevo_producto");
+			modelView.addObject("produ", producto);
+			return modelView;
+		}
 		listaProductos.getProductos().add(producto); 
 		modelView.addObject("productos",listaProductos.getProductos());
 		return modelView;
 	}
+	
+
 	
 	@GetMapping ("/modificar/{codigo}")
 	public String getModificarProductoPage(Model model, @PathVariable(value="codigo") String codigo) {

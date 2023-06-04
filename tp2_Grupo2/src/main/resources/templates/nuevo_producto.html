@@ -1,57 +1,91 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
   	<head>
-			<link rel="icon" th:href="@{/images/perroico.png}">
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			
+	    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    	    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 			<title>Inicio</title>
-			<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 	 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
-			<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
-			<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
-	
+			
 		</head>
 	<body>
-	<header th:replace="~{layouts/header :: header}"> </header>
+		<header th:replace="~{layouts/header :: header}"> </header>
 	
-	   <h1 class="titulo-paseo" th:text="${edicion}?'Modificar Producto':'Agregar Nuevo Producto'"></h1><br><br>
-	   
-	<div id="formularioPro">
+	<div class="container">
 	<!--th:action="@{/nombre Controlador donde envia info el enviar}" th:object="${el objeto creado}" method="post"   -->
-					<form class="formuprod" th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
-						
-						<label for="nombre" >Nombre:</label>
-						<input type="text" id="nombre" name="nombre_produ" th:field="*{nombre}"  > <br><br>
-							
-						<label for="codigo">Código:</label>
-						<input type="number" id="codigo" name="codigo_produ" th:field="*{codigo}" required min="1"><br><br>
-						
-						<label for="precio">Precio:</label>
-						<input type="number" id="precio" name="precio_produ" th:field="*{precio}" step="0.01" required min="1" ><br><br>
+					
+			<div class="col col-sm-12 col-md-9 fondo-form p-5">	
 				
-						<label for="categoria" >Categoría:</label>
-						<select class="selectGeneral" id="categoria" name="categoria_produ"  th:field="*{categoria}" >
-						
-							<option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">Alimento</option>
-								<option value="juguete.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
-								<option value="campera.jpg" th:selected = "${produ.categoria == 'campera.jpg'}">Ropa</option>
-								<option value="disfraz.webp" th:selected = "${produ.categoria == 'diszfraz.webp'}">Otros</option>
-						</select><br>	
-						<label for="descuento">Descuento:</label>
-						<input type="number" id="descuento" name="descuento_produ" th:field="*{descuento}" min="0" max="50" required><br><br>				
+				<div class="row mb-5, align-top">
+				<h3 th:text="${edicion}?'Modificar Producto':'Agregar Nuevo Producto'"></h3><br><br>
+				</div>
 				
-						<p><input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'"></p>
+				
+				
+				
+					<form  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
 						
+						<div class="mb-3, align-top ">
+								<label for="nombre" class="form-label" >Nombre:</label>
+								<div class="col-9">
+								<input type="text" id="nombre"  class="form-control" name="nombre_produ" th:field="*{nombre}"  > 
+										<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+								</div>
+						
+						</div>
+						
+						<div class="mb-3, align-top ">	
+								<div class="col-9">
+								<label for="codigo" class="form-label">Código:</label>
+								<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" >
+								<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+								</div>
+						</div>
+						
+						<div class="mb-3,align-top ">	
+								<div class="col-9">
+								<label for="precio" class="form-label">Precio:</label>
+								<input type="number" id="precio" class="form-control"name="precio_produ" 
+									placeholder="100-100000"th:field="*{precio}"  >
+									<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+						
+								</div>
+						</div>
+				
+				         <div class="mb-3, align-top ">
+				        		 <div class="col-4">	
+								<label for="categoria"class="form-label" >Categoría:</label><br><br> 
+								<select  id="categoria" class="form-select, col-sm-9"name="categoria_produ"  
+										th:field="*{categoria}" >
+						
+									<option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">Alimento</option>
+									<option value="juguete.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
+									<option value="campera.jpg" th:selected = "${produ.categoria == 'campera.jpg'}">Ropa</option>
+									<option value="disfraz.webp" th:selected = "${produ.categoria == 'diszfraz.webp'}">Otros</option>
+								</select><br>	
+								</div>
+						</div>
+						
+						<div class="mb-3, align-top ">	
+								<div class="col-9">
+								<label for="descuento"class="form-label">Descuento:</label> 
+								<input type="number" id="descuento" class="form-control" name="descuento_produ" 
+									 th:field="*{descuento}"  required>	
+								<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>			
+								</div>
+						</div>
+						<div class="col-7">
+						<p  ><input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'"></p>
+						
+							</div> 
 					</form>	
-				
+				</div>	
 	</div>
 	
-	<div class="container-fluid pie-pagina">
-    		<footer th:replace="~{layouts/footer :: footer}"></footer>
-    	</div>
-    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+		<div class="container-fluid pie-pagina">
+	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>
+	    </div>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 	</body>
 </html>
-
