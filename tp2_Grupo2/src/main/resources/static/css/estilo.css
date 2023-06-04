@@ -16,14 +16,42 @@
 }
 
 body{
+	/*background-color: #F5B7B1;
+	position: relative; 
+	padding-bottom: 35px; 
+	min-height: 100vh; /*/
 	background-color: #F5B7B1;
-	position: relative; /*agregado nuevo*/
-	padding-bottom: 35px; /*agregado nuevo*/
-	min-height: 100vh; /*agregado nuevo*/
 }
 /*Comienzo Encabezado*/
 
-#encabezado{
+header #fondo-color-nav{
+	color: #FFFFFF; 
+	/**background-color: #7B241C;**/
+	background-color: #7B241C;
+}
+
+#letra-titulo{
+	color: #FFFFFF;
+	font-family: 'Lobster', cursive;
+  	font-size: 30px;
+}
+
+#letra-nav{
+	color: #FFFFFF;
+	font-family: 'Play', sans-serif;
+  	font-size: 20px;
+}
+
+#letra-nav:hover{
+	color: yellow;
+}
+
+#imagen-logo-patita{
+	width: 60px;
+	height: 60px
+}
+
+/*#encabezado{
 	background-color: #7B241C;
 	border: 1px solid #7b241c;
 }
@@ -67,14 +95,14 @@ body{
 }
 
 #encabezado a:hover{
-	color: yellow; /*PseudoClase*/
+	color: yellow; 
 }
-
+*/
 /*Fin Encabezado*/
 
 /*****************CODIGO CSS PIE DE PAGINA  ****************************/
-footer {
-	position: absolute; /*agregado nuevo*/
+.pie-pagina{
+ /*agregado nuevo*/
 	width: 100%; /*agregado nuevo*/
 	bottom:0; /*agregado nuevo*/
 	clear: both; 
@@ -84,7 +112,7 @@ footer {
 	margin: 0px;
 	border: 5px;
 	padding: 6px;	
-	background-color:#7b241c;
+	background-color:#7B241C;
 	font-family: 'IBM Plex Mono', monospace;
 	font-size: 18px;
 	color:white;

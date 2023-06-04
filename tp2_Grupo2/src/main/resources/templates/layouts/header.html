@@ -4,19 +4,38 @@
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		<header th:fragment="header" id="encabezado">
-			<h1 id="titulo-index">Patitas Felices</h1>
-			<img id="imagen" th:src="@{/images/patitasfelices.png}" alt="Logo Patitas Felices" title="Mis amigos son los perros">
-           <nav>
-				<ul>
-					<li><a th:href="@{/index}">Inicio</a></li>
-					<li><a th:href="@{/productos/listado}">Productos</a></li>
-					<li><a th:href="@{/consejos/listado}">Consejos de Salud</a></li>
-					<li><a th:href="@{/paseo/listado}">Servicios de paseos</a></li>
-					<li><a th:href="@{/sucursal/listado}">Sucursales</a></li>
-					<li><a th:href="@{/contactos}">Contáctanos</a></li>
-				</ul>
-			</nav>
+		<header th:fragment="header">
+			<nav class="navbar navbar-expand-lg" id="fondo-color-nav">
+	        	<div class="container-fluid">
+	          		<img th:src="@{/images/patitasfelices.png}" class="rounded float-start navbar-brand" id="imagen-logo-patita" alt="logo-patitas">
+	          		<h3 class="navbar-brand" id="letra-titulo">Patitas Felices</h3>
+	          		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	            		<span class="navbar-toggler-icon"></span>
+	         		</button>
+	          		<div class="collapse navbar-collapse" id="navbarNav">
+	            		<ul class="navbar-nav ms-auto">
+	              			<li class="nav-item">
+	                			<a class="nav-link active" aria-current="page" id="letra-nav" th:href="@{/index}">Inicio</a>
+	              			</li>
+	             			<li class="nav-item">
+	                			<a class="nav-link" th:href="@{/productos/listado}" id="letra-nav" >Productos</a>
+	             		 	</li>
+	              			<li class="nav-item">
+	                			<a class="nav-link" th:href="@{/consejos/listado}" id="letra-nav">Consejos de Salud</a>
+	              			</li>
+	              			<li class="nav-item">
+	                			<a class="nav-link" th:href="@{/paseo/listado}" id="letra-nav">Servicios de Paseos</a>
+	              			</li>
+	              			<li class="nav-item">
+	                			<a class="nav-link" th:href="@{/sucursal/listado}" id="letra-nav">Sucursales</a>
+	              			</li>
+	              			<li class="nav-item">
+	                			<a class="nav-link"  th:href="@{/contactos}" id="letra-nav">Contáctanos</a>
+	              			</li>
+	            	   </ul>
+	          		</div>
+	        	</div>
+      		</nav>
 		</header>
 	</body>
 </html>
