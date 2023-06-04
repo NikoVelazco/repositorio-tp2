@@ -1,55 +1,62 @@
  <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/perroico.png}">
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    	<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">	
+		
+    	 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    	
+    	  <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    	<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+    	
 		<title>Productos</title>
-		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+		
 	</head>
 	<body>
+	
+		<div class="container">
 			<header th:replace="~{layouts/header :: header}"> </header>
-		<h1 id="titulo">Productos disponibles</h1>
- 
-	<div id="contenedor55">
-	  <div>
-	  
-	   
-	  	  	<section class="productosInfo"th:each="produ: ${productos}">
-		  		<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
-		  		<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span>$</h4>
-		  		<p class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </p>
-		  		<p class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></p>
-		  		<p class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span>$</p>
-		   		<img alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
-		  			<a th:href="@{/productos/modificar/}+${produ.codigo}" >Editar</a>
-		  			<a th:href="@{/productos/eliminar/}+${produ.codigo}">Eliminar</a> 
-		  			<br>
-	  		</section>
-	
-	
-	  </div>
-	  
-	  
-	</div>
-		 
-	 <div id="enlace-altam">
-			<a class="enlace-altam" th:href="@{/productos/nuevo}">AGREGAR NUEVO PRODUCTO </a>
+			
+			<div class="enlace_consejo row">
+			<h1 id="titulo">Productos disponibles</h1>
+   			</div>
+   			
+	 		 <div class="row d-flex" >
+	  	  
+	  		     	
+		  	 		 	<section class="col" th:each="produ: ${productos}">
+						      <div class="row custom-row align-items-center justify-content-center">
+						        <div class="col">
+		  	 		 			
+						  			<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
+						  			<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span>$</h4>
+						  			<h4 class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </h4>
+						  			<h4 class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></h4>
+						  			<h4 class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span>$</h4>
+						   			<div class="text-center">
+						   			
+						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
+						  		  
+						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.codigo}" role="button">Editar</a>								
+										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.codigo}" role="button">Eliminar</a>	
+						  				</div>
+						  				<br>
+						  				  </div>
+						  				</div>
+						  				
+		  				</section>
+		  				</div>
+				</div>
+	 	
+	 
+	 <div class="d-grid gap-2 col-4 mx-auto">
+	 
+	 	<a  id="enlace-altam" class="btn btn-primary justify-content-md-end" th:href="@{/productos/nuevo}" role="button">AGREGAR NUEVO PRODUCTO</a>		
+			
 	</div>
 		
-	<div class="container-fluid pie-pagina">
-    		<footer th:replace="~{layouts/footer :: footer}"></footer>
-    	</div>
-    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	<footer th:replace="~{layouts/footer :: footer}"> 	</footer>
+	<script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 	
  	
 </html>
-
-
 
