@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/perroico.png}">
+		<link rel="icon" th:href="@{/images/iconoperro.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,50 +13,52 @@
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<header th:replace="~{layouts/header :: header}"> </header>
-		<div class="cuerpo">
-			<section class="izquierda">
-			  	<h2 class="titulo-paseo">¿Quienes somos?</h2>
-			  	<article>
-			  		<p class="p-index">Bienvenido/a a nuestra página de paseadores de perros, donde ofrecemos un servicio de calidad y confianza para el cuidado de tus perros. <br>Sabemos que tus peludos amigos son una parte importante de tu vida y merecen lo mejor, por eso hemos creado esta plataforma para ayudarte a encontrar a los mejores paseadores de perros en tu zona.
+		<header th:replace="~{layouts/header :: header}"></header>
+		<div class="banner">
+  			<img class="img-fluid" id="img-banner" th:src="@{/images/banner-gran-grupo-perros-juntos-fila-sobre-fondo-naranja_191971-28737.avif}" alt="Imagen del banner">
+		</div>
+		<div class="index-page container-fluid my-3">
+        	<div class="row">
+            	<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+           			 <h2 class="title">OBJETIVOS PATITAS FELICES</h2>
+                		<section>
+							<article>
+								<h3 class="title">Proporcionar un servicio de alta calidad y seguro para las mascotas de nuestros clientes</h3>
+			    				<p>En Patitas Felices, nuestro principal objetivo es garantizar que tus mascotas reciban un servicio de alta calidad y seguro durante los paseos. Nuestros paseadores de perros son cuidadosos, responsables y utilizan el equipo adecuado para asegurarse de que tus perros estén seguros y felices.</p>
+							</article>
+							<article>
+								<h3 class="title">Ofrecer horarios de paseo flexibles y opciones de reserva en línea para hacer que el proceso sea más fácil para nuestros clientes</h3>
+		    					<p>Entendemos que tus horarios pueden ser ocupados, por lo que ofrecemos horarios de paseo flexibles para adaptarnos a tus necesidades. También podes reservar tus paseos en línea para ahorrar tiempo y hacer el proceso aún más fácil.</p>
+							</article>
+							<article>
+		    					<h3 class="title">Ser expertos en el cuidado de los perros y mantener nuestros conocimientos actualizados en el cuidado de mascotas</h3>
+		    					<p>Nuestros paseadores de perros son expertos en el cuidado de los perros y se mantienen actualizados en las últimas técnicas y cuidados para mascotas. Podes confiar en que tus perros estarán en buenas manos con nosotros.</p>
+		  					</article>
+		  					<article>
+		    					<h3 class="title">Fomentar una relación de confianza con nuestros clientes y siempre comunicar de manera clara y efectiva</h3>
+		    					<p>En Patitas Felices, nos esforzamos por construir una relación de confianza con nuestros clientes. Comunicamos de manera clara y efectiva para que siempre sepas lo que está sucediendo y cómo estamos cuidando a tus perros.</p>
+		  					</article>
+		  					<article>
+		    					<h3 class="title">Crecer y expandirnos continuamente para ofrecer un servicio aún más completo y de alta calidad a nuestros clientes</h3>
+		    					<p>En Patitas Felices, siempre estamos buscando maneras de mejorar y expandir nuestros servicios para ofrecer un servicio aún más completo y de alta calidad a nuestros clientes. Nos comprometemos a estar a la vanguardia de las últimas tendencias y técnicas de paseo de perros.</p>
+		  					</article>
+						</section>
+            	</div>
+            	<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            		<h2 class="title">¿QUIENES SOMOS?</h2>
+               			 <aside>
+							<p>Bienvenido/a a nuestra página de paseadores de perros, donde ofrecemos un servicio de calidad y confianza para el cuidado de tus perros. <br>Sabemos que tus peludos amigos son una parte importante de tu vida y merecen lo mejor, por eso hemos creado esta plataforma para ayudarte a encontrar a los mejores paseadores de perros en tu zona.
 	
-					<br>Nuestros paseadores son profesionales experimentados y apasionados por los animales, comprometidos a proporcionar un cuidado personalizado y amoroso para tus perros durante sus paseos diarios. <br>Ya sea que necesites paseos regulares mientras estás en el trabajo o durante tus vacaciones, estamos aquí para asegurarnos de que tus perros estén felices, saludables y bien cuidados.
+							<br>Nuestros paseadores son profesionales experimentados y apasionados por los animales, comprometidos a proporcionar un cuidado personalizado y amoroso para tus perros durante sus paseos diarios. <br>Ya sea que necesites paseos regulares mientras estás en el trabajo o durante tus vacaciones, estamos aquí para asegurarnos de que tus perros estén felices, saludables y bien cuidados.
 	
-					En nuestra página, podrás encontrar información detallada sobre cada uno de nuestros paseadores, incluyendo sus antecedentes, experiencia, horarios y tarifas. <br>Además, encontrarás productos de buena calidad, consejos de salud y todo lo que tengas que saber para mantener a tus perritos felices.
+							En nuestra página, podrás encontrar información detallada sobre cada uno de nuestros paseadores, incluyendo sus antecedentes, experiencia, horarios y tarifas. <br>Además, encontrarás productos de buena calidad, consejos de salud y todo lo que tengas que saber para mantener a tus perritos felices.
 	
-					Confía en nosotros para cuidar de tus amigos de cuatro patas mientras estás fuera. ¡Gracias por visitar nuestra página y esperamos poder trabajar con vos pronto!</p>
-			  	</article>
-			</section>
-			<aside class="derecha">
-      			<h2 class="titulo-paseo">Objetivos de Patitas Felices</h2>
-		  		<br>
-		  		<article>
-			    	<h3 class="t-index">Proporcionar un servicio de alta calidad y seguro para las mascotas de nuestros clientes</h3>
-			    	<p class="t-index">En Patitas Felices, nuestro principal objetivo es garantizar que tus mascotas reciban un servicio de alta calidad y seguro durante los paseos. Nuestros paseadores de perros son cuidadosos, responsables y utilizan el equipo adecuado para asegurarse de que tus perros estén seguros y felices.</p>
-		  		</article>
-		  		<br>
-		  		<article>
-		    		<h3 class="t-index">Ofrecer horarios de paseo flexibles y opciones de reserva en línea para hacer que el proceso sea más fácil para nuestros clientes</h3>
-		    		<p class="t-index">Entendemos que tus horarios pueden ser ocupados, por lo que ofrecemos horarios de paseo flexibles para adaptarnos a tus necesidades. También podes reservar tus paseos en línea para ahorrar tiempo y hacer el proceso aún más fácil.</p>
-		  		</article>
-		  		<br>
-		  		<article>
-		    		<h3 class="t-index">Ser expertos en el cuidado de los perros y mantener nuestros conocimientos actualizados en el cuidado de mascotas</h3>
-		    		<p class="t-index">Nuestros paseadores de perros son expertos en el cuidado de los perros y se mantienen actualizados en las últimas técnicas y cuidados para mascotas. Podes confiar en que tus perros estarán en buenas manos con nosotros.</p>
-		  		</article>
-		  		<br>
-		  		<article>
-		    		<h3 class="t-index">Fomentar una relación de confianza con nuestros clientes y siempre comunicar de manera clara y efectiva</h3>
-		    		<p class="t-index">En Patitas Felices, nos esforzamos por construir una relación de confianza con nuestros clientes. Comunicamos de manera clara y efectiva para que siempre sepas lo que está sucediendo y cómo estamos cuidando a tus perros.</p>
-		  		</article>
-		  		<br>
-		  		<article>
-		    		<h3 class="t-index">Crecer y expandirnos continuamente para ofrecer un servicio aún más completo y de alta calidad a nuestros clientes</h3>
-		    		<p class="t-index">En Patitas Felices, siempre estamos buscando maneras de mejorar y expandir nuestros servicios para ofrecer un servicio aún más completo y de alta calidad a nuestros clientes. Nos comprometemos a estar a la vanguardia de las últimas tendencias y técnicas de paseo de perros.</p>
-		  		</article>
-      		</aside>
-      	</div>
-      	<div class="container-fluid pie-pagina">
+							Confía en nosotros para cuidar de tus amigos de cuatro patas mientras estás fuera. ¡Gracias por visitar nuestra página y esperamos poder trabajar con vos pronto!</p>
+						</aside>
+            	</div>
+        	</div>
+    	</div>
+    	<div class="container-fluid pie-pagina">
     		<footer th:replace="~{layouts/footer :: footer}"></footer>
     	</div>
     	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
