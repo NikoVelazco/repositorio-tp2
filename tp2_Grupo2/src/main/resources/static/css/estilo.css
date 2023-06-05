@@ -115,7 +115,7 @@ header #fondo-color-nav{
 	background-color:#7B241C;
 	font-family: 'IBM Plex Mono', monospace;
 	font-size: 18px;
-	color:white;
+	color:white;	
 }
 /****************************************************************************/
 
@@ -350,7 +350,7 @@ h3{
 }
 /* FIN CSS PÁGINA PASEO */
 
-/* CSS PÁGINA NUEVO_PASEO */
+/* CSS PÁGINA NUEVO_PASEO *//*
 #input-general[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -369,7 +369,7 @@ h3{
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
+}*/
 
 .label-general{
 	 font-family: 'Teko', sans-serif;
@@ -452,7 +452,7 @@ h3{
 }
 
 .formularioGeneral {	/*cambio */
-
+	
 	width: 100%;
 	max-width: 800px;/*nueva modificacion*/
 	margin: auto;
@@ -464,18 +464,18 @@ h3{
 	font-size: 18px; /*Cambio para letra del formulario*/	
 	
 }
-
+/*
 label {
 	text-align: left;
 	padding-right: 10px;
 	line-height: 30px;
 	display: inline-block;
 	width: 15%;	
-}
+}*/
 
-/*modificacion para la longitud formulario consejos*/
+/*modificacion para la longitud formulario consejos*//*
 input[type="text"], input[type="email"], input[type="number"], textarea, .selectGeneral { /*agregado de clase*/
-		width: 80%;
+/*		width: 80%;
 		padding: 5px;
 		margin-bottom: 10px;
 		border: 1px solid #ccc;
@@ -492,7 +492,7 @@ input[type="submit"] {
 	border: none;
 	border-radius: 3px;	
 	font-size: 20px;	
-}
+}*/
 
 
 #direccion {	
@@ -524,6 +524,7 @@ input[type="submit"] {
 	/*background-image: url("../images/fondoFormulario.jpg");*/
 	margin: auto;	
 	padding-bottom: 15px;
+	background-color: #F5B7B1;
 }
 
 #redes li a {
