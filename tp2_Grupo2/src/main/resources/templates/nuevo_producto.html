@@ -21,51 +21,47 @@
 	<div class="container-fluid">
 	<!--th:action="@{/nombre Controlador donde envia info el enviar}" th:object="${el objeto creado}" method="post"   -->
 					 
-		 			
-			
-			<div class="col col-sm-12 col-md-9 fondo-form p-5">	
-				
-				<div class="row mb-5, align-top">
-				<h3 th:text="${edicion}?'Modificar Producto':'Agregar Nuevo Producto'"></h3><br><br>
+		 		
+				<div class="row justify-content-center ">
+					<div class="col-9">
+				<h2 th:text="${edicion}?'Modificar Producto':'Agregar Nuevo Producto'"></h2><br><br>
+					</div>
 				</div>
 				
-				
-				
-				
-					<form  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
+				<div class="row justify-content-center">
+						<form class= "row justify-content-center" th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
 						
-						<div class="mb-3, align-top ">
-								<label for="nombre" class="form-label" >Nombre:</label>
-								<div class="col-9">
-								<input type="text" id="nombre"  class="form-control" name="nombre_produ" th:field="*{nombre}"  > 
-										<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+						<div class="row justify-content-center ">
+								<div class="col-5">
+									<label for="nombre" class="form-label" >Nombre:</label>
+									<input type="text" id="nombre"  class="form-control" name="nombre_produ" th:field="*{nombre}"  > 
+									<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
 								</div>
 						
 						</div>
 						
-						<div class="mb-3, align-top ">	
-								<div class="col-9">
-								<label for="codigo" class="form-label">Código:</label>
-								<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" >
-								<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
-								</div>
-						</div>
-						
-						<div class="mb-3,align-top ">	
-								<div class="col-9">
-								<label for="precio" class="form-label">Precio:</label>
-								<input type="number" id="precio" class="form-control"name="precio_produ" 
-									placeholder="100-100000"th:field="*{precio}"  >
+						<div class="row justify-content-center ">	
+								<div class="col-5">
+									<label for="codigo" class="form-label">Código:</label>
+									<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" >
 									<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+								</div>
+						</div>
 						
+						<div class="row justify-content-center ">	
+								<div class="col-5">
+									<label for="precio" class="form-label">Precio:</label>
+									<input type="number" id="precio" class="form-control"name="precio_produ" 
+										placeholder="100-100000"th:field="*{precio}"  >
+									<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 								</div>
 						</div>
 				
-				         <div class="mb-3, align-top ">
-				        		 <div class="col-9">	
-								<label for="categoria"class="form-label" >Categoría:</label><br><br> 
-								<select  id="categoria" class="form-select"name="categoria_produ"  
-										th:field="*{categoria}" >
+				         <div class="row justify-content-center">
+				        		 <div class="col-5">	
+									<label for="categoria"class="form-label" >Categoría:</label><br><br> 
+									<select  id="categoria" class="form-select"name="categoria_produ"  
+											th:field="*{categoria}" >
 						
 									<option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">Alimento</option>
 									<option value="juguete.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
@@ -75,19 +71,26 @@
 								</div>
 						</div>
 						
-						<div class="mb-3, align-top ">	
-								<div class="col-9">
-								<label for="descuento"class="form-label">Descuento:</label> 
-								<input type="number" id="descuento" class="form-control" name="descuento_produ" 
-									 th:field="*{descuento}"  required>	
+						<div class="row justify-content-center">	
+								<div class="col-5">
+									<label for="descuento"class="form-label">Descuento:</label> 
+									<input type="number" id="descuento" class="form-control" name="descuento_produ" 
+										 th:field="*{descuento}"  required>	
 								<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>			
 								</div>
+								
+							
 						</div>
-						<div class="col-7">
-						<p  ><input type="submit" class="button" th:value="${edicion}?'Modificar':'Guardar'"></p>
+					
+							
 						
-							</div> 
 					</form>	
+					<div class="row justify-content-center">	
+								<div class="col-5">
+					<input type="submit" class="button btn btn-outline-secondary" th:value="${edicion}?'Modificar':'Guardar'">
+							<a class="btn btn-outline-danger" th:href="@{/productos/listado}" role="button">Cancelar</a>
+				</div>
+				</div>
 				</div>	
 	</div>
 	
