@@ -51,10 +51,42 @@ header #fondo-color-nav{
 	height: 60px
 }
 
+.banner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner #img-banner {
+  width: 100%;
+  height: 200px;
+}
+
+
+.index-page .title{
+	background-color: #7B241C;
+	border: 5px solid white;
+	box-shadow: -3px 5px 3px 0px #555;
+	color: white;
+	text-align: center;
+}
+.index-page section article, .index-page aside{
+	margin-bottom: 50px;
+	font-size: 20px;
+	color: dark;
+	padding: 20px 30px;
+	background-color: #F5B7B1;
+	border: 5px solid #7B241C;
+	box-shadow: -3px 5px 3px 0px #555;
+}
+
 /*#encabezado{
 	background-color: #7B241C;
 	border: 1px solid #7b241c;
 }
+
+
 
 #titulo-index{
 	position: absolute;
@@ -543,7 +575,56 @@ input[type="submit"] {
 
 
 /********************************Fin Página Contactos**********************************/
+.paseo-page, .titulo-tabla{
+ 	background-color: #7B241C;
+ 	border: 5px solid white;
+	box-shadow: -3px 5px 3px 0px #555;
+ }
+ .paseo-page .title-paseo, .titulo-tabla #titulo-tabla-mostrar{
+	color: white;
+	text-align: center;
+ }
+ 
+ .contenedor{
+ 	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ }
+ 
+ .paseo-alta{
+ 	width: 45%;
+    margin: 20px;
+ }
+ 
+ #boton-acordion{
+ 	background-color: #7B241C;
+ 	color: white;
+ 	box-shadow: -3px 5px 3px 0px #555;
+ }
+ 
+ #cuerpo-acordion{
+ 	box-shadow: -3px 5px 3px 0px #555;
+ }
+ 
+ .boton-alta-paseador{
+ 	text-align: center;
+ }
+ 
+ .tabla-paseo .th-sucursal{
+ 	background-color: #7B241C;
+ 	color: white;
+ 	text-align: center;
+ }
+ 
+ .tabla-paseo .td-sucursal{
+ 	background-color: white;
+ 	color: blue;
+ 	text-align: center;
+}
 
+#texto-area{
+	resize: none;
+}
 
 
 
