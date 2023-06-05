@@ -184,18 +184,26 @@ header #fondo-color-nav{
 	*/
 
 
-h2, h4{
+
+h2{
+	color:black;
+	text-align: center;
+	font-family: Helvetica;
+	font-style: italic;
+	
+	}
+	
+h4{
 	color: #641e16;
 	text-align: center;
 	
 	}
-	
 #titulo{
 	font-style: italic;
 	text-transform:uppercase;
 	background-color: #7b241c ;
-	border: black 6px solid;
-	font-size: 45px;	
+	
+	font-size: 40px;	
 	font-family: Helvetica;
 	color: #ffffff;
 	text-align: center;	
@@ -235,7 +243,6 @@ h3{
 	text-decoration: none;
 	
 }
-	
 
 /*Fin Página Productos*/
 
@@ -350,7 +357,7 @@ h3{
 }
 /* FIN CSS PÁGINA PASEO */
 
-/* CSS PÁGINA NUEVO_PASEO */
+/* CSS PÁGINA NUEVO_PASEO 
 #input-general[type=text], select {
   width: 100%;
   padding: 12px 20px;
@@ -370,7 +377,7 @@ h3{
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+*/
 .label-general{
 	 font-family: 'Teko', sans-serif;
 	 font-size:25px;
@@ -464,7 +471,7 @@ h3{
 	font-size: 18px; /*Cambio para letra del formulario*/	
 	
 }
-
+/*
 label {
 	text-align: left;
 	padding-right: 10px;
@@ -473,8 +480,8 @@ label {
 	width: 15%;	
 }
 
-/*modificacion para la longitud formulario consejos*/
-input[type="text"], input[type="email"], input[type="number"], textarea, .selectGeneral { /*agregado de clase*/
+modificacion para la longitud formulario consejos
+input[type="text"], input[type="email"], input[type="number"], textarea, .selectGeneral { /*agregado de clase
 		width: 80%;
 		padding: 5px;
 		margin-bottom: 10px;
@@ -494,7 +501,7 @@ input[type="submit"] {
 	font-size: 20px;	
 }
 
-
+*/
 #direccion {	
 	font-size: 28px; /*cambio*/
 	text-align: center;

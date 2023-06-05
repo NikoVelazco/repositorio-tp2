@@ -11,14 +11,15 @@
 		
 	</head>
 	<body>
-	
-		<div class="container">
 			<header th:replace="~{layouts/header :: header}"> </header>
+	
+			<div class="container-fluid enlace_consejo ">
+				<div class="row justify-content-center titulo-paseo">		 	  			
+			 	 			<h1 >Productos disponibles</h1>			 					
+					</div>	
 			
-			<div class="enlace_consejo row">
-			<h1 id="titulo">Productos disponibles</h1>
-   			</div>
-   			
+   				</div>
+   		<div class="container-fluid">
 	 		 <div class="row d-flex" >
 	  	  
 	  		     	
@@ -46,7 +47,7 @@
 		  				</div>
 				</div>
 	 		 
-	 		 <a  id="enlace-altam" class="btn btn-primary d-grid col-3 mx-auto" th:href="@{/consejos/nuevo}" role="button">AGREGAR NUEVO CONSEJO</a>	
+	 		 <a  id="enlace-altam" class="btn btn-primary d-grid col-3 mx-auto" th:href="@{/productos/nuevo}" role="button">AGREGAR NUEVO PRODUCTO</a>	
 	
 		<div class="container-fluid pie-pagina">
 	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>
