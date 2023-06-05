@@ -82,12 +82,9 @@
 							  			<div class ="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 							  			<!-- muestra mensaje de error si existe erorr -->
 							  		</div>					  
-							  </div>					  
-							 
-							 
+							  </div>								 
 							 		<input type="submit" class="btn btn-secondary" th:value="${edicion}?'Modificar':'Guardar'">
-							 		<a class="btn btn-outline-danger" th:href="@{/consejos/listado}" role="button">Cancelar</a>
-							 		
+							 		<a class="btn btn-outline-danger" th:href="@{/consejos/listado}" role="button">Cancelar</a>							 		
 							  
 						</form>
 					</div>				
