@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/perroico.png}">
+		<link rel="icon" th:href="@{/images/iconoperro.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Registro Nuevo Paseador</title>
 		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
@@ -15,26 +15,39 @@
 	</head>
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
-		<h1 class="titulo-paseo" th:text="${edicion}?'Modificar Paseador':'Registrar Nuevo Paseador'"></h1>
-		<section id="form-general">
-			<form id="form-login" th:action="${edicion}?@{/paseo/modificar}:@{/paseo/guardar}" th:object="${paseo}" method="post">
-				<label class="label-general" for="legajo">Legajo</label>
-				<input type="text" id="input-general" name="paseo_legajo" th:field="*{legajo}">
-				<label class="label-general" for="nombre">Nombre</label>
-				<input type="text" id="input-general" name="paseo_nombre" th:field="*{nombre}">
-				<label class="label-general" for="anioExperiencia">Años de Experiencia</label>
-				<input type="text" id="input-general" name="paseo_anioExperiencia" th:field="*{anioExperiencia}">
-				<label class="label-general" for="telefono">Teléfono</label>
-				<input type="text" id="input-general" name="paseo_telefono" th:field="*{telefono}">
-				<label class="label-general" for="email">Email</label>
-				<input type="text" id="input-general" name="paseo_email" th:field="*{email}">
-				<label class="label-general" for="horario">Horario</label>
-				<input type="text" id="input-general" name="paseo_horario" th:field="*{horario}">
-				<label class="label-general" for="Descripcion">Descripcion</label>
-				<textarea id="input-general" name="pase_descripcion"  rows="5" cols="50" required th:field="*{descripcion}"></textarea>
-				<p><input type="submit" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
+		<div class="container-fluid paseo-page">
+			<h1 class="title-paseo" th:text="${edicion}?'MODIFICAR PASEADOR':'REGISTRAR PASEADOR'"></h1>
+		</div>
+		<div class="container my-3 pb-3 pt-3 formulario-alta">
+			<form class="row g-3 needs-validation" novalidate th:action="${edicion}?@{/paseo/modificar}:@{/paseo/guardar}" th:object="${paseo}" method="post">
+				<div class="mb-3">
+					<label for="legajo" class="form-label">LEGAJO</label>
+					<input type="text" class="form-control" placeholder="N° de Legajo" name="paseo_legajo" th:field="*{legajo}" th:disabled="${edicion}?true:false">
+					<div class="text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></div>
+					<label for="nombre" class="form-label">NOMBRE</label>
+					<input type="text" class="form-control" placeholder="Nombre y Apellido" name="paseo_nombre" th:field="*{nombre}">
+					<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+					<label for="anioExperiencia" class="form-label">AÑOS DE EXPERIENCIA</label>
+					<input type="text" class="form-control" placeholder="Años de Experiencia" name="paseo_anioExperiencia" th:field="*{anioExperiencia}">
+					<div class="text-danger" th:if="${#fields.hasErrors('anioExperiencia')}" th:errors="*{anioExperiencia}"></div>
+					<label for="telefono" class="form-label">TELÉFONO</label>
+					<input type="text" class="form-control" placeholder="N° de teléfono" name="paseo_telefono" th:field="*{telefono}">
+					<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+	  				<label for="email" class="form-label">EMAIL</label>
+	  				<input type="email" class="form-control" placeholder="nombre@example.com" name="paseo_email" th:field="*{email}">
+	  				<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+	  				<label for="horario" class="form-label">HORARIO</label>
+					<input type="text" class="form-control" placeholder="Horario" name="paseo_horario" th:field="*{horario}">
+					<div class="text-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
+					<label for="descricion" class="form-label">DESCRIPCIÓN</label>
+					<textarea class="form-control" id="texto-area" rows="3" name="paseo_descripcion" th:field="*{descripcion}"></textarea>
+					<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+				</div>
+  				<div class="col-12">
+  					<p><input type="submit" class="btn btn-success" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
+  				</div>
 			</form>
-		</section>
+		</div>
 		<div class="container-fluid pie-pagina">
     		<footer th:replace="~{layouts/footer :: footer}"></footer>
     	</div>

@@ -1,42 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/perroico.png}">
+		<link rel="icon" th:href="@{/images/iconoperro.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Paseos</title>
 		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">		
 	</head>
 	<body>
-		<header th:replace="~{layouts/header :: header}"> </header>
-		<h1 class="titulo-paseo">NUESTROS PASEADORES</h1>
-		<div id="enlace-altam">
-			<a th:href="@{/paseo/nuevo}">REGISTRAR PASEADOR</a>
+		<header th:replace="~{layouts/header :: header}"></header>
+		<div class="container-fluid paseo-page">
+			<h1 class="title-paseo">NUESTROS PASEADORES</h1>
 		</div>
-		<div class="sucursales-container">
-        <div th:each="pas, iterStat : ${paseos}" class="sucursal">
-            <section class="articulo" th:class="${iterStat.index % 2 == 0} ? 'izq' : 'der'">
-                <h3 class="sub1" th:text="${pas.nombre}"></h3>
-                <p >Legajo: <span th:text="${pas.legajo}"></span></p>
-                <p >Años de Experiencia: <span th:text="${pas.anioExperiencia}"></span></p>
-                <p >Teléfono: <span th:text="${pas.telefono}"></span></p>
-                <p >Email: <span th:text="${pas.email}"></span></p>
-                <p >Horarios: <span th:text="${pas.horario}"></span></p>
-                <p>Descripción: <span th:text="${pas.descripcion}"></span></p>
-                	<div id="enlace-acciones">
-                		<a th:href="@{/paseo/modificar/}+${pas.legajo}">Modificar</a>
-					<a th:href="@{/paseo/eliminar/}+${pas.legajo}">Eliminar</a>
+		<div class="container contenedor">
+			<div th:each="pas, iterStat : ${paseos}" class="paseo-alta">
+            	<section class="articulo" th:class="${iterStat.index % 2 == 0} ? 'izq' : 'der'">
+                	<!-- <h3 class="sub1" th:text="${pas.nombre}"></h3>-->
+                	<div class="accordion" id="acordionExample">
+                		<div class="accordion-item">
+                			<h2 class="accordion-header" >
+      							<button id="boton-acordion" th:text="${pas.nombre}" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      							</button>
+    						</h2>
+    						<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      							<div class="accordion-body" id="cuerpo-acordion">
+      								<p >Legajo: <span th:text="${pas.legajo}"></span></p>
+                					<p >Años de Experiencia: <span th:text="${pas.anioExperiencia}"></span></p>
+                					<p >Teléfono: <span th:text="${pas.telefono}"></span></p>
+                					<p >Email: <span th:text="${pas.email}"></span></p>
+                					<p >Horarios: <span th:text="${pas.horario}"></span></p>
+                					<p>Descripción: <span th:text="${pas.descripcion}"></span></p>
+      							</div>
+   		 					</div>
+                		</div>
                 	</div>
-            </section>
-        </div>
-    </div>
-		<section id="contenedor-tabla">
-			<table id="tabla-general">
+                	<div id="enlace-acciones">
+                		<a th:href="@{/paseo/modificar/}+${pas.legajo}"><button type="button" class="btn btn-info my-2">Modificar</button></a>
+						<a th:href="@{/paseo/eliminar/}+${pas.legajo}"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                	</div>
+           		</section>
+           </div>
+		</div>
+		<div class="container-fluid my-4 boton-alta-paseador" >
+			<a th:href="@{/paseo/nuevo}"><button type="button" class="btn btn-success">REGISTRAR PASEADOR</button></a>
+		</div>
+		<div class="container-fluid my-3 titulo-tabla">
+			<h2 id="titulo-tabla-mostrar">AGENDA</h2>
+		</div>
+		<div class="container my-3 tabla-paseo">
+			<table class="table table-dark table-hover">
 				<tr>
 					<th class="th-sucursal">Legajo</th>
 					<th class="th-sucursal">Nombre</th>
@@ -48,10 +65,10 @@
 					<td class="td-sucursal" th:text="${pas.horario}"></td>
 				</tr>
 			</table>
-		</section>
+		</div>
         <div class="container-fluid pie-pagina">
     		<footer th:replace="~{layouts/footer :: footer}"></footer>
     	</div>
-    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
       </body>
 </html>
