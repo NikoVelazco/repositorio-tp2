@@ -1,10 +1,16 @@
 package ar.edu.unju.fi.listas;
 import java.util.List;
+
+import org.springframework.stereotype.Component;
+
 import ar.edu.unju.fi.model.Sucursal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+@Component
 public class ListaSucursal {
 	private List<Sucursal> sucursales;
+	
 	public ListaSucursal() {
 		sucursales= new ArrayList<Sucursal>();
 		sucursales.add(new Sucursal("Patitas Felices en Buenos Aires", "Pedro de Mendoza N° 1835", "Buenos Aires", LocalDate.of(2023, 05, 12), "patitasfelicesbsas@gmail.com", "1139423453"));
@@ -21,6 +27,4 @@ public class ListaSucursal {
 		this.sucursales = sucursales;
 	}
 }
-
-
 

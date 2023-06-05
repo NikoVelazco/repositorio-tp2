@@ -1,6 +1,8 @@
 package ar.edu.unju.fi.controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,12 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.model.Sucursal;
+import jakarta.validation.Valid;
 import ar.edu.unju.fi.listas.ListaSucursal;
 
 @Controller
 @RequestMapping("/sucursal")
 public class SucursalController{
-	ListaSucursal listaSucursales=new ListaSucursal();
+	@Autowired
+	private ListaSucursal listaSucursales;
+	
+	@Autowired
+	private Sucursal sucursal;
+	
 	@GetMapping("listado")
 	public String getListaSucursalesPage(Model model) {
 		model.addAttribute("sucursales", listaSucursales.getSucursales());
@@ -22,13 +30,18 @@ public class SucursalController{
 	@GetMapping("/nuevo")
 	public String getNuevaSucursalPage(Model model) {
 		boolean edicion=false;
-		model.addAttribute("sucursal", new Sucursal());
+		model.addAttribute("sucursal", sucursal);
 		model.addAttribute("edicion", edicion);
 		return "nueva_sucursal";
 	}
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarSucursalPage(@ModelAttribute("sucursal")Sucursal sucursal) {
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("sucursal")Sucursal sucursal, BindingResult result) {
 		ModelAndView modelView = new ModelAndView("sucursales");
+		if(result.hasErrors()) {
+			modelView.setViewName("nueva_sucursal");
+			modelView.addObject("sucursal", sucursal);
+			return modelView;
+		}
 		listaSucursales.getSucursales().add(sucursal);
 		modelView.addObject("sucursales", listaSucursales.getSucursales());
 		return modelView;
