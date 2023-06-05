@@ -5,9 +5,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     	<link rel="icon" th:href="@{/images/perroico.png}"> 
+    	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
      	<link rel="stylesheet" th:href='@{/css/estilo.css}' type='text/css'>
 		<title>Contáctenos</title>
-		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Rowdies:wght@700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -16,48 +16,96 @@
 	</head>
 	<body>
 	<div>
-	 <header th:replace="~{layouts/header :: header}"> </header>
-		<section id='contenedorContactos'>
-		<div ><h1 class="titulo-paseo"> Contáctenos</h1></div> <br>		
-			<div >				
-					
-				<div id='direccion'>
+	 <header th:replace="~{layouts/header :: header}"> </header>	
+	<section style="background-color:#F5B7B1;">
+        <div class="row">
+            <div class=" col-md-12" style="font-size: 35px; background-color: #641e16; font-family: Helvetica; text-align: center; color:white"><h1> Contáctenos</h1></div> <br>		     
+			 <div>					
+				<div style="font-family: Helvetica; text-align: center; font-size: 28px;">
 					<p >3915 Av. General Belgrano, 388-4221750.<br>
 					Lunes a Viernes: 9:00 a.m a 8:00 p.m.<br>
 					Sabado y Domingo: 9:00 a.m a 12:30 p.m.<br>
 					<a href='https://accounts.google.com'>contactos@mail.com.ar</a></p>
 				</div>
-				<div id='redes'>
-					<ul>
-						<li><a href='https://facebook.com'>Facebook</a>
-						<li><a href='https://instagram.com'>Instagram</a>
-						<li><a href='https://twitter.com'>Twitter</a>
-					</ul>
-				</div>
-			
-			</div> 
-			<div >
-					<form class="formularioGeneral">				
-						
-						<label for="nombre">Nombre:</label>
-						<input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre"> <br>
-									
-						<label for="email">Email:</label>
-						<input type="email" id="email" name="email" placeholder="Ingrese un email válido"><br>
-						
-						<label for="apellido">Ciudad:</label>
-						<input type="text" id="apellido" name="apellido" placeholder="Ingrese su ciudad"><br>
-				
-						<label for="mensaje">Mensaje:</label>
-						<textarea id="mensaje" name="mensaje" rows="5" cols="50"></textarea>						
-				
-						<input type="submit" value="Enviar">
-						
-					</form>			
-				</div>
-						
-		</section> 
-		
+			</div>
+			<div class="row" style="font-family: 'IBM Plex Mono', monospace; font-family: 'Rowdies', cursive; text-align: center;">
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4 col-6 p-3 text-center" style="list-style: none; display: inline-block; font-size: 27px; padding-bottom: 15px; " >
+                <a href='https://facebook.com'>Facebook</a>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4 col-6 p-3  text-center"style="list-style: none; display: inline-block; font-size: 27px; padding-bottom: 15px; ">
+                <a href='https://instagram.com'>Instagram</a>
+            </div>
+            <div class="col-md-4 col-lg-4 col-xl-4 col-sm-4 col-6 p-3 text-center"style="list-style: none; display: inline-block; font-size: 27px; padding-bottom: 15px; ">
+                <a href='https://twitter.com'>Twitter</a>
+            </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="card shadow col-8 col-xs-8 col-sm-8 col-md-6 col-lg-4 p-4 my-5" > 
+            <div class="mb-4  ">
+              
+                <h4> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-chat-left-quote" viewBox="0 0 16 15">
+                    <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M7.066 4.76A1.665 1.665 0 0 0 4 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112zm4 0A1.665 1.665 0 0 0 8 5.668a1.667 1.667 0 0 0 2.561 1.406c-.131.389-.375.804-.777 1.22a.417.417 0 1 0 .6.58c1.486-1.54 1.293-3.214.682-4.112z"/>
+                  </svg>Contacto</h4>
+            </div>
+            <div class="mb-1 " >
+                <form >
+                    <div class="mb-4 "> 
+                        <div>
+                            <label for="nombre"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                              </svg>Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder= "Ingrese su nombre" required>
+                            
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label for="correo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+                            <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+                          </svg>Email:</label>
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder= "Ingrese un email válido" required>
+                        <div class="correo text-danger"></div>
+                        
+                    </div> 
+                    <div class="mb-4 ">
+                        <label><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-buildings-fill" viewBox="0 0 16 16">
+                            <path d="M15 .5a.5.5 0 0 0-.724-.447l-8 4A.5.5 0 0 0 6 4.5v3.14L.342 9.526A.5.5 0 0 0 0 10v5.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V14h1v1.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5V.5ZM2 11h1v1H2v-1Zm2 0h1v1H4v-1Zm-1 2v1H2v-1h1Zm1 0h1v1H4v-1Zm9-10v1h-1V3h1ZM8 5h1v1H8V5Zm1 2v1H8V7h1ZM8 9h1v1H8V9Zm2 0h1v1h-1V9Zm-1 2v1H8v-1h1Zm1 0h1v1h-1v-1Zm3-2v1h-1V9h1Zm-1 2h1v1h-1v-1Zm-2-4h1v1h-1V7Zm3 0v1h-1V7h1Zm-2-2v1h-1V5h1Zm1 0h1v1h-1V5Z"/>
+                          </svg>Cuidades: </label>
+                         <select class="form-select" aria-label="Default select example" >
+                            <option selected>Elija una opcion:</option>
+                            <option value="1">Salta</option>
+                            <option value="2">Santa Fe</option>
+                            <option value="3">Corrientes</option>
+                            <option value="4">Bahia Blanca</option>
+                            <option value="5">Resistencia</option>
+                            <option value="6">Buenos Aires</option>
+                            <option value="7">Cordoba</option>
+                            <option value="8">Mar del Plata</option>
+                            <option value="9">Rosario</option>
+                            <option value="10">Otros</option>
+                          </select>  
+                        </div> 
+                    <div class="mb-4">
+                        <label for="mensaje"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-dots-fill" viewBox="0 0 16 16">
+                            <path d="M16 2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h9.586a1 1 0 0 1 .707.293l2.853 2.853a.5.5 0 0 0 .854-.353V2zM5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                          </svg>Mensaje:</label>
+                        <textarea name="mensaje" id="mensaje" class="form-control"></textarea>
+                        <div class="mensaje text-danger"></div>
+                    </div> 
+                    
+                    <div class="mb-2">
+                        <button id ="botton" class="col-3 btn btn-primary d-flex justify-content-between ">
+                            <span>Enviar </span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083l6-15Zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471-.47 1.178Z"/>
+                              </svg>
+                        </button>
+                    </div>         
+                </form>
+            </div>
+        </div>
+        </div>
+    </section>	
 	</div>
 	<div class="container-fluid pie-pagina">
     		<footer th:replace="~{layouts/footer :: footer}"></footer>
