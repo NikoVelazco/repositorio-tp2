@@ -23,7 +23,7 @@
 		
 			<br>
 				<div class="row justify-content-center">				
-					<div class="col-9"> 
+					<div class="col-6"> 
 						<form th:action="${edicion}?@{/consejos/modificar}:@{/consejos/guardar}" th:object="${consejoAuxiliar}" method="post">
 							<!-- se dispara la peticion modificar o guardar segun valor logico de edicion. consejoAuxiliar objeto tipo Consejo -->			  
 							  <div class="row mb-3">
@@ -33,6 +33,8 @@
 							  			 <input type="hidden" class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:if="${edicion}">
 							  			 <div class ="text-danger" th:if="${#fields.hasErrors('idConsejo')}" th:errors="*{idConsejo}"></div>
 							  			 <!-- muestra mensaje de error si existe erorr -->
+							  			 <span class ="text-danger" th:text="${edicion}?'NO SE GUARDARA LA MODIFICACION DEL ID CONSEJO DURANTE LA EDICION'" ></span>
+							  			 <span class ="text-danger" th:text="${edicion}?'TAMPOCO SE GUARDARAN LOS CAMBIOS REALIZADOS EN LOS OTROS CAMPOS AUNQUE INGRESE UN ID CONSEJO VALIDO'" ></span>
 							  		</div>					  
 							  </div>
 							  
@@ -86,11 +88,11 @@
 							  		</div>					  
 							  </div>					  
 							 
-							<!--   <div class="row32"> -->
+							
 							 		<input type="submit" class="btn btn-secondary" th:value="${edicion}?'Modificar':'Guardar'">
 							 		<a class="btn btn-outline-danger" th:href="@{/consejos/listado}" role="button">Cancelar</a>
 							 		
-						<!--  	  </div> -->
+						
 						</form>
 					</div>				
 				</div>							

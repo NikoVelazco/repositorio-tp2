@@ -125,7 +125,11 @@ public class ConsejosSaludController {
 	 * @return pagina consejossalud usando redirect  
 	 */
 	@PostMapping("/modificar")
-	public String getModificarConsejo(@ModelAttribute("consejoAuxiliar") Consejo consejo){
+	public String getModificarConsejo(@Valid @ModelAttribute("consejoAuxiliar") Consejo consejo,BindingResult result,Model model){
+		if(result.hasErrors()) {
+			model.addAttribute("edicion",true);
+			return "nuevo_consejo";
+		}		
 		for(Consejo conse : listaConsejos.getConsejos()) {
 			if(conse.getIdConsejo()==consejo.getIdConsejo()) {
 				conse.setCategoria(consejo.getCategoria());
