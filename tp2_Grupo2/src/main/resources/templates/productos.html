@@ -37,10 +37,10 @@
 						        <div class="col">
 		  	 		 			
 						  			<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
-						  			<h4 class="precioProd">Precio: <span th:text="${produ.precio}"></span>$</h4>
+						  			<h4 class="precioProd">Precio: $<span th:text="${produ.precio}"></span></h4>
 						  			<h4 class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </h4>
 						  			<h4 class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></h4>
-						  			<h4 class="precioDescu">Precio con descuento: <span th:text="${produ.calcularDescuento()}"> </span>$</h4>
+						  			<h4 class="precioDescu">Precio con descuento: $<span th:text="${produ.calcularDescuento()}"> </span></h4>
 						   			<div class="text-center">
 						   			
 						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
