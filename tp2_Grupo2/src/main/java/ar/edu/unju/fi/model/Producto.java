@@ -1,4 +1,3 @@
-
 package ar.edu.unju.fi.model;
 
 import org.springframework.stereotype.Component;
@@ -16,25 +15,25 @@ import jakarta.validation.constraints.Size;
 public class Producto {
 
 	//Propiedades de la clase Producto
-		@NotEmpty(message="El nombre no puede ser vacio") /* se añaden las validaciones del fromulario  */
-		@Size(min=6, message="El nombre debe tener minimo 6 caracteres")
-		private String nombre;
-		
-		@Positive(message="Solo se permiten valores positivos")
-		private int codigo;
-		
-		@Min(value=100,message="el valor minimo permitido es 100")
-		@Max(value=100000,message="El valor maximo permitido es 1000000")
-		@Positive(message="Solo se permiten valores positivos")
-		private double precio;
-		
-		@NotBlank(message="Debe seleccionar una categoria")
-		private String categoria;
-		
-		/*@Min(value=0,message="el valor minimo permitido es 1")*/
-		@Max(value=50,message="El valor maximo permitido es 50")
-		@PositiveOrZero(message="Solo se permiten valores enteros positivos o cero")
-		private int descuento;
+	@NotEmpty(message="El nombre no puede ser vacio") /* se añaden las validaciones del fromulario  */
+	@Size(min=6, message="El nombre debe tener minimo 6 caracteres")
+	private String nombre;
+	
+	@Positive(message="Solo se permiten valores positivos")
+	private int codigo;
+	
+	@Min(value=100,message="el valor minimo permitido es 100")
+	@Max(value=100000,message="El valor maximo permitido es 1000000")
+	@Positive(message="Solo se permiten valores positivos")
+	private double precio;
+	
+	@NotBlank(message="Debe seleccionar una categoria")
+	private String categoria;
+	
+	@Max(value=50,message="El valor maximo permitido es 50")
+	@PositiveOrZero(message="Solo se permiten valores enteros positivos o cero")
+	private int descuento;
+
 		
 		//Constructor por defecto
 		public Producto() {
@@ -145,10 +144,8 @@ public class Producto {
 		 * @return retorna el nuevo precio
 		 */
 		public double calcularDescuento() {
-			return  this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
+			return this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
 			
 		}
 }
-
-
 
