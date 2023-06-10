@@ -12,6 +12,7 @@ import jakarta.validation.constraints.Size;
 @Component 
 public class Consejo {	
 	
+	@NotNull(message = "{error.idConsejo.notEmpty}")
 	@Positive(message="El id debe ser un numero positivo") /*validacion para que el idConsejo sea mayor que cero*/
 	private int idConsejo;	
 	@NotBlank(message="Debe seleccionar una categoria") /*validacion para que no se ingrese atributo en blanco*/
