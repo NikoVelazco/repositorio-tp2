@@ -8,14 +8,20 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import ar.edu.unju.fi.model.Producto;
-
+/**
+ * Clase ListaProducto. ArrayList de pbjetos productos
+ * @author Grupo 2
+ *
+ */
 @Component
 
 public class ListaProducto {
-	private List<Producto> productos;
+	private List<Producto> productos; 
 	
-
 	
+	/*
+	 * Constructor por defecto para crear un objeto del array list
+	 */
 	public ListaProducto() {
 		productos = new ArrayList<Producto>();
 		productos.add(new Producto("Advanced", 01, 6500, "advancealim.jpg",0));
@@ -25,18 +31,27 @@ public class ListaProducto {
 		
 	}
 
-
+/**
+ * Constructor para metrizado
+ * @param productos objeto tipo Productos
+ */
 	public ListaProducto(List<Producto> productos) {
 		super();
 		this.productos = productos;
 	}
 
-
+/**
+ * Metodo para obtener el listado productos
+ * @return objeto productos
+ */
 	public List<Producto> getProductos() {
 		return productos;
 	}
 
-
+/**
+ * Metodo para guardar un nuevo objeto en la lista
+ * @param productos
+ */
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
