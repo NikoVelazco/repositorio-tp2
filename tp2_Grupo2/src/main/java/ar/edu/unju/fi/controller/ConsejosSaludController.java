@@ -15,11 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import ar.edu.unju.fi.listas.ListaConsejo;
 import ar.edu.unju.fi.model.Consejo;
+import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 
 /**
  * capa Controladora para la pagina consejossalud
- * @author Cristian Ortega
+ * @author Grupo2
  *
  */
 
@@ -30,15 +31,11 @@ import jakarta.validation.Valid;
 public class ConsejosSaludController {
 
 	/**
-	 * Autowired  inyecta el objeto listaConsejos dentro del contendor. El objeto es instanciado 	  
+	 * Inyecta e instancia el objeto ConsejoServise de tipo IConsejoService al contendor. 	  
+	 * La interfaz es IConsejoService
 	 */
 	@Autowired
-	private ListaConsejo listaConsejos;	
-	/**
-	 * Autowired inyecta el objeto consejoI dentro del contendor. El objeto es instanciado
-	 */
-	@Autowired
-	private Consejo consejoI;
+	private IConsejoService consejoService;	
 	
 	/**	 
 	 * Peticion para dirigirse a la pagina  consejossalud
@@ -48,7 +45,7 @@ public class ConsejosSaludController {
 	
 	@GetMapping("/listado")
 	public String getListadoConsejosSaludPage(Model model) { 
-		model.addAttribute("consejosLista",listaConsejos.getConsejos());		
+		model.addAttribute("consejosLista",consejoService.getListaConsejo());		
 		return "consejossalud";
 	
 	}
@@ -64,7 +61,7 @@ public class ConsejosSaludController {
 	@GetMapping("/nuevo")
 	public String getConsejosSaludAltaPage(Model model){
 		boolean edicion = false;
-		model.addAttribute("consejoAuxiliar",consejoI); /*se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina*/
+		model.addAttribute("consejoAuxiliar", consejoService.getConsejo()); /*se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina*/
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
 			
@@ -88,8 +85,8 @@ public class ConsejosSaludController {
 			modelView.addObject("consejoAuxiliar",consejo);/*devuelve el objeto a la vista con los ingresados*/
 			return modelView;
 		}
-		listaConsejos.getConsejos().add(consejo); 
-		modelView.addObject("consejosLista",listaConsejos.getConsejos());
+		consejoService.getListaConsejo().add(consejo); 
+		modelView.addObject("consejosLista",consejoService.getListaConsejo());
 		return modelView;
 	}
 	
@@ -105,14 +102,9 @@ public class ConsejosSaludController {
 	
 	@GetMapping ("/modificar/{codigo}")
 	public String getModificarConsejosPage(Model model, @PathVariable(value="codigo") String codigo ) {
-		Consejo consejoEncontrado = new Consejo();
+		Consejo consejoEncontrado = consejoService.getConsejo();
 		boolean edicion = true;
-		for(Consejo conse : listaConsejos.getConsejos()) {
-			if (conse.getIdConsejo() == Integer.parseInt(codigo)) {
-				consejoEncontrado = conse;
-				break;
-			}			
-		}
+		consejoEncontrado=consejoService.getBy(codigo);
 		model.addAttribute("consejoAuxiliar",consejoEncontrado);
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
@@ -130,15 +122,7 @@ public class ConsejosSaludController {
 			model.addAttribute("edicion",true);
 			return "nuevo_consejo";
 		}		
-		for(Consejo conse : listaConsejos.getConsejos()) {
-			if(conse.getIdConsejo()==consejo.getIdConsejo()) {
-				conse.setCategoria(consejo.getCategoria());
-				conse.setDescripcion(consejo.getDescripcion());
-				conse.setEdadMascota(consejo.getEdadMascota());
-				conse.setSexoMascota(consejo.getSexoMascota());			
-				
-			}
-		}
+		consejoService.modificar(consejo);
 		return "redirect:/consejos/listado";
 	}
 	
@@ -149,14 +133,8 @@ public class ConsejosSaludController {
 	 */
 	@GetMapping("/eliminar/{codigo}")
 	public String getEliminarConsejo (@PathVariable(value="codigo") String codigo){
-		Consejo consejoEncontrado = new Consejo();
-		for(Consejo conse : listaConsejos.getConsejos()){
-			if(conse.getIdConsejo() == Integer.parseInt(codigo)){
-				consejoEncontrado = conse;
-				break;			
-			}			
-		}
-		listaConsejos.getConsejos().remove(consejoEncontrado);
+		Consejo consejoEncontrado = consejoService.getBy(codigo);
+		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejos/listado";		
 	}	
 }
