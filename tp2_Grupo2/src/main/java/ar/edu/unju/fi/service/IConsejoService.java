@@ -11,7 +11,6 @@ import ar.edu.unju.fi.model.Consejo;
  * @author Grupo2
  *
  */
-
 @Service
 public interface IConsejoService {
 	List<Consejo> getListaConsejo();/*metodo abstracto para obtener la lista de consejos*/
