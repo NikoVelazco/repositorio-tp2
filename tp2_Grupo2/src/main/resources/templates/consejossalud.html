@@ -14,12 +14,12 @@
 	</head>
 	<body>		
 			  <header th:replace="~{layouts/header :: header}"> </header>			  
-		 	  <div class="container-fluid enlace_consejo"> 
+		 	  <div class="container-fluid enlace_consejo paseo-page"> 
 		 			<div class="row justify-content-center titulo-paseo">		 	  			
-			 	 			<h1 >CONSEJOS DE SALUD</h1> 			 					
+			 	 			<h1 class="title-paseo">CONSEJOS DE SALUD</h1> 			 					
 					</div>	
 			 </div>	
-			 <div class="container-fluid">
+			 <div class="container-fluid my-3">
 			 <div class="cuerpo row ms-3 me-3" >	
 				 <div class= "col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-7 col-xxl-6 order-2 order-md-1 order-sm-2 order-xs-2 ">			 
 						<article th:each="conse: ${consejosLista}">

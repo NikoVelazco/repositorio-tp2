@@ -4,6 +4,7 @@
 		<link rel="icon" th:href="@{/images/perroico.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Consejos de Salud</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">		
     	<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
@@ -13,9 +14,9 @@
 	</head>
 <body>
 		<header th:replace="~{layouts/header :: header}"> </header>
-		<div class="container-fluid enlace_consejo"> 
+		<div class="container-fluid enlace_consejo paseo-page"> 
 		 			<div class="row justify-content-center titulo-paseo">		 	  			
-			 	 				<h1 class="titulo-paseo" th:text="${edicion}?'MODIFICAR CONSEJO DE SALUD':'NUEVO CONSEJO DE SALUD'"></h1>		 					
+			 	 				<h1 class="title-paseo" th:text="${edicion}?'MODIFICAR CONSEJO DE SALUD':'NUEVO CONSEJO DE SALUD'"></h1>		 					
 					</div>	
 		</div>
 		
