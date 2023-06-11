@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/iconoperro.png}">
+		<link rel="icon" th:href="@{/images/perroico.png}"> <!-- Modificación -->
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,17 +29,17 @@
     						</h2>
     						<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       							<div class="accordion-body" id="cuerpo-acordion">
-      								<p >Legajo: <span th:text="${pas.legajo}"></span></p>
-                					<p >Años de Experiencia: <span th:text="${pas.anioExperiencia}"></span></p>
-                					<p >Teléfono: <span th:text="${pas.telefono}"></span></p>
-                					<p >Email: <span th:text="${pas.email}"></span></p>
-                					<p >Horarios: <span th:text="${pas.horario}"></span></p>
+      								<p>Legajo: <span th:text="${pas.legajo}"></span></p>
+                					<p>Años de Experiencia: <span th:text="${pas.anioExperiencia}"></span></p>
+                					<p>Teléfono: <span th:text="${pas.telefono}"></span></p>
+                					<p>Email: <span th:text="${pas.email}"></span></p>
+                					<p>Horarios: <span th:text="${pas.horario}"></span></p>
                 					<p>Descripción: <span th:text="${pas.descripcion}"></span></p>
       							</div>
    		 					</div>
                 		</div>
                 	</div>
-                	<div id="enlace-acciones">
+                	<div> <!-- borrar enlaces acciones -->
                 		<a th:href="@{/paseo/modificar/}+${pas.legajo}"><button type="button" class="btn btn-info my-2">Modificar</button></a>
 						<a th:href="@{/paseo/eliminar/}+${pas.legajo}"><button type="button" class="btn btn-danger">Eliminar</button></a>
                 	</div>
@@ -72,3 +72,4 @@
         <script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
       </body>
 </html>
+

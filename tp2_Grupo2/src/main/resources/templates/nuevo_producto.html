@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
   	<head>
-			
+			<link rel="icon" th:href="@{/images/perroico.png}">
+			<title>Productos</title>
 	    	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     	    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 			
@@ -14,14 +15,14 @@
     </head>
 	<body>
 		<header th:replace="~{layouts/header :: header}"> </header>
-		<div class="container-fluid enlace_consejo ">
+		<div class="container-fluid enlace_consejo paseo-page ">
 		<div class="row justify-content-center titulo-paseo">		
 		 			 	  				
-			 	<h1  th:text="${edicion}?'MODIFICAR PRODUCTO':'AGREGAR NUEVO PRODUCTO'"></h1> 			 					
+			 	<h1  class="title-paseo" th:text="${edicion}?'MODIFICAR PRODUCTO':'AGREGAR NUEVO PRODUCTO'"></h1> 			 					
 		</div>	
 				</div>
 				
-	<div class="container-fluid">
+	<div class="container-fluid my-3">
 		 	<div class="row justify-content-center">
 					<form class= "row justify-content-center"  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
 							<div class="row justify-content-center ">
@@ -52,7 +53,7 @@
 				
 				      	   <div class="row justify-content-center">
 				        		 <div class="col-5">	
-									<label for="categoria"class="form-label" >Categoría:</label><br><br> 
+									<label for="categoria"class="form-label" >Categoría:</label> 
 									<select  id="categoria" class="form-select"name="categoria_produ"  
 											th:field="*{categoria}" >
 						
@@ -60,7 +61,7 @@
 									<option value="juguete pollo.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
 									<option value="campera.jpg" th:selected = "${produ.categoria == 'campera.jpg'}">Ropa</option>
 									<option value="disfraz.webp" th:selected = "${produ.categoria == 'diszfraz.webp'}">Otros</option>
-								</select><br>	
+								</select>	
 								</div>
 							</div>
 						
