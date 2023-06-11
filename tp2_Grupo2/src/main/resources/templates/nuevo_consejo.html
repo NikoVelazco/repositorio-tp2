@@ -29,12 +29,11 @@
 							  <div class="row mb-3">
 							  		<label for="idconsejo" class="col-sm-2 col-form-label">ID Consejo: </label>
 							  		<div class="col-sm-10">
-							  			 <input type="number" class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:disable="${edicion}?true:false">
-							  			 <input type="hidden" class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:if="${edicion}">
+							  			 <input type="number" class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:unless="${edicion}">
+							  			 <input class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:if="${edicion}" readonly>
 							  			 <div class ="text-danger" th:if="${#fields.hasErrors('idConsejo')}" th:errors="*{idConsejo}"></div>
 							  			 <!-- muestra mensaje de error si existe erorr -->
-							  			 <span class ="text-danger" th:text="${edicion}?'NO SE GUARDARA LA MODIFICACION DEL ID CONSEJO DURANTE LA EDICION'" ></span>
-							  			 <span class ="text-danger" th:text="${edicion}?'TAMPOCO SE GUARDARAN LOS CAMBIOS REALIZADOS EN LOS OTROS CAMPOS AUNQUE INGRESE UN ID CONSEJO VALIDO'" ></span>
+							  			
 							  		</div>					  
 							  </div>
 							  
