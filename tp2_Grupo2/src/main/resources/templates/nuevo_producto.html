@@ -35,9 +35,8 @@
 							<div class="row justify-content-center ">	
 								<div class="col-5">
 									<label for="codigo" class="form-label">Código:</label>
-									<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" >
-									<span class="text-danger" th:text="${edicion}?'NO SE GUARDARA LA MODIFICACION DEL CODIGO DURANTE LA EDICION'"> </span>
-									<span class="text-danger" th:text="${edicion}?'TAMPOCO SE GUARDARAN LOS CAMBIOS REALIZADOS EN LOS OTROS CAMPOS AUNQUE INGRESE UN CODIGO VALIDO'"></span>
+									<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" th:unless="${edicion}" >
+									<input id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" th:if="${edicion}" readonly>
 									<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
 								</div>
 							</div>
