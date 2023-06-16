@@ -13,8 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.listas.ListaConsejo;
-import ar.edu.unju.fi.model.Consejo;
 import ar.edu.unju.fi.service.IConsejoService;
 import jakarta.validation.Valid;
 

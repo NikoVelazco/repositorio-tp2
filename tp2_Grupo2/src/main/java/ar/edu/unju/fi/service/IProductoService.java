@@ -5,8 +5,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.listas.ListaProducto;
-import ar.edu.unju.fi.model.Producto;
 
 /**
  * Interfaz para la clase Producto

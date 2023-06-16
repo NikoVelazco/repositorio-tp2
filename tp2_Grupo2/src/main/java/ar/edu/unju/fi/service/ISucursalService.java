@@ -2,7 +2,7 @@ package ar.edu.unju.fi.service;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.model.Sucursal;
+import ar.edu.unju.fi.entity.Sucursal;
 
 /**
  * Interfaz para la clase sucursal

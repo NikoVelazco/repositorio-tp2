@@ -1,8 +1,9 @@
 package ar.edu.unju.fi.service;
 
-import ar.edu.unju.fi.model.Paseo;
 import java.util.List;
 import org.springframework.stereotype.Service;
+
+import ar.edu.unju.fi.entity.Paseo;
 
 /**
  * Interfaz IPaseoService

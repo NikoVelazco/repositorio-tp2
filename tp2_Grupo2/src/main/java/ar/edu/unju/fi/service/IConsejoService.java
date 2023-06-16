@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import ar.edu.unju.fi.model.Consejo;
+import ar.edu.unju.fi.entity.Consejo;
 
 /**
  * Interfaz IConsejoService

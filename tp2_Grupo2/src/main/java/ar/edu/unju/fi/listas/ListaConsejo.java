@@ -3,7 +3,8 @@ package ar.edu.unju.fi.listas;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Component;
-import ar.edu.unju.fi.model.Consejo;
+
+import ar.edu.unju.fi.entity.Consejo;
 
 @Component 
 /**Se define una clase ListaConsejos
