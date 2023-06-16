@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ar.edu.unju.fi.model.Paseo;
+
+import ar.edu.unju.fi.entity.Paseo;
 import ar.edu.unju.fi.service.IPaseoService;
 import jakarta.validation.Valid;
 

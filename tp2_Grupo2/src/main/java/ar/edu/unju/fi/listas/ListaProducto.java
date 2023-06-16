@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import ar.edu.unju.fi.model.Producto;
+import ar.edu.unju.fi.entity.Producto;
 /**
  * Clase ListaProducto. ArrayList de pbjetos productos
  * @author Grupo 2

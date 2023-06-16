@@ -2,8 +2,10 @@ package ar.edu.unju.fi.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import ar.edu.unju.fi.entity.Paseo;
 import ar.edu.unju.fi.listas.ListaPaseo;
-import ar.edu.unju.fi.model.Paseo;
+
 import java.util.List;
 import ar.edu.unju.fi.service.IPaseoService;
 
