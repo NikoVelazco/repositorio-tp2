@@ -55,16 +55,24 @@ public class SucursalServiceMysqlImp implements ISucursalService{
 		
 	}
 
+	/**
+	 * eliminacion logica de una sucursal
+	 */
 	@Override
-	public void eliminar(Sucursal sucursalEncontrada) {
-		// TODO Auto-generated method stub
+	public void eliminar(Sucursal sucursalEncontrada){ 
+		
+		sucursalEncontrada.setEstado(false);
+		sucursalRepository.save(sucursalEncontrada);
 		
 	}
 
+	/**
+	 * retorna un objeto Sucursal
+	 */
 	@Override
 	public Sucursal getSucursal() {
-		// TODO Auto-generated method stub
-		return null;
+		return sucursal;
+		
 	}
 
 }
