@@ -19,9 +19,9 @@ public interface ISucursalService {
 	/*guarda una nueva sucursal*/
 	void guardar(Sucursal sucursal);
 	/*busca una sucursal*/
-	Sucursal getBy(String nombre);
+	Sucursal getBy(Long id);
 	/*modificar una sucursal*/
-	void modificar(Sucursal sucursal);
+	void modificar(Sucursal sucursal, Long id);
 	/*eliminar una sucursal*/
 	void eliminar(Sucursal sucursalEncontrada);
 	Sucursal getSucursal();
