@@ -11,7 +11,7 @@ import ar.edu.unju.fi.service.ISucursalService;
 
 /*Se crea la clase SucursalesServiceImp y va a implementar los servicios de ISucuralService*/
 
-@Service
+@Service("sucursalServiceImp")
 public class SucursalServiceImp implements ISucursalService{
 	@Autowired
 	private ListaSucursal listaSucursales;
@@ -26,17 +26,17 @@ public class SucursalServiceImp implements ISucursalService{
 		listaSucursales.getSucursales().add(sucursal);
 	}
 	@Override
-	public Sucursal getBy(String nombre) {
+	public Sucursal getBy(Long id) {
 		Sucursal sucursalEncontrada=null;
 		for(Sucursal sucu : listaSucursales.getSucursales()){
-			if(sucu.getNombre().equals(nombre)) {
+			if(sucu.getId()==id) {
 				sucursalEncontrada=sucu;
 				break;
 			}
 		}
 		return sucursalEncontrada;
 	}
-	public void modificar(Sucursal sucursal) {
+	public void modificar(Sucursal sucursal, Long id) {
 		for (Sucursal sucu : listaSucursales.getSucursales()) {
 			if(sucu.getNombre().equals(sucursal.getNombre())) {
 				sucu.setDireccion(sucursal.getDireccion());
