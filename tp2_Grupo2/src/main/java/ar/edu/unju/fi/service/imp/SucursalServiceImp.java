@@ -38,12 +38,14 @@ public class SucursalServiceImp implements ISucursalService{
 	}
 	public void modificar(Sucursal sucursal, Long id) {
 		for (Sucursal sucu : listaSucursales.getSucursales()) {
-			if(sucu.getNombre().equals(sucursal.getNombre())) {
+			if(sucu.getId() == id) {
+				sucu.setNombre(sucursal.getNombre());
 				sucu.setDireccion(sucursal.getDireccion());
 				sucu.setEmail(sucursal.getEmail());
 				sucu.setFechaInicio(sucursal.getFechaInicio());
 				sucu.setProvincia(sucursal.getProvincia());
 				sucu.setTelefono(sucursal.getTelefono());
+				break;
 			}
 		}
 	}
