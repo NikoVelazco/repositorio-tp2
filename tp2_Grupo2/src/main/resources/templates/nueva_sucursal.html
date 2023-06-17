@@ -18,40 +18,61 @@
 		<div class="container-fluid paseo-page">
 			<h1 class="title-paseo" th:text="${edicion}?'MODIFICAR SUCURSAL':'REGISTRAR SUCURSAL'"></h1>
 		</div>
-		<div class="container my-3 pb-3 pt-3 formulario-alta">
-			<form class="row g-3 needs-validation" novalidate th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
-				<div class="mb-3">
-					<label for="legajo" class="form-label">NOMBRE</label>
-					<input type="text" class="form-control" placeholder="Nombre Sucursal" name="sucursal_nombre" th:field="*{nombre}" th:disabled="${edicion}?true:false">
-					<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-					<input type="hidden" class="form-control" th:field="*{nombre}" th:if="${edicion}">
-					<label for="nombre" class="form-label">DIRECCIÓN</label>
-					<input type="text" class="form-control" placeholder="Dirección" name="sucursal_direccion" th:field="*{direccion}">
-					<div class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
-					<label for="provincia" class="form-label">PROVINCIA</label>
-					<select class="form-label" name="sucursal_provincia" th:field="*{provincia}">
-						<option value="Jujuy">Jujuy</option>
-						<option value="Salta">Salta</option>
-						<option value="Misiones">Misiones</option>
-						<option value="Córdoba">Córdoba</option>
-						<option value="Buenos Aires">Buenos Aires</option>
-						<option value="Corrientes">Corrientes</option>
-					</select>
-					<br>
-					<label for="fundacion" class="form-label">FUNDACIÓN</label>
-					<input type="date" class="form-control" name="sucursal_fundacion" th:field="*{fechaInicio}">
-					<div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
-	  				<label for="email" class="form-label">EMAIL</label>
-	  				<input type="email" class="form-control" placeholder="nombre@example.com" name="sucursal_email" th:field="*{email}">
-	  				<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-	  				<label for="telefono" class="form-label">TELÉFONO</label>
-					<input type="text" class="form-control" placeholder="N° Teléfono" name="sucursal_telefono" th:field="*{telefono}">
-					<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-				</div>
-  				<div class="col-12">
-  					<p><input type="submit" class="btn btn-success" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
-  				</div>
+		<div class="container-fluid my-3 pb-3 pt-3">
+		
+			<div class="row justify-content-center">
+				<div class="col-6">
+					<form class="row g-3 needs-validation" novalidate th:action="${edicion}?@{/sucursal/modificar}:@{/sucursal/guardar}" th:object="${sucursal}" method="post">
+						
+							<div class="row mb-3" th:if="${edicion}" >
+    								<label for="id_sucu" class="col-sm-2 col-form-label">ID: </label>
+    								<div class="col-sm-10">
+       									 <input type="text" class="form-control" id="id_sucu" name="id_sucu" th:value="${sucursal.id}" readonly>
+       									 <input type="hidden" th:field="*{id}"> 
+   									</div>      									
+							 </div>						 	  
+						 	  
+						 	  <div class="row mb-3">						 	  		
+							  		<label for="nombre_sucu" class="col-sm-2 col-form-label">NOMBRE: </label>
+							  		<div class="col-sm-10">
+							  			 <input type="text" class="form-control" id="nombre_sucu" placeholder="Nombre Sucursal" name="nombre_sucu" th:field="*{nombre}">
+							  			 <div class ="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+							  			  <!-- muestra mensaje de error si existe erorr -->
+							  		</div>					  
+							  </div>
+							  <div class="row mb-3">
+							  		<label for="direccion_sucu" class="col-sm-2 col-form-label">DIRECCION: </label>
+							  		<div class="col-sm-10">
+							  			<input type="text" class="form-control" id="direccion_sucu" placeholder="Dirección" name="sucursal_direccion" th:field="*{direccion}">
+										<div class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+							  		</div>					  
+							  </div>
+							<label for="provincia" class="form-label">PROVINCIA</label>
+							<select class="form-label" name="sucursal_provincia" th:field="*{provincia}">
+								<option value="Jujuy">Jujuy</option>
+								<option value="Salta">Salta</option>
+								<option value="Misiones">Misiones</option>
+								<option value="Córdoba">Córdoba</option>
+								<option value="Buenos Aires">Buenos Aires</option>
+								<option value="Corrientes">Corrientes</option>
+							</select>
+							<br>
+							<label for="fundacion" class="form-label">FUNDACIÓN</label>
+							<input type="date" class="form-control" name="sucursal_fundacion" th:field="*{fechaInicio}">
+							<div class="text-danger" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
+			  				<label for="email" class="form-label">EMAIL</label>
+			  				<input type="email" class="form-control" placeholder="nombre@example.com" name="sucursal_email" th:field="*{email}">
+			  				<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+			  				<label for="telefono" class="form-label">TELÉFONO</label>
+							<input type="text" class="form-control" placeholder="N° Teléfono" name="sucursal_telefono" th:field="*{telefono}">
+							<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+						
+		  				<div class="col-12">
+		  					<p><input type="submit" class="btn btn-success" id="boton-general" th:value="${edicion}?'Modificar':'Guardar'"></p>
+		  				</div>
 			</form>
+				</div>
+			</div>
 		</div>
 		<div class="container-fluid pie-pagina">
     		<footer th:replace="~{layouts/footer :: footer}"></footer>
