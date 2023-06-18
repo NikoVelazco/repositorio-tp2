@@ -1,6 +1,6 @@
-
 package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.service.IProductoService;
 import jakarta.validation.Valid;
-import ar.edu.unju.fi.entity.Producto;
-import ar.edu.unju.fi.listas.ListaProducto;
 
 
 /**
@@ -34,17 +33,20 @@ public class ProductoController {
 	 * Inyecta e intancia el objeto productoService de tipo IProductoService al contenedor
 	* IProductoService es la interfaz
 	 */
+	
 	@Autowired
-	private IProductoService productoService;
+	@Qualifier("productoServiceImp")
+	private IProductoService productoServiceImp;
 	/**
 	 * Peticion para dirigirse a la pagina productos
 	 * @param model usado para agregar a la vista de productos
 	 * @return pagina productos
 	 */
 	
+	
 	@GetMapping("/listado")
 	public String getListadoProductosPage(Model model) {		
-		model.addAttribute("productos",productoService.getListaProducto());		
+		model.addAttribute("productos",productoServiceImp.getListaProducto());		
 		return "productos";
 	}
 	
@@ -59,7 +61,7 @@ public class ProductoController {
 	@GetMapping("/nuevo")
 	public String getProductosAltaPage(Model model){
 		boolean edicion = false;
-		model.addAttribute("produ",productoService.getProducto()); /*se crea un objeto de tipo producto llamado produ (que este en el form de nuevo_producto)y ese nombre es usado en la pagina*/
+		model.addAttribute("produ",productoServiceImp.getProducto()); /*se crea un objeto de tipo producto llamado produ (que este en el form de nuevo_producto)y ese nombre es usado en la pagina*/
 		model.addAttribute("edicion",edicion);
 		return "nuevo_producto";
 		}
@@ -73,28 +75,28 @@ public class ProductoController {
 	@PostMapping("/guardar")
 	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("produ") Producto producto, BindingResult result ){ /*resutl objeto para consultar si existe error*/
 		ModelAndView modelView =new ModelAndView("productos"); 
-		if(result.hasErrors()) { 		/*verificacion de errores*/
+		if(result.hasErrors()) { /*verificacion de errores*/
 			modelView.setViewName("nuevo_producto");
 			modelView.addObject("produ", producto);
 			return modelView;
 		}
-		productoService.guardar(producto); 
-		modelView.addObject("productos",productoService.getListaProducto());
+		productoServiceImp.guardar(producto); 
+		modelView.addObject("productos",productoServiceImp.getListaProducto());
 		return modelView;
 	}
-	
+
 	/**
-	 * Peticion para modificar un producto
-	 * @param model usado para enviar el objeto encontrado a la pagina
-	 * @param codigo contiene codigo del producto a modificar
-	 * @return pagina nuevo producto 
-	 */
+ * Peticion para modificar un producto
+ * @param model usado para enviar el objeto encontrado a la pagina
+ * @param codigo contiene codigo del producto a modificar
+ * @return pagina nuevo producto 
+ */
 	
 	@GetMapping ("/modificar/{codigo}")
-	public String getModificarProductoPage(Model model, @PathVariable(value="codigo") String codigo) {
-		Producto productoEncontrado = productoService.getProducto();
+	public String getModificarProductoPage(Model model, @PathVariable(value="codigo") Long codigo) {
+		Producto productoEncontrado = productoServiceImp.getProducto();
 		boolean edicion = true;
-		productoEncontrado=productoService.getBy(codigo);
+		productoEncontrado= productoServiceImp.getBy(codigo); 
 		model.addAttribute("produ",productoEncontrado);
 		model.addAttribute("edicion",edicion);
 		return "nuevo_producto";
@@ -112,22 +114,25 @@ public class ProductoController {
 			model.addAttribute("edicion", true);
 		return "nuevo_producto";
 		}
-		productoService.modificar(producto);
+		productoServiceImp.modificar(producto);
 		return "redirect:/productos/listado";
 	}
+	
 	/**
 	 * Recibe codigo del objeto a eliminar
 	 * @param codigo es codigo del objeto a eliminar
 	 * @return pagina productos usando redirect para usar /productos/listado 
 	 */
 	@GetMapping("/eliminar/{codigo}")
-	public String getEliminarProducto (@PathVariable(value="codigo") String codigo){
-		Producto productoEncontrado = productoService.getBy(codigo);
-		productoService.eliminar(productoEncontrado);
+	public String getEliminarProducto (@PathVariable(value="codigo") Long codigo){
+		Producto productoEncontrado = productoServiceImp.getBy(codigo);
+		
+		productoServiceImp.eliminar(productoEncontrado);
 		return "redirect:/productos/listado";		
 	}
 	
 }
+
 
 
 
