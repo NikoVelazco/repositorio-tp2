@@ -1,7 +1,14 @@
+
 package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -11,30 +18,46 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
 @Component 
-
+@Entity
+@Table(name="productosbd")
 public class Producto {
 
 	//Propiedades de la clase Producto
+	@Column(name="nombre",length=30,nullable=false)
 	@NotEmpty(message="El nombre no puede ser vacio") /* se añaden las validaciones del fromulario  */
 	@Size(min=6, message="El nombre debe tener minimo 6 caracteres")
 	private String nombre;
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="Codigo")
 	@Positive(message="Solo se permiten valores positivos")
-	private int codigo;
+	private Long codigo;
 	
+	@Column(name="Precio")
 	@Min(value=100,message="el valor minimo permitido es 100")
 	@Max(value=100000,message="El valor maximo permitido es 1000000")
 	@Positive(message="Solo se permiten valores positivos")
 	private double precio;
 	
+	@Column(name="Categoria")
 	@NotBlank(message="Debe seleccionar una categoria")
 	private String categoria;
 	
+	@Column(name="Descuento")
+	/*@Min(value=0,message="el valor minimo permitido es 1")*/
 	@Max(value=50,message="El valor maximo permitido es 50")
 	@PositiveOrZero(message="Solo se permiten valores enteros positivos o cero")
 	private int descuento;
+	
+	@Column(name="Estado")
+	private boolean estado;
 
 		
+		public Producto(boolean estado) {
+		super();
+		this.estado = estado;
+	}
+
 		//Constructor por defecto
 		public Producto() {
 			
@@ -48,7 +71,7 @@ public class Producto {
 		 * @param categoria Categoría del producto
 		 * @param descuento Descuento del producto
 		 */
-		public Producto(String nombre, int codigo, double precio, String categoria, int descuento) {
+		public Producto(String nombre, Long codigo, double precio, String categoria, int descuento) {
 			//inicializamos las propiedades con los valores pasados por párametros
 			this.nombre=nombre;
 			this.codigo=codigo;
@@ -78,7 +101,7 @@ public class Producto {
 		 * Obtiene el código del producto
 		 * @return el código del producto
 		 */
-		public int getCodigo() {
+		/*public int getCodigo() { cambia
 			return codigo;
 		}
 		
@@ -86,10 +109,10 @@ public class Producto {
 		 * Establece el código del producto
 		 * @param codigo nuevo código
 		 */
-		public void setCodigo(int codigo) {
+		/**public void setCodigo(int codigo) { cambia
 			this.codigo = codigo;
 		}
-		
+		*/
 		/**
 		 * Obtiene el precio del producto
 		 * @return el precio del producto
@@ -147,5 +170,29 @@ public class Producto {
 			return this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
 			
 		}
+		public void setCodigo(Long codigo) {
+			this.codigo = codigo;
+		}
+
+		public void getCodigo(Long codigo) {
+			this.codigo = codigo;
+		}
+
+		public Object getCodigo() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		public boolean getEstado() {
+			return estado;
+		}
+		public boolean isEstado() {
+			return estado;
+		}
+
+		public void setEstado(boolean estado) {
+			this.estado = estado;
+		}
 }
+
 
