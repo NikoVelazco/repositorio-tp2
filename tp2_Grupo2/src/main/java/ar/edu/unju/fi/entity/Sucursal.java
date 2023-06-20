@@ -1,13 +1,19 @@
 package ar.edu.unju.fi.entity;
 import java.time.LocalDate;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -42,9 +48,12 @@ public class Sucursal {
 	@Column(name="sucu_direccion",length = 50, nullable = false)
 	private String direccion; /*direccion de la surusal*/
 	
-	@NotBlank(message="Debe seleccionar una provincia")
-	@Column(name="sucu_provincia", length = 20, nullable = false)
-	private String provincia; /*provincia a la que pertenece la sucursal*/
+	@Autowired
+	@JoinColumn(name="provi_id")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@NotNull(message="Debe seleccionar una provincia")
+	
+	private Provincia provincia; /*provincia a la que pertenece la sucursal. Provincia es una clase*/
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	@NotNull(message="La fecha no puede ser vacia")
@@ -84,7 +93,7 @@ public class Sucursal {
 	 * @param telefono de la sucursal
 	 * @param estado variable logica valor true la sucursal existe, false eliminado
 	 */
-	public Sucursal(Long id, String nombre, String direccion, String provincia, LocalDate fechaInicio, String email,
+	public Sucursal(Long id, String nombre, String direccion, Provincia provincia, LocalDate fechaInicio, String email,
 			String telefono, boolean estado) {
 		super();
 		this.id=id;
@@ -133,7 +142,7 @@ public class Sucursal {
 	 * Metodo que recupera el atributo provincia
 	 * @return provincia
 	 */
-	public String getProvincia() {
+	public Provincia getProvincia() {
 		return provincia;
 	}
 
@@ -141,7 +150,7 @@ public class Sucursal {
 	 * Metodo para guardar el atributo provincia
 	 * @param provincia
 	 */
-	public void setProvincia(String provincia) {
+	public void setProvincia(Provincia provincia) {
 		this.provincia = provincia;
 	}
 
