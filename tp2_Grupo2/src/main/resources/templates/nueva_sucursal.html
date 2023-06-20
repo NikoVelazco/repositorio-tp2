@@ -50,16 +50,10 @@
 							  <div class="row mb-3">
 							  		<label for="provincia_sucu" class="col-sm-2 col-form-label">PROVINCIA: </label>
 							  		<div class="col-sm-10">
-								  			<select class="form-control" id="provincia_sucu" name="sucursal_provincia"  th:field="*{provincia}" >						
-																					
-												<option value="Jujuy" th:selected="${sucursal.provincia == 'Jujuy'}">Jujuy</option>
-												<option value="Salta" th:selected="${sucursal.provincia == 'Salta'}">Salta</option>
-												<option value="Misiones" th:selected="${sucursal.provincia == 'Misiones'}">Misiones</option>
-												<option value="Córdoba" th:selected="${sucursal.provincia == 'Córdoba'}">Córdoba</option>
-												<option value="Buenos Aires" th:selected="${sucursal.provincia == 'Buenos Aires'}">Buenos Aires</option>
-												<option value="Corrientes" th:selected="${sucursal.provincia == 'Corrientes'}">Corrientes</option>
-											
-											</select>					  			 
+								  			<select class="form-select" id="provincia_sucu" name="sucursal_provincia"  th:field="*{provincia.id}" >						
+												<option th:each="p: ${provincias}" th:value="${p.id}" th:text="${p.nombre}"></option>										
+												<!-- se llama a la clase Provincia para completar el select -->
+											</select>						  			 
 								  			<div class ="text-danger" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></div>
 								  		</div>					  
 								 </div>
