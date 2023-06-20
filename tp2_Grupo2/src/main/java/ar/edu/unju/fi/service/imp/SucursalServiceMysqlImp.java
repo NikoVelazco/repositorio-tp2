@@ -1,5 +1,6 @@
 package ar.edu.unju.fi.service.imp;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class SucursalServiceMysqlImp implements ISucursalService{
 	
 	@Autowired
 	private Sucursal sucursal;
+	
+	@Autowired
+	private List<Sucursal> sucursalesFiltradas;
 	
 	/**
 	 * Lista las sucursales con estado true
@@ -48,8 +52,8 @@ public class SucursalServiceMysqlImp implements ISucursalService{
 	 * Modifica una sucursal
 	 */
 	@Override
-	public void modificar(Sucursal sucursal, Long id) {
-		sucursal.setId(id);
+	public void modificar(Sucursal sucursal) {
+	
 		sucursal.setEstado(true);
 		sucursalRepository.save(sucursal);
 		
@@ -73,6 +77,18 @@ public class SucursalServiceMysqlImp implements ISucursalService{
 	public Sucursal getSucursal() {
 		return sucursal;
 		
+	}
+
+	@Override
+	public List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicio, LocalDate fechaFin) {
+		List<Sucursal> sucursales = sucursalRepository.findByEstado(true);
+	    for (Sucursal sucursal : sucursales) {
+	        LocalDate fechaSucursal = sucursal.getFechaInicio();
+	        if ((fechaSucursal.isEqual(fechaInicio) || fechaSucursal.isAfter(fechaInicio)) && (fechaSucursal.isBefore(fechaFin) || fechaSucursal.isEqual(fechaFin))) {
+	            sucursalesFiltradas.add(sucursal);       
+	        }
+	    }
+		return sucursalesFiltradas;
 	}
 
 }

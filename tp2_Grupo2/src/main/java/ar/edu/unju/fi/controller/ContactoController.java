@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class ContactosController {
+public class ContactoController {
 	@GetMapping("/contactos")
 	public String getPaginaContactos() {
 		return "contactos";	

@@ -1,6 +1,7 @@
 package ar.edu.unju.fi.service;
+import java.time.LocalDate;
 import java.util.List;
-import org.springframework.stereotype.Service;
+
 
 import ar.edu.unju.fi.entity.Sucursal;
 
@@ -12,7 +13,7 @@ import ar.edu.unju.fi.entity.Sucursal;
  *
  */
 
-@Service
+
 public interface ISucursalService {
 	/*devuelve lista de las sucursales*/
 	List<Sucursal> getListaSucursal();
@@ -21,9 +22,12 @@ public interface ISucursalService {
 	/*busca una sucursal*/
 	Sucursal getBy(Long id);
 	/*modificar una sucursal*/
-	void modificar(Sucursal sucursal, Long id);
+	void modificar(Sucursal sucursal);
 	/*eliminar una sucursal*/
 	void eliminar(Sucursal sucursalEncontrada);
+	/*obtiene clase sucursal*/
 	Sucursal getSucursal();
+	/*metodo abstracto para obtener un lista filtarada por fechas*/
+	List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicio, LocalDate fechaFin); 
 	
 }

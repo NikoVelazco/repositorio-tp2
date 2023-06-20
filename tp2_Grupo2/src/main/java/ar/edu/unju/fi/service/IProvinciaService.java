@@ -11,7 +11,7 @@ import ar.edu.unju.fi.entity.Provincia;
  * @author Grupo 2
  *
  */
-@Service
+
 public interface IProvinciaService {
 	List<Provincia> getListaProvincia();/*metodo abstracto para obtener el listado de Provincias*/
 	Provincia getProvincia(); /*metodo abstracto para obtener un objeto tipo Provincia*/

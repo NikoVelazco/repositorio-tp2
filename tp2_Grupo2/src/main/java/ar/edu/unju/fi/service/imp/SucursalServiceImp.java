@@ -1,4 +1,5 @@
 package ar.edu.unju.fi.service.imp;
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -36,9 +37,9 @@ public class SucursalServiceImp implements ISucursalService{
 		}
 		return sucursalEncontrada;
 	}
-	public void modificar(Sucursal sucursal, Long id) {
+	public void modificar(Sucursal sucursal) {
 		for (Sucursal sucu : listaSucursales.getSucursales()) {
-			if(sucu.getId() == id) {
+			if(sucu.getId() == sucursal.getId()) {
 				sucu.setNombre(sucursal.getNombre());
 				sucu.setDireccion(sucursal.getDireccion());
 				sucu.setEmail(sucursal.getEmail());
@@ -56,5 +57,10 @@ public class SucursalServiceImp implements ISucursalService{
 	@Override
 	public Sucursal getSucursal() {
 		return sucursales;
+	}
+	@Override
+	public List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicio, LocalDate fechaFin) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
