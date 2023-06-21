@@ -21,69 +21,62 @@
 			 	<h1  class="title-paseo" th:text="${edicion}?'MODIFICAR PRODUCTO':'AGREGAR NUEVO PRODUCTO'"></h1> 			 					
 		</div>	
 				</div>
-				
-	<div class="container-fluid my-3">
-		 	<div class="row justify-content-center">
-					<form class= "row justify-content-center"  th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">				
-							<div class="row justify-content-center ">
-								<div class="col-5">
-									<label for="nombre" class="form-label" >Nombre:</label>
-									<input type="text" id="nombre"  class="form-control" name="nombre_produ" th:field="*{nombre}"  > 
-									<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-								</div>
-							</div>
-						
-							<div class="row justify-content-center ">	
-								<div class="col-5">
-									<label for="codigo" class="form-label">Código:</label>
-									<input type="number" id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" th:unless="${edicion}" >
-									<input id="codigo" class="form-control"name="codigo_produ" th:field="*{codigo}" th:if="${edicion}" readonly>
-									<div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
-								</div>
-							</div>
-						
-							<div class="row justify-content-center ">	
-								<div class="col-5">
-									<label for="precio" class="form-label">Precio:</label>
-									<input type="number" id="precio" class="form-control"name="precio_produ" 
-										placeholder="100-100000"th:field="*{precio}" step="0.01" >
-									<div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
-								</div>
-							</div>
-				
-				      	   <div class="row justify-content-center">
-				        		 <div class="col-5">	
-									<label for="categoria"class="form-label" >Categoría:</label> 
-									<select  id="categoria" class="form-select"name="categoria_produ"  
-											th:field="*{categoria}" >
-						
-									<option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">Alimento</option>
-									<option value="juguete pollo.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
-									<option value="campera.jpg" th:selected = "${produ.categoria == 'campera.jpg'}">Ropa</option>
-									<option value="disfraz.webp" th:selected = "${produ.categoria == 'diszfraz.webp'}">Otros</option>
-								</select>	
-								</div>
-							</div>
-						
-							<div class="row justify-content-center">	
-								<div class="col-5">
-									<label for="descuento"class="form-label">Descuento:</label> 
-									<input type="number" id="descuento" class="form-control" name="descuento_produ" th:field="*{descuento}"  required>	
-								<div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}"></div>			
-								<br>
-							</div>
-								
-							<div class="row justify-content-center">	
-								<div class="col-5">
-									<input type="submit" class="btn btn-secondary" th:value="${edicion}?'Modificar':'Guardar'">
-									<a class="btn btn-outline-danger" th:href="@{/productos/listado}" role="button">Cancelar</a>
-								</div>
-							</div>
-							</div>
-					</form>	
-				</div>	
-		</div>
-	
+	<div class="container-fluid my-3 pb-3 pt-3">
+    	<div class="row justify-content-center">
+    		 <div class="col-6">
+		        <form class="row g-3 needs-validation" th:action="${edicion}?@{/productos/modificar}:@{/productos/guardar}" th:object="${produ}" method="post">
+		            <div class="row mb-3">
+		             	   <label for="nombre" class="form-label">NOMBRE:</label>
+		            	   <div class="col-sm-10">
+			                <input type="text" id="nombre" class="form-control" name="nombre_produ" th:field="*{nombre}">
+			                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+		          		 </div>
+		            </div>
+		
+		         <!-- <div class="row mb-3">
+		                <label for="id" class="form-label">Id:</label>
+		                 <div class="col-sm-10">
+		                <input type="number" id="id" class="form-control" name="id_produ" th:field="*{id}" th:unless="${edicion}">
+		                <input id="id" class="form-control" name="id_produ" th:field="*{id}" th:if="${edicion}" readonly>
+		                <div class="text-danger" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></div>
+		            
+		            </div></div>-->
+		<br>
+		
+		            <div class="row mb-3">
+		                <label for="precio" class="form-label">PRECIO:</label>
+		                <div class="col-sm-10">
+		                <input type="number" id="precio" class="form-control" name="precio_produ" placeholder="100-100000" th:field="*{precio}" step="0.01">
+		                <div class="text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></div>
+		           </div> </div>
+		<br>
+		            <div class="row mb-3">
+		                <label for="categoria" class="form-label">CATEGORIA:</label>
+		                 <div class="col-sm-10">
+		                <select id="categoria" class="form-select" name="categoria_produ" th:field="*{categoria}">
+		                    <option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">ALIMENTO</option>
+		                    <option value="juguete pollo.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">JUGUETES</option>
+		                    <option value="campera.jpg" th:selected="${produ.categoria == 'campera.jpg'}">ROPA</option>
+		                    <option value="disfraz.webp" th:selected="${produ.categoria == 'diszfraz.webp'}">OTROS</option>
+		                </select>
+		           </div> </div>
+		<br>
+		            <div class="row mb-3">
+		                <label for="descuento" class="form-label">DESCUENTO:</label>
+		                <div class="col-sm-10">
+		                <input type="number" id="descuento" class="form-control" name="descuento_produ" th:field="*{descuento}" required>
+		                <div class="text-danger" th:if="${#fields.hasErrors('descuento')}" th:errors="*{descuento}"></div>
+		                <br>
+		           </div> </div>
+		<br>
+		            <div class="col-12">
+		                <input type="submit" class="btn btn-secondary" th:value="${edicion}?'Modificar':'Guardar'">
+		                <a class="btn btn-outline-danger" th:href="@{/productos/listado}" role="button">CANCELAR</a>
+		            </div>
+		        </form>
+    </div>
+</div>
+</div>
 	<br>
 		<div class="container-fluid pie-pagina">
 	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>
