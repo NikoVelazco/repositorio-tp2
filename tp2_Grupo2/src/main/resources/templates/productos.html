@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
 		<link rel="icon" th:href="@{/images/perroico.png}">
@@ -21,16 +21,14 @@
 	</head>
 	<body>
 			<header th:replace="~{layouts/header :: header}"> </header>
-			<div class="container-fluid paseo-page">
-				<h1 class="title-paseo">PRODUCTOS DISPONIBLES</h1>   <!-- Modificación -->
-			</div>
-			<!--<div class="container-fluid enlace_consejo ">
+	
+			<div class="container-fluid enlace_consejo ">
 				<div class="row justify-content-center titulo-paseo">		 	  			
 			 	 			<h1 >PRODUCTOS DISPONIBLES</h1>			 					
 					</div>	
 			
-   				</div>-->
-   		<div class="container-fluid my-3">
+   				</div>
+   		<div class="container-fluid">
 	 		 <div class="row d-flex" >
 	  	  
 	  		     	
@@ -38,17 +36,16 @@
 						      <div class="row custom-row align-items-center justify-content-center">
 						        <div class="col">
 		  	 		 			
-						  			<h2 class="nombreProd">Nombre: <span th:text="${produ.nombre}"></span></h2>
-						  			<h4 class="precioProd">Precio: $<span th:text="${produ.precio}"></span></h4>
-						  			<h4 class="codigoProd">Codigo: <span th:text="${produ.codigo}" ></span> </h4>
-						  			<h4 class="codigoProd">Descuento(%): <span th:text="${produ.descuento}"> </span></h4>
-						  			<h4 class="precioDescu">Precio con descuento: $<span th:text="${produ.calcularDescuento()}"> </span></h4>
+						  			<h2 class="nombreProd">NOMBRE: <span th:text="${produ.nombre}"></span></h2>
+						  			<h4 class="precioProd">PRECIO: $<span th:text="${produ.precio}"></span></h4>
+						  			<h4 class="codigoProd">DESCUENTO(%): <span th:text="${produ.descuento}"> </span></h4>
+						  			<h4 class="precioDescu">PRECIO CON DESCUENTO: $<span th:text="${produ.calcularDescuento()}"> </span></h4>
 						   			<div class="text-center">
 						   			
 						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
 						  		  
-						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.codigo}" role="button">Editar</a>								
-										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.codigo}" role="button">Eliminar</a>	
+						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.id}" role="button">Editar</a>								
+										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.id}" role="button">Eliminar</a>	
 						  				</div>
 						  				<br>
 						  				  </div>
@@ -68,4 +65,3 @@
 	
  	
 </html>
-
