@@ -21,17 +21,18 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name="productosbd")
 public class Producto {
+	
+	@Id/*clave primaria*/
+	@GeneratedValue(strategy=GenerationType.IDENTITY)/*genera valores numericos secuenciales*/
+	@Column(name="Id")	
+	private Long id; 
 
 	//Propiedades de la clase Producto
-	@Column(name="nombre",length=30,nullable=false)
+	@Column(name="Nombre",length=30,nullable=false)
 	@NotEmpty(message="El nombre no puede ser vacio") /* se añaden las validaciones del formulario  */
 	@Size(min=6, message="El nombre debe tener minimo 6 caracteres")
 	private String nombre;
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Codigo")
-	@Positive(message="Solo se permiten valores positivos")
-	private Long codigo;
+	
 	
 	@Column(name="Precio")
 	@Min(value=100,message="el valor minimo permitido es 100")
@@ -71,10 +72,10 @@ public class Producto {
 		 * @param categoria Categoría del producto
 		 * @param descuento Descuento del producto
 		 */
-		public Producto(String nombre, Long codigo, double precio, String categoria, int descuento) {
+		public Producto(String nombre, Long id, double precio, String categoria, int descuento) {
 			//inicializamos las propiedades con los valores pasados por párametros
 			this.nombre=nombre;
-			this.codigo=codigo;
+			this.id=id;
 			this.precio=precio;
 			this.categoria=categoria;
 			this.descuento=descuento;
@@ -170,18 +171,6 @@ public class Producto {
 			return this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
 			
 		}
-		public void setCodigo(Long codigo) {
-			this.codigo = codigo;
-		}
-
-		public void getCodigo(Long codigo) {
-			this.codigo = codigo;
-		}
-
-		public Object getCodigo() {
-			// TODO Auto-generated method stub
-			return null;
-		}
 		
 		public boolean getEstado() {
 			return estado;
@@ -193,6 +182,18 @@ public class Producto {
 		public void setEstado(boolean estado) {
 			this.estado = estado;
 		}
+
+		public Long getId() {
+			return id;
+		}
+
+		public void setId(Long id) {
+			this.id = id;
+		}
+
+		
+		
 }
+
 
 
