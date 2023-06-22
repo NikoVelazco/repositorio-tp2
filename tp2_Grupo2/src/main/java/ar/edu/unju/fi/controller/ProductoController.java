@@ -92,11 +92,11 @@ public class ProductoController {
  * @return pagina nuevo producto 
  */
 	
-	@GetMapping ("/modificar/{codigo}")
-	public String getModificarProductoPage(Model model, @PathVariable(value="codigo") Long codigo) {
+	@GetMapping ("/modificar/{id}")
+	public String getModificarProductoPage(Model model, @PathVariable(value="id") Long id) {
 		Producto productoEncontrado = productoServiceImp.getProducto();
 		boolean edicion = true;
-		productoEncontrado= productoServiceImp.getBy(codigo); 
+		productoEncontrado= productoServiceImp.getBy(id); 
 		model.addAttribute("produ",productoEncontrado);
 		model.addAttribute("edicion",edicion);
 		return "nuevo_producto";
@@ -123,9 +123,9 @@ public class ProductoController {
 	 * @param codigo es codigo del objeto a eliminar
 	 * @return pagina productos usando redirect para usar /productos/listado 
 	 */
-	@GetMapping("/eliminar/{codigo}")
-	public String getEliminarProducto (@PathVariable(value="codigo") Long codigo){
-		Producto productoEncontrado = productoServiceImp.getBy(codigo);
+	@GetMapping("/eliminar/{id}")
+	public String getEliminarProducto (@PathVariable(value="id") Long id){
+		Producto productoEncontrado = productoServiceImp.getBy(id);
 		
 		productoServiceImp.eliminar(productoEncontrado);
 		return "redirect:/productos/listado";		
