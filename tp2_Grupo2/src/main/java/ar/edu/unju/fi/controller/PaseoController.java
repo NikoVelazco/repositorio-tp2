@@ -1,6 +1,6 @@
 package ar.edu.unju.fi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import ar.edu.unju.fi.entity.Paseo;
 import ar.edu.unju.fi.service.IPaseoService;
 import jakarta.validation.Valid;
@@ -21,7 +20,6 @@ import jakarta.validation.Valid;
  *
  */
 
-@Component
 @Controller
 @RequestMapping("/paseo")
 public class PaseoController {
@@ -31,6 +29,7 @@ public class PaseoController {
 	 * La interfaz es IPaseoService
 	 */
 	@Autowired
+	@Qualifier("PaseoServiceMysql")
 	private IPaseoService paseoService;
 	
 	/**
@@ -80,52 +79,52 @@ public class PaseoController {
     }
 	
 	/**
-	 * Petición para modificar un paseador
-	 * @param legajo a modificar
+	 * Petición para modificar un servicio
+	 * @param id a modificar
 	 * @param model usado para enviar el objeto encontrado a la página
 	 * @return pagina nuevo_paseo
 	 */
-	@GetMapping("/modificar/{legajo}")
-	public String getModificarServicioPage(@PathVariable("legajo")String legajo, Model model) {
+	@GetMapping("/modificar/{id}")
+	public String getModificarServicioPage(@PathVariable(value="id")Long id, Model model) {
 		boolean edicion = true;
     	model.addAttribute("edicion", edicion);
-    	Paseo paseoEncontrado = paseoService.getBy(legajo);
+    	Paseo paseoEncontrado = paseoService.getBy(id);
 		model.addAttribute("paseo", paseoEncontrado);
 		return "nuevo_paseo";
 	}
 	
 	/**
 	 * Petición para guardar el objeto modificado
-	 * @param paseo objeto que contiene a los paseadores
+	 * @param paseo objeto que contiene a los servicios
 	 * @param result activa las validaciones
 	 * @param model vincula la variable al formulario
 	 * @return paseos.html
 	 */
 	@PostMapping("/modificar")
 	public String modificarPaseo(@Valid @ModelAttribute("paseo")Paseo paseo, BindingResult result, Model model) {
-		Paseo paseoEncontrado = paseoService.getBy(paseo.getLegajo());
+		Paseo paseoEncontrado = paseoService.getBy(paseo.getId());
 	    boolean edicion = true;
 		if (result.hasErrors()) {
-			paseo.setLegajo(paseoEncontrado.getLegajo());
+			paseo.setId(paseoEncontrado.getId());
 			model.addAttribute("paseo", paseo);
 			model.addAttribute("edicion", edicion);
 			return "nuevo_paseo";
 		} else {
-			paseoService.modificar(paseo); 
+			paseoService.modificar(paseo, paseo.getId()); 
 			return "redirect:/paseo/listado";
 		}
 	}
 	
 	/**
-	 * Petición para eliminar un paseador según el legajo
-	 * @param legajo a eliminar
+	 * Petición para eliminar un servicio según el id
+	 * @param id a eliminar
 	 * @return paseos.html
 	 */
-	@GetMapping("/eliminar/{legajo}")
-	public String eliminarPaseo(@PathVariable("legajo")String legajo) {
-		paseoService.eliminar(legajo);
+	@GetMapping("/eliminar/{id}")
+	public String eliminarPaseo(@PathVariable(value="id")Long id) {
+		Paseo paseoEncontrado = paseoService.getBy(id);
+		paseoService.eliminar(paseoEncontrado);
 		return "redirect:/paseo/listado";
 	}
 	
 }
-

@@ -1,7 +1,12 @@
 package ar.edu.unju.fi.entity;
 
 import org.springframework.stereotype.Component;
-import jakarta.validation.constraints.Email;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -12,37 +17,40 @@ import jakarta.validation.constraints.Size;
  *
  */
 @Component
+@Entity
+@Table(name="servicio")
 public class Paseo {
 	
 	//Atributos de la clase Paseo
-	@NotEmpty(message="el legajo no puede estar vacio")
-	@Pattern(regexp = "[L][e][g]+[0-9][0-9][0-9][0-9]", 
-	 message = "Ingrese un legajo válido Ej: (Leg0001)")
-	private String legajo;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="serv_id")
+	private Long id; //Clave Primaria
 	
-	@NotEmpty(message="el campo nombre no puede estar vacio")
-	@Pattern(regexp = "^[\\p{L} ]+$", message = "El nombre solo puede contener letras y espacios")
-	private String nombre;
+	@NotEmpty(message="el campo servicio no puede estar vacio")
+	@Pattern(regexp = "[S][e][r][v]+[0-9][0-9][0-9][0-9]", 
+	 message = "Ingrese un servicio válido Ej: (Serv0001)")
+	@Column(name="serv_idService", length = 8, nullable = false)
+	private String idService; /*Id del Servicio*/
 	
-	@NotEmpty(message="el año de experiencia no puede estar vacio")
-	@Pattern(regexp = "^(?:[1-9]|[1-9][0-9]+)$", message = "Solo se permiten números positivos")
-	private String anioExperiencia;
+	@NotEmpty(message="el campo nombre servicio no puede estar vacio")
+	@Pattern(regexp = "^[\\p{L} ]+$", message = "El nombre servicio solo puede contener letras y espacios")
+	@Size(max=30,message="Máximo 30 caracteres")
+	@Column(name="serv_nombre", length = 30, nullable = false)
+	private String nombreService;/*Nombre del Servicio*/
 	
-	@NotEmpty(message="el teléfono no puede estar vacio")
-	@Pattern(regexp = "[0-9][0-9][0-9]+-+[0-9][0-9][0-9][0-9][0-9][0-9][0-9]", 
-	 message = "Ingrese un número de teléfono válido Ej: (011-1234567)")
-	private String telefono;
+	@NotEmpty(message="el dia de la semana no puede estar vacio")
+	@Column(name="serv_semana", length = 10, nullable = false)
+	private String diaSemana; /*Dia de la semana del servicio*/
 	
-	@Email(message="Debe ingresar un email con formato válido")
-	@NotEmpty(message="El correo no puede ser vacio")
-	private String email;
-	
+	@Pattern(regexp = "[0-9][0-9][h][s]+-+[0-9][0-9][h][s]",
+	message = "Ingrese un horario válido Ej: 08hs-12hs")
 	@NotEmpty(message="el horario no puede estar vacio")
-	private String horario;
+	@Column(name="serv_horario", length = 10, nullable = false)
+	private String horario; /*Horario del servicio*/
 	
-	@NotEmpty(message="la descripción no puede estar vacio")
-	@Size(min=15,message="Descripcion minima de 15 caracteres")
-	private String descripcion;
+	@Column(name="serv_estado")
+	private boolean estado; //True=Habilitado; False=Deshabilitado
 	
 	/**
 	 * Constructor por defecto
@@ -52,105 +60,71 @@ public class Paseo {
 	}
 	
 	/**
-	 * Constructor especializado
-	 * @param legajo
-	 * @param nombre
-	 * @param anioExperiencia
-	 * @param telefono
-	 * @param email
+	 * Constructor parametrizado
+	 * @param id
+	 * @param idService
+	 * @param nombreService
+	 * @param diaSemana
 	 * @param horario
-	 * @param descripcion
+	 * @param estado
 	 */
-	public Paseo(String legajo, String nombre, String anioExperiencia, String telefono, String email, String horario, String descripcion) {
-		super();
-		this.legajo=legajo;
-		this.nombre=nombre;
-		this.anioExperiencia=anioExperiencia;
-		this.telefono=telefono;
-		this.email=email;
+	public Paseo(Long id, String idService, String nombreService, String diaSemana, String horario, boolean estado) {
+		this.id=id;
+		this.idService=idService;
+		this.nombreService=nombreService;
+		this.diaSemana=diaSemana;
 		this.horario=horario;
-		this.descripcion=descripcion;
-	}
-	
-	/**
-	 * Obtiene telefono
-	 * @return telefono
-	 */
-	public String getTelefono() {
-		return telefono;
+		this.estado=estado;
 	}
 
-	/*
-	 * setea telefono
+	/**
+	 * Obtiene IdService
+	 * @return idService
 	 */
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+	public String getIdService() {
+		return idService;
 	}
 	
 	/**
-	 * Obtiene legajo
-	 * @return legajo
+	 * Setea idService
+	 * @param idService
 	 */
-	public String getLegajo() {
-		return legajo;
+	public void setIdService(String idService) {
+		this.idService = idService;
 	}
 	
 	/**
-	 * setea legajo
-	 * @param legajo
+	 * Obtiene nombre de Servicio
+	 * @return nombreService
 	 */
-	public void setLegajo(String legajo) {
-		this.legajo = legajo;
+	public String getNombreService() {
+		return nombreService;
+	}
+
+	/**
+	 * setea nobre de servicio
+	 * @param nombreService
+	 */
+	public void setNombreService(String nombreService) {
+		this.nombreService = nombreService;
 	}
 	
 	/**
-	 * obtiene nombre
-	 * @return nombre
+	 * Obtiene dia de semana
+	 * @return diaSemana
 	 */
-	public String getNombre() {
-		return nombre;
+	public String getDiaSemana() {
+		return diaSemana;
 	}
 	
 	/**
-	 * setea nombre
-	 * @param nombre
+	 * setea diaSemana
+	 * @param diaSemana
 	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setDiaSemana(String diaSemana) {
+		this.diaSemana = diaSemana;
 	}
-	
-	/**
-	 * Obtiene año
-	 * @return anioExperiencia
-	 */
-	public String getAnioExperiencia() {
-		return anioExperiencia;
-	}
-	
-	/**
-	 * Setea el año
-	 * @param anioExperiencia
-	 */
-	public void setAnioExperiencia(String anioExperiencia) {
-		this.anioExperiencia = anioExperiencia;
-	}
-	
-	/**
-	 * obtiene email
-	 * @return email
-	 */
-	public String getEmail() {
-		return email;
-	}
-	
-	/**
-	 * Setea email
-	 * @param email
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+
 	/**
 	 * obtiene horario
 	 * @return horario
@@ -160,7 +134,7 @@ public class Paseo {
 	}
 	
 	/**
-	 * Setea horario
+	 * setea horario
 	 * @param horario
 	 */
 	public void setHorario(String horario) {
@@ -168,21 +142,38 @@ public class Paseo {
 	}
 	
 	/**
-	 * Obtiene descripción
-	 * @return descripcion
+	 * obtiene id
+	 * @return id
 	 */
-	public String getDescripcion() {
-		return descripcion;
+	public Long getId() {
+		return id;
 	}
 	
 	/**
-	 * setea descripcion
-	 * @param descripcion
+	 * setea id
+	 * @param id
 	 */
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	/**
+	 * obtiene estado
+	 * @return estado
+	 */
+	public boolean isEstado() {
+		return estado;
+	}
+
+	/**
+	 * Setea estado
+	 * @param estado
+	 */
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 	
 	
 	
 }
+

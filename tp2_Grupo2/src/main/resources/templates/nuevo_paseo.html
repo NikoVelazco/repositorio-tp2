@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
 	<head>
-		<link rel="icon" th:href="@{/images/perroico.png}"> <!-- Modificación -->
+		<link rel="icon" th:href="@{/images/perroico.png}">
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Paseos</title>
+		<title>Servicios</title>
 		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
@@ -17,61 +17,56 @@
 		<header th:replace="~{layouts/header :: header}"> </header>
 		
 		<div class="container-fluid paseo-page">
-			<h1 class="title-paseo" th:text="${edicion}?'MODIFICAR PASEADOR':'REGISTRAR PASEADOR'"></h1>
+			<h1 class="title-paseo" th:text="${edicion}?'MODIFICAR SERVICIO':'REGISTRAR SERVICIO'"></h1>
 		</div>
 		
 		<div class="container-fluid my-5">
 			<div class="row justify-content-center">
 				<div class="col-9">
 					<form class="row g-3 needs-validation" novalidate th:action="${edicion}?@{/paseo/modificar}:@{/paseo/guardar}" th:object="${paseo}" method="post">
+						<div class="row mb-3" th:if="${edicion}" >
+    						<label for="serv_id" class="col-sm-2 col-form-label">ID (Base de Dato): </label>
+    							<div class="col-sm-10">
+       								<input type="text" class="form-control" id="serv_id" name="serv_id" th:value="${paseo.id}" readonly>
+       								<input type="hidden" th:field="*{id}"> 
+   								</div>      									
+							 </div>
 						<div class="row mb-3">
-							<label for="legajo" class="col-sm-2 col-form-label">Legajo:</label>
+							<label for="idService" class="col-sm-2 col-form-label">Id Servicio:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="N° de Legajo" name="paseo_legajo" th:field="*{legajo}" th:disabled="${edicion}?true:false">
-								<input type="hidden" class="form-control" name="paseo_legajo" th:field="*{legajo}" th:if="${edicion}">
-								<div class="text-danger" th:if="${#fields.hasErrors('legajo')}" th:errors="*{legajo}"></div>
+								<input type="text" class="form-control" placeholder="N° de Servicio" name="paseo_servicio" th:field="*{idService}" th:disabled="${edicion}?true:false">
+								<input type="hidden" class="form-control" name="paseo_servicio" th:field="*{idService}" th:if="${edicion}">
+								<div class="text-danger" th:if="${#fields.hasErrors('idService')}" th:errors="*{idService}"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label for="nombre" class="col-sm-2 col-form-label">Nombre:</label>
+							<label for="nombreServicio" class="col-sm-2 col-form-label">Nombre de Servicio:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="Nombre y Apellido" name="paseo_nombre" th:field="*{nombre}">
-								<div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+								<input type="text" class="form-control" placeholder="Nombre de Servicio" name="paseo_nombreService" th:field="*{nombreService}">
+								<div class="text-danger" th:if="${#fields.hasErrors('nombreService')}" th:errors="*{nombreService}"></div>
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label for="anioExperiencia" class="col-sm-2 col-form-label">Año de Experiencia:</label>
+							<label for="horario" class="col-sm-2 col-form-label">Horario: </label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="Años de Experiencia" name="paseo_anioExperiencia" th:field="*{anioExperiencia}">
-								<div class="text-danger" th:if="${#fields.hasErrors('anioExperiencia')}" th:errors="*{anioExperiencia}"></div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="N° de teléfono" name="paseo_telefono" th:field="*{telefono}">
-								<div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="email" class="col-sm-2 col-form-label">Email:</label>
-							<div class="col-sm-10">
-								<input type="email" class="form-control" placeholder="nombre@example.com" name="paseo_email" th:field="*{email}">
-	  							<div class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-							</div>
+								<select class="form-select" id="horario" name="paseo_horario"  th:field="*{diaSemana}" >						
+									<option value="" selected>Seleccione una día</option>
+									<option value="Lunes" th:selected="${paseo.diaSemana == 'Lunes'}">Lunes</option>
+									<option value="Martes" th:selected="${paseo.diaSemana == 'Martes'}">Martes</option>
+									<option value="Miércoles" th:selected = "${paseo.diaSemana == 'Miércoles'}">Miércoles</option>
+									<option value="Jueves" th:selected = "${paseo.diaSemana == 'Jueves'}">Jueves</option>
+									<option value="Viernes" th:selected = "${paseo.diaSemana == 'Viernes'}">Viernes</option>
+									<option value="Sábado" th:selected = "${paseo.diaSemana == 'Sábado'}">Sábado</option>
+									<option value="Domingo" th:selected = "${paseo.diaSemana == 'Domingo'}">Domingo</option>
+								</select>					  			 
+							  	<div class ="text-danger" th:if="${#fields.hasErrors('diaSemana')}" th:errors="*{diaSemana}"></div>
+							 </div>					  
 						</div>
 						<div class="row mb-3">
 							<label for="horario" class="col-sm-2 col-form-label">Horario:</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="Horario" name="paseo_horario" th:field="*{horario}">
+								<input type="text" class="form-control" placeholder="Horario de Servicio" name="paseo_horario" th:field="*{horario}">
 								<div class="text-danger" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label for="descripcion" class="col-sm-2 col-form-labe">Descripción:</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" id="texto-area" rows="3" name="paseo_descripcion" th:field="*{descripcion}"></textarea>
-								<div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
 							</div>
 						</div>
 						<input type="submit" class="btn btn-secondary col-sm-2 mr-2" th:value="${edicion}?'Modificar':'Guardar'">

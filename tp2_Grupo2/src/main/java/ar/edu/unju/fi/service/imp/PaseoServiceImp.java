@@ -2,10 +2,8 @@ package ar.edu.unju.fi.service.imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.edu.unju.fi.entity.Paseo;
 import ar.edu.unju.fi.listas.ListaPaseo;
-
 import java.util.List;
 import ar.edu.unju.fi.service.IPaseoService;
 
@@ -14,7 +12,7 @@ import ar.edu.unju.fi.service.IPaseoService;
  * @author Grupo2
  *
  */
-@Service
+@Service("PaseoServiceImp")
 public class PaseoServiceImp implements IPaseoService{
 	
 	/**
@@ -48,13 +46,13 @@ public class PaseoServiceImp implements IPaseoService{
 	}
 	
 	/**
-	 * Método de busqueda por el legajo del paseador
+	 * Método de busqueda por el id del servicio
 	 */
 	@Override
-	public Paseo getBy(String legajo) {
+	public Paseo getBy(Long id) {
 		Paseo paseoEncontrado = null;
 		for(Paseo pas : listaPaseos.getPaseos()) {
-			if (pas.getLegajo().equals(legajo)) {
+			if (pas.getId()==id) {
 				paseoEncontrado = pas;
 				break;
 			}			
@@ -67,31 +65,23 @@ public class PaseoServiceImp implements IPaseoService{
 	 * Método para modificar los atributos del obejto paseo
 	 */
 	@Override
-	public void modificar(Paseo paseo) {
+	public void modificar(Paseo paseo, Long id) {
 		for (Paseo pas : listaPaseos.getPaseos()) {
-			if (pas.getLegajo().equals(paseo.getLegajo())) {
-				pas.setNombre(paseo.getNombre());
-				pas.setAnioExperiencia(paseo.getAnioExperiencia());
-				pas.setTelefono(paseo.getTelefono());
-				pas.setEmail(paseo.getEmail());
+			if (pas.getId()==id) {
+				pas.setNombreService(paseo.getNombreService());
+				pas.setDiaSemana(paseo.getDiaSemana());
 				pas.setHorario(paseo.getHorario());
-				pas.setDescripcion(paseo.getDescripcion());
 		        break;
 			}
 		}
 	}
 	
 	/**
-	 * Método para eliminar un paseador de la lista
+	 * Método para eliminar un servicio de la lista
 	 */
 	@Override
-	public void eliminar(String legajo) {	
-		for (Paseo pas : listaPaseos.getPaseos()) {
-			if (pas.getLegajo().equals(legajo)) {
-				listaPaseos.getPaseos().remove(pas);   
-				break;
-			}
-		}		
+	public void eliminar(Paseo paseoEncontrado) {	
+		listaPaseos.getPaseos().remove(paseoEncontrado);
 	}
 	
 	/**
