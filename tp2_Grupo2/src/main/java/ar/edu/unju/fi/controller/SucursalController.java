@@ -1,6 +1,9 @@
 package ar.edu.unju.fi.controller;
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.fi.entity.Provincia;
@@ -144,5 +148,23 @@ public class SucursalController{
 		Sucursal sucursalEncontrada = sucursalService.getBy(id); 
 		sucursalService.eliminar(sucursalEncontrada);
 		return "redirect:/sucursal/listado";
+	}
+	
+	/**
+	 * Peticion para mostrar la lista de sucursales filtradas entre dos fechas
+	 * @param fechaInicial
+	 * @param fechaFinal
+	 * @param model
+	 * @return sucursale filtradas 
+	 */
+	@PostMapping("/buscar")
+	public String buscarSucursalesPorFechas(@RequestParam("fechaInicial") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaInicial,
+	                                        @RequestParam("fechaFinal") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate fechaFinal,
+	                                        Model model) {
+	   
+		model.addAttribute("fechaInicial", fechaInicial);
+		model.addAttribute("fechaFinal", fechaFinal);
+		model.addAttribute("sucursales", sucursalService.getListaSucursalFiltrada(fechaInicial, fechaFinal));
+	    return "sucursales";
 	}
 }

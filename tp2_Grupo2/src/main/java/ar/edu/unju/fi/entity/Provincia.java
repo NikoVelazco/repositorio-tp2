@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -19,7 +21,8 @@ import jakarta.persistence.Table;
 public class Provincia {
 	
 	@Id
-	@Column(name="provi_id")	
+	@Column(name="provi_id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)/*genera valores numericos secuenciales*/
 	private Long id; /*Identificador para la provincia*/
 	
 	
