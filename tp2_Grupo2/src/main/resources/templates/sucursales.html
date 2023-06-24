@@ -21,26 +21,30 @@
 			<div class="row justify-content-center">
 				<h4 class="p-3">BUSCAR POR FECHAS</h4>
 				<div class="col-5">				
-				 	<form class="row g-2 needs-validation" th:action="@{/sucursal/buscar}" method="get">					
+				 	<form class="row g-2 needs-validation" th:action="@{/sucursal/buscar}" method="post">					
 						<div class="mb-3 row">
-	    					<label for="fechaInicio" class="col-sm-4 col-form-label">Fecha de inicio:</label>
-	    					<div class="col-sm-8">
-	      						<input type="date" class="form-control" id="fechaInicio" name="fechaInicio" required>
-	    					</div>
-	  					</div>
+    						<label for="fechaInicial" class="col-sm-4 col-form-label">Fecha de inicio:</label>
+    						<div class="col-sm-8">
+      							<input th:value="${#temporals.format(fechaInicial, 'yyyy-MM-dd')}" type="date" class="form-control" id="fechaInicial" name="fechaInicial" required>
+    						</div>
+  						</div>
 						<div class="mb-3 row">
-	    					<label for="fechaFin" class="col-sm-4 col-form-label">Fecha de fin:</label>
-	    					<div class="col-sm-8">
-	      						<input type="date" class="form-control"  id="fechaFin" name="fechaFin"  required>
-	    					</div>
-	  					</div>					    
+    						<label for="fechaFinal" class="col-sm-4 col-form-label">Fecha de fin:</label>
+    						<div class="col-sm-8">
+      							<input th:value="${#temporals.format(fechaFinal, 'yyyy-MM-dd')}" type="date" class="form-control"  id="fechaFinal" name="fechaFinal"  required>
+      							<a class="btn btn-primary" th:href="@{/sucursal/listado}" role="button">LISTADO COMPLETO</a>
+    						</div>
+  						</div>					    
 						   
 						    <div class="col-12">
 								<input type="submit" class="btn btn-success" th:value="'BUSCAR POR FECHAS'">
 							</div>						    
 					</form>
 				</div>
-			</div>		
+			</div>	
+			<div th:if="${param.fechaInicial != null && param.fechaFinal != null && sucursales.empty}">
+   			 	<h4 class="p-3">No se encontraron sucursales en las fechas seleccionadas.</h4>
+			</div>	
 		
 			<div th:each="sucu, iterStat : ${sucursales}" class="paseo-alta">
 				<section class="articulo" th:class="${iterStat.index % 2 == 0} ? 'izq' : 'der'">
