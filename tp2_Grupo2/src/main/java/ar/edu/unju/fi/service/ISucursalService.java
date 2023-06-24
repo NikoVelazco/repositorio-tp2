@@ -28,6 +28,6 @@ public interface ISucursalService {
 	/*obtiene clase sucursal*/
 	Sucursal getSucursal();
 	/*metodo abstracto para obtener un lista filtarada por fechas*/
-	List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicio, LocalDate fechaFin); 
+	List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicial, LocalDate fechaFinal); 
 	
 }

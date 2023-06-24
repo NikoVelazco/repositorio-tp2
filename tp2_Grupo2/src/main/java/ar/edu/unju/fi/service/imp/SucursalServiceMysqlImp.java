@@ -78,17 +78,13 @@ public class SucursalServiceMysqlImp implements ISucursalService{
 		return sucursal;
 		
 	}
-
+    
+	/**
+	 * Retorna listado de sucursales filtrada entre dos fechas
+	 */
 	@Override
-	public List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicio, LocalDate fechaFin) {
-		List<Sucursal> sucursales = sucursalRepository.findByEstado(true);
-	    for (Sucursal sucursal : sucursales) {
-	        LocalDate fechaSucursal = sucursal.getFechaInicio();
-	        if ((fechaSucursal.isEqual(fechaInicio) || fechaSucursal.isAfter(fechaInicio)) && (fechaSucursal.isBefore(fechaFin) || fechaSucursal.isEqual(fechaFin))) {
-	            sucursalesFiltradas.add(sucursal);       
-	        }
-	    }
-		return sucursalesFiltradas;
+	public List<Sucursal> getListaSucursalFiltrada(LocalDate fechaInicial, LocalDate fechaFinal) {
+		return sucursalRepository.findByFechaInicioBetween(fechaInicial, fechaFinal);
 	}
 
 }
