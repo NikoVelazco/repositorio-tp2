@@ -30,14 +30,6 @@
        								<input type="text" class="form-control" id="serv_id" name="serv_id" th:value="${paseo.id}" readonly>
        								<input type="hidden" th:field="*{id}"> 
    								</div>      									
-							 </div>
-						<div class="row mb-3">
-							<label for="idService" class="col-sm-2 col-form-label">Id Servicio:</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" placeholder="N° de Servicio" name="paseo_servicio" th:field="*{idService}" th:disabled="${edicion}?true:false">
-								<input type="hidden" class="form-control" name="paseo_servicio" th:field="*{idService}" th:if="${edicion}">
-								<div class="text-danger" th:if="${#fields.hasErrors('idService')}" th:errors="*{idService}"></div>
-							</div>
 						</div>
 						<div class="row mb-3">
 							<label for="nombreServicio" class="col-sm-2 col-form-label">Nombre de Servicio:</label>
@@ -47,7 +39,7 @@
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label for="horario" class="col-sm-2 col-form-label">Horario: </label>
+							<label for="horario" class="col-sm-2 col-form-label">Día de la Semana: </label>
 							<div class="col-sm-10">
 								<select class="form-select" id="horario" name="paseo_horario"  th:field="*{diaSemana}" >						
 									<option value="" selected>Seleccione una día</option>
