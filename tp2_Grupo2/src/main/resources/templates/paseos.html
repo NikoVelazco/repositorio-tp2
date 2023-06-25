@@ -30,6 +30,7 @@
     								</h2>
     								<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       									<div class="accordion-body" id="cuerpo-acordion">
+											<p >Empleado: <span th:text="${pas.empleado.nombreEmpleado}"></span></p>
                 							<p>Día de la semana: <span th:text="${pas.diaSemana}"></span></p>
                 							<p>Horario: <span th:text="${pas.horario}"></span></p>
       									</div>
@@ -55,11 +56,13 @@
 			<table class="table table-dark table-hover">
 				<tr>
 					<th class="th-sucursal">Nombre de Servicio</th>
+					<th class="th-sucursal">Nombre y Apellido</th>
 					<th class="th-sucursal">Dia de la Semana</th>
 					<th class="th-sucursal">Horario</th>
 				</tr>
 				<tr th:each="pas: ${paseos}">
 					<td class="td-sucursal" th:text="${pas.nombreService}"></td>
+					<td class="td-sucursal" th:text="${pas.empleado.nombreEmpleado}"></td>
 					<td class="td-sucursal" th:text="${pas.diaSemana}"></td>
 					<td class="td-sucursal" th:text="${pas.horario}"></td>
 				</tr>

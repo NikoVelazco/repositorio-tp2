@@ -39,6 +39,15 @@
 							</div>
 						</div>
 						<div class="row mb-3">
+							<label for="empleado_pas" class="col-sm-2 col-form-label">Empleado: </label>
+							<div class="col-sm-10">
+								<select class="form-select" id="empleado_pas" name="paseo_empleado"  th:field="*{empleado.id}" >					
+									<option th:each="e: ${empleados}" th:value="${e.id}" th:text="${e.nombreEmpleado}"></option>										
+								</select>						  			 
+								<div class ="text-danger" th:if="${#fields.hasErrors('empleado')}" th:errors="*{empleado}"></div>
+							</div>					  
+						</div>
+						<div class="row mb-3">
 							<label for="horario" class="col-sm-2 col-form-label">Día de la Semana: </label>
 							<div class="col-sm-10">
 								<select class="form-select" id="horario" name="paseo_horario"  th:field="*{diaSemana}" >						
