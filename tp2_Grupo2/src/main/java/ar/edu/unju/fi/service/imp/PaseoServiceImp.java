@@ -93,4 +93,13 @@ public class PaseoServiceImp implements IPaseoService{
 		return paseo;
 	}
 	
+	/**
+	 * Método getListaPaseoFiltrada
+	 */
+	@Override
+	public List<Paseo> getListaPaseoFiltrada(String diadesemana) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }

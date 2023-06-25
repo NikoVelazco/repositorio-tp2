@@ -54,5 +54,10 @@ public class PaseoServiceMysqlImp implements IPaseoService {
 		// TODO Auto-generated method stub
 		return paseo;
 	}
+	
+	@Override
+	public List<Paseo> getListaPaseoFiltrada(String diaSemana) {
+		return paseoRepository.findByDiaSemana(diaSemana);
+	}
 
 }

@@ -17,5 +17,6 @@ public interface IPaseoService {
 	void modificar (Paseo paseo, Long id); /*metodo abstracto para modificar un paseador dentro de la lista de servicios*/
 	void eliminar (Paseo paseoEncontrado); /*metodo abstracto para eliminar un paseador de la lista de servicios*/
 	Paseo getPaseo(); /*metodo abstracto para obtener un objeto tipo servicios*/
+	List<Paseo> getListaPaseoFiltrada(String diadesemana); /*metodo abstracto para obtener un lista filtarada por dia*/
 	
 }

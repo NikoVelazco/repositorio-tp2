@@ -18,8 +18,33 @@
 			<h1 class="title-paseo">NUESTROS SERVICIOS</h1>
 		</div>
 		<div class="container my-3">
+			<div class="row justify-content-center">
+				<h4 class="p-3">FILTRAR POR DÍA</h4>
+				<div class="col-5">				
+				 	<form class="row g-2 needs-validation" th:action="@{/paseo/buscar}" method="post">					
+						<div class="mb-3 row">
+    						<select class="form-select" id="diaSemana" name="diaSemana" >						
+									<option value="Lunes">Lunes</option>
+									<option value="Martes">Martes</option>
+									<option value="Miércoles">Miércoles</option>
+									<option value="Jueves">Jueves</option>
+									<option value="Viernes">Viernes</option>
+									<option value="Sábado">Sábado</option>
+									<option value="Domingo">Domingo</option>
+								</select>
+  						</div>
+						<div class="col-12">
+							<input type="submit" class="btn btn-success" th:value="'BUSCAR POR DÍA'">
+							<a class="btn btn-primary" th:href="@{/paseo/listado}" role="button">LIMPIAR FILTRO</a>
+						</div>						    
+					</form>
+				</div>
+			</div>
+			<div th:if="${param.diaSemana != null && paseos.empty}">
+   			 	<h4 class="p-3">No se encontraron servicios en el día seleccionado.</h4>
+			</div>	
 			<div class="row d-flex">
-				<section class="col-6" th:each="pas: ${paseos}">
+				<section class="col-6 my-2" th:each="pas: ${paseos}">
 					<div class="row custom-row align-items-center justify-content-center">
 						<div class="col">
 							<div class="accordion" id="acordionExample">
@@ -45,9 +70,6 @@
 					</div>
 				</section>
 			</div>
-		</div>
-		<div class="container-fluid my-4 boton-alta-paseador" >
-			<a th:href="@{/paseo/nuevo}"><button type="button" class="btn btn-success">REGISTRAR SERVICIO</button></a>
 		</div>
 		<div class="container-fluid my-3 titulo-tabla">
 			<h2 id="titulo-tabla-mostrar">AGENDA</h2>
