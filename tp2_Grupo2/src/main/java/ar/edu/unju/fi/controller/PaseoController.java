@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import ar.edu.unju.fi.entity.Empleado;
 import ar.edu.unju.fi.entity.Paseo;
+import ar.edu.unju.fi.service.IEmpleadoService;
 import ar.edu.unju.fi.service.IPaseoService;
 import jakarta.validation.Valid;
 
@@ -33,6 +36,19 @@ public class PaseoController {
 	private IPaseoService paseoService;
 	
 	/**
+	 * Inyecta el servicio empleadoServiceMysql
+	 */
+	@Autowired
+	@Qualifier("EmpleadoServiceMysqlImp")
+	private IEmpleadoService empleadoService;
+	
+	/**
+	 * Inyecta e instancia un objeto Empleado al contenedor
+	 */
+	@Autowired
+	private Empleado unEmpleado;
+	
+	/**
 	 * Petición para dirigirse a la página paseos.html
 	 * @param model usado para agregar a la vista de paseos
 	 * @return pagina paseos
@@ -54,6 +70,7 @@ public class PaseoController {
 	public String getNuevoPaseadorPage(Model model) {
 		boolean edicion=false;
 		model.addAttribute("paseo", paseoService.getPaseo());
+		model.addAttribute("empleados", empleadoService.getListaEmpleado());
 		model.addAttribute("edicion", edicion);
 		return "nuevo_paseo";
 	}
@@ -65,18 +82,22 @@ public class PaseoController {
 	 * @param model vincula la variable al formulario
 	 * @return página paseos
 	 */
+	
 	@PostMapping("/guardar")
-	public String getGuardarPaseoPage(@Valid @ModelAttribute("paseo")Paseo paseo, BindingResult result, Model model) {
-		boolean edicion = false;
-		model.addAttribute("edicion", edicion);
+	public ModelAndView getGuardarSucursalPage(@Valid @ModelAttribute("paseo")Paseo paseo, BindingResult result) {
+		unEmpleado = empleadoService.findEmpleadoById(paseo.getEmpleado().getId());
+		paseo.setEmpleado(unEmpleado);
+		ModelAndView modelView = new ModelAndView("paseos");
 		if(result.hasErrors()) {
-			model.addAttribute("paseo", paseo);
-			return "nuevo_paseo";
+			modelView.setViewName("nuevo_paseo");
+			modelView.addObject("paseo", paseo);
+			modelView.addObject("empleados", empleadoService.getListaEmpleado());
+			return modelView;
 		}
 		paseoService.guardar(paseo);
-		model.addAttribute("paseo", paseoService.getPaseo());
-        return "redirect:/paseo/listado";
-    }
+		modelView.addObject("paseos", paseoService.getListaPaseo());
+		return modelView;
+	}
 	
 	/**
 	 * Petición para modificar un servicio
@@ -90,6 +111,7 @@ public class PaseoController {
     	model.addAttribute("edicion", edicion);
     	Paseo paseoEncontrado = paseoService.getBy(id);
 		model.addAttribute("paseo", paseoEncontrado);
+		model.addAttribute("empleados", empleadoService.getListaEmpleado());
 		return "nuevo_paseo";
 	}
 	
@@ -108,8 +130,11 @@ public class PaseoController {
 			paseo.setId(paseoEncontrado.getId());
 			model.addAttribute("paseo", paseo);
 			model.addAttribute("edicion", edicion);
+			model.addAttribute("empleados", empleadoService.getListaEmpleado());
 			return "nuevo_paseo";
 		} else {
+			unEmpleado = empleadoService.findEmpleadoById(paseo.getEmpleado().getId());
+			paseo.setEmpleado(unEmpleado);
 			paseoService.modificar(paseo, paseo.getId()); 
 			return "redirect:/paseo/listado";
 		}

@@ -69,6 +69,7 @@ public class PaseoServiceImp implements IPaseoService{
 		for (Paseo pas : listaPaseos.getPaseos()) {
 			if (pas.getId()==id) {
 				pas.setNombreService(paseo.getNombreService());
+				pas.setEmpleado(paseo.getEmpleado());
 				pas.setDiaSemana(paseo.getDiaSemana());
 				pas.setHorario(paseo.getHorario());
 		        break;

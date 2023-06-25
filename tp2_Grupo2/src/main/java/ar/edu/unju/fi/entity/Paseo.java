@@ -1,13 +1,19 @@
 package ar.edu.unju.fi.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -40,8 +46,14 @@ public class Paseo {
 	@Pattern(regexp = "[0-9][0-9][h][s]+-+[0-9][0-9][h][s]",
 	message = "Ingrese un horario válido Ej: 08hs-12hs")
 	@NotEmpty(message="el horario no puede estar vacio")
-	@Column(name="serv_horario", length = 10, nullable = false)
+	@Column(name="serv_horario", length = 20, nullable = false)
 	private String horario; /*Horario del servicio*/
+	
+	@Autowired
+	@JoinColumn(name="emp_id")
+	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@NotNull(message="Debe seleccionar un Empleado")
+	private Empleado empleado;
 	
 	@Column(name="serv_estado")
 	private boolean estado; //True=Habilitado; False=Deshabilitado
@@ -62,12 +74,12 @@ public class Paseo {
 	 * @param horario
 	 * @param estado
 	 */
-	public Paseo(Long id, /*String idService,*/ String nombreService, String diaSemana, String horario, boolean estado) {
+	public Paseo(Long id, String nombreService, String diaSemana, String horario, Empleado empleado, boolean estado) {
 		this.id=id;
-		//this.idService=idService;
 		this.nombreService=nombreService;
 		this.diaSemana=diaSemana;
 		this.horario=horario;
+		this.empleado=empleado;
 		this.estado=estado;
 	}
 
@@ -120,6 +132,22 @@ public class Paseo {
 	}
 	
 	/**
+	 * Obtiene el atributo Empleado
+	 * @return empleado
+	 */
+	public Empleado getEmpleado() {
+		return empleado;
+	}
+
+	/**
+	 * Guarda el atributo empleado
+	 * @param empleado
+	 */
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
+
+	/**
 	 * obtiene id
 	 * @return id
 	 */
@@ -150,8 +178,6 @@ public class Paseo {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
-	
 	
 }
 
