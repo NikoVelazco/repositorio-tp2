@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+	<head>
+		<link rel="icon" th:href="@{/images/perroico.png}">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Gestión de Datos</title>
+		<link th:rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		<link th:rel="stylesheet" type="text/css" th:href="@{/css/estilo.css}">
+		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Play:wght@700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<header th:replace="~{layouts/header :: header}"></header>
+		<div class="container-fluid paseo-page">
+			<h1 class="title-paseo">GESTIÓN DE DATOS</h1>
+		</div>
+		<div class="container-fluid my-4 boton-alta-paseador" >
+			<a th:href="@{/productos/listado}"><button type="button" class="btn btn-success">GESTIONAR PRODUCTO</button></a>
+		</div>
+		<div class="container-fluid my-4 boton-alta-paseador" >
+			<a th:href="@{/consejos/listado}"><button type="button" class="btn btn-success">GESTIONAR CONSEJO</button></a>
+		</div>
+		<div class="container-fluid my-4 boton-alta-paseador" >
+			<a th:href="@{/empleado/gestion}"><button type="button" class="btn btn-success">GESTIONAR SERVICIO</button></a>
+		</div>
+		<div class="container-fluid my-4 boton-alta-paseador" >
+			<a th:href="@{/sucursal/listado}"><button type="button" class="btn btn-success">GESTIONAR SUCURSAL</button></a>
+		</div>
+		<div class="container-fluid pie-pagina">
+    		<footer th:replace="~{layouts/footer :: footer}"></footer>
+    	</div>
+    	<script th:fragment ="script_bootstrap" type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	</body>
+</html>
