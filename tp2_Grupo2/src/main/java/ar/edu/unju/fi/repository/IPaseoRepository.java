@@ -10,4 +10,7 @@ public interface IPaseoRepository extends CrudRepository<Paseo,Long>{
 	
 	/*Obtiene lista paseo*/
 	public List<Paseo> findByEstado(boolean estado);
+	
+	/*recupera listado filtrado por dia*/
+	public List<Paseo>findByDiaSemana(String diaSemana);
 }

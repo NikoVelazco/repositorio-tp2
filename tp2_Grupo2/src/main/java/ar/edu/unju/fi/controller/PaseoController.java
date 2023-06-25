@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unju.fi.entity.Empleado;
 import ar.edu.unju.fi.entity.Paseo;
@@ -150,6 +151,19 @@ public class PaseoController {
 		Paseo paseoEncontrado = paseoService.getBy(id);
 		paseoService.eliminar(paseoEncontrado);
 		return "redirect:/paseo/listado";
+	}
+	
+	/**
+	 * Método que permite buscar por día un servicio
+	 * @param diaSemana
+	 * @param model
+	 * @return paseos.html
+	 */
+	@PostMapping("/buscar")
+	public String findByDiaSemana(@RequestParam("diaSemana") String diaSemana, Model model) {
+		model.addAttribute("diaSemana", diaSemana);
+		model.addAttribute("paseos", paseoService.getListaPaseoFiltrada(diaSemana));
+	    return "paseos";
 	}
 	
 }
