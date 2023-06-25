@@ -27,12 +27,6 @@ public class Paseo {
 	@Column(name="serv_id")
 	private Long id; //Clave Primaria
 	
-	@NotEmpty(message="el campo servicio no puede estar vacio")
-	@Pattern(regexp = "[S][e][r][v]+[0-9][0-9][0-9][0-9]", 
-	 message = "Ingrese un servicio válido Ej: (Serv0001)")
-	@Column(name="serv_idService", length = 8, nullable = false)
-	private String idService; /*Id del Servicio*/
-	
 	@NotEmpty(message="el campo nombre servicio no puede estar vacio")
 	@Pattern(regexp = "^[\\p{L} ]+$", message = "El nombre servicio solo puede contener letras y espacios")
 	@Size(max=30,message="Máximo 30 caracteres")
@@ -68,31 +62,15 @@ public class Paseo {
 	 * @param horario
 	 * @param estado
 	 */
-	public Paseo(Long id, String idService, String nombreService, String diaSemana, String horario, boolean estado) {
+	public Paseo(Long id, /*String idService,*/ String nombreService, String diaSemana, String horario, boolean estado) {
 		this.id=id;
-		this.idService=idService;
+		//this.idService=idService;
 		this.nombreService=nombreService;
 		this.diaSemana=diaSemana;
 		this.horario=horario;
 		this.estado=estado;
 	}
 
-	/**
-	 * Obtiene IdService
-	 * @return idService
-	 */
-	public String getIdService() {
-		return idService;
-	}
-	
-	/**
-	 * Setea idService
-	 * @param idService
-	 */
-	public void setIdService(String idService) {
-		this.idService = idService;
-	}
-	
 	/**
 	 * Obtiene nombre de Servicio
 	 * @return nombreService
