@@ -25,10 +25,8 @@ import jakarta.validation.Valid;
  *
  */
 
-@Component
-
 @Controller
-@RequestMapping("/consejos") /*peticion general para la pagina consejossalud*/
+@RequestMapping("/consejos") //peticion general para la pagina consejossalud/
 public class ConsejoSaludController {
 
 	/**
@@ -36,7 +34,7 @@ public class ConsejoSaludController {
 	 * La interfaz es IConsejoService
 	 */
 	@Autowired
-	@Qualifier("ConsejoServiceMysql")
+	@Qualifier("ConsejoServiceMysqlImp")
 	private IConsejoService consejoService;	
 	
 	/**	 
@@ -63,7 +61,7 @@ public class ConsejoSaludController {
 	@GetMapping("/nuevo")
 	public String getConsejosSaludAltaPage(Model model){
 		boolean edicion = false;
-		model.addAttribute("consejoAuxiliar", consejoService.getConsejo()); /*se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina*/
+		model.addAttribute("consejoAuxiliar", consejoService.getConsejo()); //se crea un objeto de tipo Consejo llamado consejoNuevo (que este en el form de nuevo_consejo)y ese nombre es usado en la pagina/
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
 			
@@ -80,14 +78,14 @@ public class ConsejoSaludController {
 	 * 
 	 */
 	@PostMapping("/guardar")
-	public ModelAndView getGuardarConsejoPage(@Valid @ModelAttribute("consejoAuxiliar") Consejo consejo, BindingResult result){   /*resutl objeto para capturar el resultado de la validacion*/
+	public ModelAndView getGuardarConsejoPage(@Valid @ModelAttribute("consejoAuxiliar") Consejo consejo, BindingResult result){   //resutl objeto para capturar el resultado de la validacion/
 		ModelAndView modelView =new ModelAndView("consejossalud");
-		if (result.hasErrors()) { /*resutado de la validacion*/
-			modelView.setViewName("nuevo_consejo"); /*si hay error, se mantien la vista*/
-			modelView.addObject("consejoAuxiliar",consejo);/*devuelve el objeto a la vista con los ingresados*/
+		if (result.hasErrors()) { //resutado de la validacion/
+			modelView.setViewName("nuevo_consejo"); //si hay error, se mantien la vista/
+			modelView.addObject("consejoAuxiliar",consejo);//devuelve el objeto a la vista con los ingresados/
 			return modelView;
 		}
-		consejoService.getListaConsejo().add(consejo); 
+		consejoService.guardar(consejo);
 		modelView.addObject("consejosLista",consejoService.getListaConsejo());
 		return modelView;
 	}
@@ -102,10 +100,11 @@ public class ConsejoSaludController {
 	 * edicion: varible logica usada en formulario para identificar la accion a realizar(guardar/eliminar)
 	 */
 	
-	@GetMapping ("/modificar/{codigo}")
-	public String getModificarConsejosPage(Model model, @PathVariable(value="idConsejo") Long idConsejo ) {
-		Consejo consejoEncontrado = consejoService.getBy(idConsejo);
+	@GetMapping ("/modificar/{id}")
+	public String getModificarConsejosPage(Model model, @PathVariable(value="id") Long id ) {
+		Consejo consejoEncontrado = consejoService.getConsejo();
 		boolean edicion = true;
+		consejoEncontrado=consejoService.getBy(id);
 		model.addAttribute("consejoAuxiliar",consejoEncontrado);
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
@@ -123,19 +122,18 @@ public class ConsejoSaludController {
 			model.addAttribute("edicion",true);
 			return "nuevo_consejo";
 		}		
-		consejoService.modificar(consejo);
+		consejoService.modificar(consejo, consejo.getId());
 		return "redirect:/consejos/listado";
 	}
-	
 	
 	/**
 	 * Peticion para eliminar un objeto tipo Consejo 
 	 * @param codigo: guarda el atributo idConsejo del objeto a eliminar
 	 * @return pagina consejossalud usando redirect 
 	 */
-	@GetMapping("/eliminar/{codigo}")
-	public String getEliminarConsejo (@PathVariable(value="idConsejo") Long idConsejo){
-		Consejo consejoEncontrado = consejoService.getBy(idConsejo);
+	@GetMapping("/eliminar/{id}")
+	public String getEliminarConsejo (@PathVariable(value="id") Long id){
+		Consejo consejoEncontrado = consejoService.getBy(id);
 		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejos/listado";		
 	}	

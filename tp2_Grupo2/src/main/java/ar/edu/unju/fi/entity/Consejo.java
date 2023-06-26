@@ -8,48 +8,43 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-@Component 
+@Component
 @Entity
-@Table(name="consejos")
+@Table(name="consejo")
 public class Consejo {	
 	
-	/*
-	 * @Id num es la clave primaria con valor incremental y secuencial
-	 * */
+	//@NotNull(message = "{error.idConsejo.notEmpty}")
+	//@Positive(message="El id debe ser un numero positivo") /validacion para que el idConsejo sea mayor que cero/
+	//private int idConsejo;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="IdConsejo")
-	@NotNull(message = "{error.idConsejo.notEmpty}")
-	@Positive(message="El id debe ser un numero positivo") /*validacion para que el idConsejo sea mayor que cero*/
-	private Long idConsejo;	
+	@Column(name="cons_id")
+	private Long id;
 	
-	@Column(name="consj_categoria")
-	@NotBlank(message="Debe seleccionar una categoria") /*validacion para que no se ingrese atributo en blanco*/
+	@Column(name="cons_categoria")
+	@NotBlank(message="Debe seleccionar una categoria")//validacion para que no se ingrese atributo en blanco/
 	private String categoria;
 	
-	@Column(name="consj_EdadMascota")
-	@NotBlank(message="Debe seleccionar un rango edad") /*validacion para que no se ingrese atributo en blanco*/
+	@Column(name="cons_edadMascota")
+	@NotBlank(message="Debe seleccionar un rango edad") //validacion para que no se ingrese atributo en blanco/
 	private String edadMascota;	
 	
-	@Column(name="consj_SexoMascota")
-	@NotBlank(message="Debe seleccionar una opcion de sexo de mascota") /*validacion para que no se ingrese atributo en blanco*/
+	@Column(name="cons_sexoMascota")
+	@NotBlank(message="Debe seleccionar una opcion de sexo de mascota") //validacion para que no se ingrese atributo en blanco/
 	private String sexoMascota;
 	
-	@Column(name="consj_descripcion",length = 100,nullable = false)
-	@Size(min=15,message="Descripcion minima de 15 caracteres") /*validacion para que se ingrese atributo con mas de 15 caracteres*/
+	@Column(name="cons_descripcion")
+	@Size(min=15,message="Descripcion minima de 15 caracteres") //validacion para que se ingrese atributo con mas de 15 caracteres/
 	private String descripcion;
 	
-	@Column(name="consj_estado")
-	private boolean estadoConsejo;
+	@Column(name="cons_estado")
+	private boolean estado;
 	
-	/*Constructor por defecto*/
+	
+	//Constructor por defecto/
 	public Consejo() {
 		// TODO Auto-generated constructor stub
 	}
@@ -63,30 +58,31 @@ public class Consejo {
 	 * @param descripcion del consejo
 	 */	
 	
-	public Consejo(Long idConsejo, String categoria, String edadMascota, String sexoMascota, String descripcion) {
+	public Consejo(Long id, String categoria, String edadMascota, String sexoMascota, String descripcion, boolean estado) {
 		super();
-		this.idConsejo = idConsejo;
+		this.id = id;
 		this.categoria = categoria;
 		this.edadMascota = edadMascota;
 		this.sexoMascota = sexoMascota;
 		this.descripcion = descripcion;
-	}
-
-	/**
-	 * Metodo que recupera el atributo idConsejo
-	 * @return id del consejo
-	 */
-	public Long getIdConsejo() {
-		return idConsejo;
+		this.estado=estado;
 	}
 
 	
-	/**
-	 * Metodo para guardar un numero en el atributo idConsejo
-	 * @param idConsejo
-	 */
-	public void setIdConsejo(Long idConsejo) {
-		this.idConsejo = idConsejo;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
 	/**
@@ -152,11 +148,5 @@ public class Consejo {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public boolean isEstadoConsejo() {
-		return estadoConsejo;
-	}
 
-	public void setEstadoConsejo(boolean estadoConsejo) {
-		this.estadoConsejo = estadoConsejo;
-	}
 }

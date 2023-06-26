@@ -26,10 +26,10 @@
 					  		<h2 class ="categoriaConsejo">Categoría: <span th:text="${conse.categoria}"></span></h2>			 
 							<h3 class ="categoriaDatoConsejo">Edad de la Mascota: <span th:text="${conse.edadMascota}"></span></h3>
 							<h3 class ="categoriaDatoConsejo">Sexo de la Mascota: <span th:text="${conse.sexoMascota}"></span></h3>
-							<h3 class ="categoriaDatoConsejo">Consejo número: <span th:text="${conse.idConsejo}"></span></h3>
+							<h3 class ="categoriaDatoConsejo">Consejo número: <span th:text="${conse.id}"></span></h3>
 							<p th:text="${conse.descripcion}"></p><br>							
-								<a class="btn btn-outline-secondary" th:href="@{/consejos/modificar/}+${conse.idConsejo}" role="button">Editar</a>								
-								<a class="btn btn-outline-danger" th:href="@{/consejos/eliminar/}+${conse.idConsejo}" role="button">Eliminar</a>				  		
+								<a class="btn btn-outline-secondary" th:href="@{/consejos/modificar/}+${conse.id}" role="button">Editar</a>								
+								<a class="btn btn-outline-danger" th:href="@{/consejos/eliminar/}+${conse.id}" role="button">Eliminar</a>				  		
 					  	</article>				
 				 </div>
 				 <div class= "col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-5 col-xxl-6 order-1 order-md-2 order-sm-1 order-xs-1 ">				
