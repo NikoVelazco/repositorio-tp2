@@ -52,10 +52,10 @@ public class ProductoServiceImp implements IProductoService {
 	 * @return 
 	 */
 	@Override
-	public Producto getBy(Long id) {
+	public Producto getBy(Long idProducto) {
 		Producto productoEncontrado = null;
 		for(Producto produ : listaProductos.getProductos()) {
-			if(produ.getId()==id) {
+			if(produ.getIdProducto()==idProducto) {
 				productoEncontrado = produ;
 			break;
 		}
@@ -93,7 +93,7 @@ public class ProductoServiceImp implements IProductoService {
 	@Override
 	public void modificar(Producto producto){
 		for(Producto produ: listaProductos.getProductos()) {
-			if(produ.getId()==producto.getId()) {
+			if(produ.getIdProducto()==producto.getIdProducto()) {
 				produ.setNombre(producto.getNombre());
 				produ.setPrecio(producto.getPrecio());
 				produ.setCategoria(producto.getCategoria());
@@ -103,6 +103,11 @@ public class ProductoServiceImp implements IProductoService {
 					
 			}
 		}
+	}
+
+	@Override
+	public List<Producto> getListaProductoPorCategoria(String categoria) {
+		return listaProductos.getProductos();
 	}
 	
 	}

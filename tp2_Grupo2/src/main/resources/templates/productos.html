@@ -26,8 +26,30 @@
 				<div class="row justify-content-center titulo-paseo">		 	  			
 			 	 			<h1 >PRODUCTOS DISPONIBLES</h1>			 					
 					</div>	
-			
+					
+			<div class="container my-3">
+			<div class="row justify-content-center">
+				<h4 class="p-3">FILTRAR POR CATEGORIA</h4>
+				<div class="col-5">				
+				 	<form class="row g-2 needs-validation" th:action="@{/productos/buscar}" method="post">					
+						<div class="mb-3 row">
+    						<select class="form-select" id="categorias" name="cate" >						
+									<option value="Alimento">ALIMENTO</option>
+									<option value="Martes">JUGUETES</option>
+									<option value="Miércoles">ROPA</option>
+									<option value="Jueves">OTROS</option>
+									
+								</select>
+  						</div>
+  						</form>
+					 <div class="col-12">
+								<input type="submit" class="btn btn-success" th:value="'BUSCAR'">
+							</div>	
+				</div>
    				</div>
+   				</div>
+   				</div>
+   				
    		<div class="container-fluid">
 	 		 <div class="row d-flex" >
 	  	  

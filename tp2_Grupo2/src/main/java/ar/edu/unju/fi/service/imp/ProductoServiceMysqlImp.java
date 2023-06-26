@@ -30,9 +30,9 @@ public class ProductoServiceMysqlImp implements IProductoService {
 	}
 
 	@Override
-	public Producto getBy(Long codigo) {
+	public Producto getBy(Long idProducto) {
 		
-		return productoRepository.findById(codigo).get();
+		return productoRepository.findById(idProducto).get();
 	}
 
 	@Override
@@ -54,5 +54,8 @@ public class ProductoServiceMysqlImp implements IProductoService {
 		
 		return producto;
 	}
-
+	@Override
+	public List<Producto> getListaProductoPorCategoria(String categoria) {
+		return productoRepository.findByEstado(true);
+	}
 }
