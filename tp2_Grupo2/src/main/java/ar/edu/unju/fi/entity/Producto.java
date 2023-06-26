@@ -65,140 +65,77 @@ public class Producto {
 	@Column(name="Estado")
 	private boolean estado;
 
-		
-		public Producto(boolean estado) {
+	public Producto() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Producto(Long idProducto, String nombre, double precio, Categoria categoria, int descuento, boolean estado) {
+		super();
+		this.idProducto = idProducto;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.categoria = categoria;
+		this.descuento = descuento;
 		this.estado = estado;
 	}
 
-		//Constructor por defecto
-		public Producto() {
-			
-		}
-		
-		/**
-		 * Constructor con párametros
-		 * @param nombre Nombre del producto
-		 * @param codigo Código del producto
-		 * @param precio Precio del producto
-		 * @param categoria Categoría del producto
-		 * @param descuento Descuento del producto
-		 */
-		
-				
-		public Producto(Long idProducto, String nombre, double precio, Categoria categoria, int descuento, boolean estado) {
-			//inicializamos las propiedades con los valores pasados por párametros
-			super();
-			this.idProducto = idProducto;
-			this.nombre = nombre;
-			this.precio = precio;
-			this.categoria = categoria;
-			this.descuento = descuento;
-			this.estado = estado;
-		}
+	public Long getIdProducto() {
+		return idProducto;
+	}
 
-		//Getters y Setters para las propiedades de la clase
-			
-		
-		/**
-		 * Obtiene el precio del producto
-		 * @return el precio del producto
-		 */
-		public double getPrecio() {
-			return precio;
-		}
-		
-		public String getNombre() {
-			return nombre;
-		}
+	public void setIdProducto(Long idProducto) {
+		this.idProducto = idProducto;
+	}
 
-		public void setNombre(String nombre) {
-			this.nombre = nombre;
-		}
+	public String getNombre() {
+		return nombre;
+	}
 
-		public void setIdProducto(Long idProducto) {
-			this.idProducto = idProducto;
-		}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-		/**
-		 * Establece el precio del producto
-		 * @param precio nuevo precio
-		 */
-		public void setPrecio(double precio) {
-			this.precio = precio;
-		}
-		
-		/**
-		 * Obtiene la categoría del producto
-		 * @return la categoría del producto
-		 */
-		
-		
-		/**
-		 * Estable la categoría del producto
-		 * @param unaCategoria nueva categoría
-		 */
-		
-		
-		/**
-		 * Obtiene el descuento del producto
-		 * @return descuento del producto
-		 */
-		public int getDescuento() {
-			return descuento;
-		}
-		
-		/**
-		 * Estable descuento del producto
-		 * @param descuento nuevo descuento
-		 */
-		public void setDescuento(int descuento) {
-			this.descuento = descuento;
-		}
-		
-		
-		/**
-		 * Calcula el descuento del producto, el descuento es entero entre (0-50)
-		 * @return retorna el nuevo precio
-		 */
-		public double calcularDescuento() {
-			return this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
-			
-		}
-		
-		public boolean getEstado() {
-			return estado;
-		}
-		public boolean isEstado() {
-			return estado;
-		}
+	public double getPrecio() {
+		return precio;
+	}
 
-		public void setEstado(boolean estado) {
-			this.estado = estado;
-		}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
 
-		public Long getIdProducto() {
-			return idProducto;
-		}
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
-		public void setId(Long idProducto) {
-			this.idProducto = idProducto;
-		}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public int getDescuento() {
+		return descuento;
+	}
+
+	public void setDescuento(int descuento) {
+		this.descuento = descuento;
+	}
 
 		
-
-		public Categoria getCategoria() {
-			return categoria;
-		}
-
-		public void setCategoria(Categoria categoria) {
-			this.categoria = categoria;
-		}
-
+	/**
+	 * Calcula el descuento del producto, el descuento es entero entre (0-50)
+	 * @return retorna el nuevo precio
+	 */
+	public double calcularDescuento() {
+		return this.precio - (this.precio * ((double)descuento/100)); // (double) para que tome la división decimal
 		
+	}
+	
+	public boolean isEstado() {
+		return estado;
+	}
 
-		
-		
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+
 }
-
-
