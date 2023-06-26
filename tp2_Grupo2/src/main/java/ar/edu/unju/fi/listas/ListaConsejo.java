@@ -21,7 +21,7 @@ private List<Consejo> consejos;
 	 */
 	public ListaConsejo() {
 		consejos = new ArrayList<Consejo>();
-		consejos.add(new Consejo(1, "SALUD", "INDISTINTO", "INDISTINTO", "Mantén al día las vacunas de tu mascota. "
+		/*consejos.add(new Consejo(1, "SALUD", "INDISTINTO", "INDISTINTO", "Mantén al día las vacunas de tu mascota. "
 				+ "Es importante asegurarse de que tu perro esté al día en sus vacunas para prevenir enfermedades y mantener su salud en óptimas condiciones."));
 		consejos.add(new Consejo(2, "ALIMENTACION", "INDISTINTO", "INDISTINTO", "Controla la alimentación de tu mascota. Proporciona a tu perro una dieta equilibrada y adecuada a sus necesidades nutricionales para mantener su peso ideal y prevenir enfermedades."));
 		consejos.add(new Consejo(3, "CUIDADOS", "INDISTINTO", "INDISTINTO", "Mantén a tu mascota bien hidratado. Asegúrate de llevar agua y un tazón portátil para tu mascota durante los paseos. Si hace calor, es especialmente importante que tu mascota tenga acceso constante a agua fresca para evitar el riesgo de deshidratación."));
@@ -30,7 +30,7 @@ private List<Consejo> consejos;
 		consejos.add(new Consejo(6, "CUIDADOS", "INDISTINTO", "INDISTINTO", "Es importante mantener a tu perro limpio y cuidado para prevenir problemas de salud. Cepilla regularmente su pelo para evitar enredos y para mantener su pelaje saludable.\r\n"
 				+ "		    		 También es Importante bañarlo regularmente para evitar problemas de piel."));
 		consejos.add(new Consejo(7, "CUIDADOS", "INDISTINTO", "INDISTINTO", "Proporciona un ambiente seguro. Mantén tu casa segura para tu perro, evita objetos peligrosos al alcance de su boca y asegúrate de que no tenga acceso a productos tóxicos."));
-		
+		*/
 	}
 
 	/**
@@ -50,3 +50,5 @@ private List<Consejo> consejos;
 	}	
 
 }
+
+

@@ -101,10 +101,9 @@ public class ConsejosSaludController {
 	 */
 	
 	@GetMapping ("/modificar/{codigo}")
-	public String getModificarConsejosPage(Model model, @PathVariable(value="codigo") String codigo ) {
-		Consejo consejoEncontrado = consejoService.getConsejo();
+	public String getModificarConsejosPage(Model model, @PathVariable(value="idConsejo") Long idConsejo ) {
+		Consejo consejoEncontrado = consejoService.getBy(idConsejo);
 		boolean edicion = true;
-		consejoEncontrado=consejoService.getBy(codigo);
 		model.addAttribute("consejoAuxiliar",consejoEncontrado);
 		model.addAttribute("edicion",edicion);
 		return "nuevo_consejo";
@@ -126,17 +125,16 @@ public class ConsejosSaludController {
 		return "redirect:/consejos/listado";
 	}
 	
+	
 	/**
 	 * Peticion para eliminar un objeto tipo Consejo 
 	 * @param codigo: guarda el atributo idConsejo del objeto a eliminar
 	 * @return pagina consejossalud usando redirect 
 	 */
 	@GetMapping("/eliminar/{codigo}")
-	public String getEliminarConsejo (@PathVariable(value="codigo") String codigo){
-		Consejo consejoEncontrado = consejoService.getBy(codigo);
+	public String getEliminarConsejo (@PathVariable(value="idConsejo") Long idConsejo){
+		Consejo consejoEncontrado = consejoService.getBy(idConsejo);
 		consejoService.eliminar(consejoEncontrado);
 		return "redirect:/consejos/listado";		
 	}	
 }
-
-

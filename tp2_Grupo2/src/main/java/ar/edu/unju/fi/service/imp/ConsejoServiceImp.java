@@ -15,7 +15,7 @@ import ar.edu.unju.fi.service.IConsejoService;
  * @author Grupo2
  *
  */
-@Service
+@Service ("ConsejoServiceImp")
 public class ConsejoServiceImp implements IConsejoService {
 	
 	/**
@@ -52,10 +52,10 @@ public class ConsejoServiceImp implements IConsejoService {
 	 * return el objeto consejoEncontrado de tipo Consejo
 	 */
 	@Override
-	public Consejo getBy(String codigo) {
+	public Consejo getBy(Long idConsejo) {
 		Consejo consejoEncontrado = null;
 		  for(Consejo conse : listaConsejos.getConsejos()) {
-			if (conse.getIdConsejo() == Integer.parseInt(codigo)) {
+			if (conse.getIdConsejo() == idConsejo) {
 			 consejoEncontrado = conse;
 			 break;
 
