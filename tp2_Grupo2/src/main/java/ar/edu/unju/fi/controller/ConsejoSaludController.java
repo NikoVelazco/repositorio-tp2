@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,13 +29,14 @@ import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/consejos") /*peticion general para la pagina consejossalud*/
-public class ConsejosSaludController {
+public class ConsejoSaludController {
 
 	/**
 	 * Inyecta e instancia el objeto ConsejoServise de tipo IConsejoService al contendor. 	  
 	 * La interfaz es IConsejoService
 	 */
 	@Autowired
+	@Qualifier("ConsejoServiceMysql")
 	private IConsejoService consejoService;	
 	
 	/**	 
