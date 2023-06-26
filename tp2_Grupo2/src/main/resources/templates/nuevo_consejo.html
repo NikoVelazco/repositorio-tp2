@@ -27,16 +27,13 @@
 					<div class="col-6"> 
 						<form th:action="${edicion}?@{/consejos/modificar}:@{/consejos/guardar}" th:object="${consejoAuxiliar}" method="post">
 							<!-- se dispara la peticion modificar o guardar segun valor logico de edicion. consejoAuxiliar objeto tipo Consejo -->			  
-							  <div class="row mb-3">
-							  		<label for="idconsejo" class="col-sm-2 col-form-label">ID Consejo: </label>
-							  		<div class="col-sm-10">
-							  			 <input type="number" class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:unless="${edicion}">
-							  			 <input class="form-control" id="idconsejo" name="id_consejo" th:field="*{idConsejo}" th:if="${edicion}" readonly>
-							  			 <div class ="text-danger" th:if="${#fields.hasErrors('idConsejo')}" th:errors="*{idConsejo}"></div>
-							  			 <!-- muestra mensaje de error si existe erorr -->
-							  			
-							  		</div>					  
-							  </div>
+							  <div class="row mb-3" th:if="${edicion}" >
+    						<label for="serv_id" class="col-sm-2 col-form-label">ID (Base de Dato): </label>
+    							<div class="col-sm-10">
+       								<input type="text" class="form-control" id="serv_id" name="serv_id" th:value="${consejoAuxiliar.id}" readonly>
+       								<input type="hidden" th:field="*{id}"> 
+   								</div>      									
+						</div>
 							  
 							  <div class="row mb-3">
 							  		<label for="nombreConse" class="col-sm-2 col-form-label">Categoria: </label>

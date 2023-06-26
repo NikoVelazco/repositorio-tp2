@@ -1,10 +1,8 @@
 package ar.edu.unju.fi.service.imp;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import ar.edu.unju.fi.entity.Consejo;
 import ar.edu.unju.fi.listas.ListaConsejo;
 import ar.edu.unju.fi.service.IConsejoService;
@@ -15,7 +13,7 @@ import ar.edu.unju.fi.service.IConsejoService;
  * @author Grupo2
  *
  */
-@Service ("ConsejoServiceImp")
+@Service("ConsejoServiceImp")
 public class ConsejoServiceImp implements IConsejoService {
 	
 	/**
@@ -52,10 +50,10 @@ public class ConsejoServiceImp implements IConsejoService {
 	 * return el objeto consejoEncontrado de tipo Consejo
 	 */
 	@Override
-	public Consejo getBy(Long idConsejo) {
+	public Consejo getBy(Long id) {
 		Consejo consejoEncontrado = null;
 		  for(Consejo conse : listaConsejos.getConsejos()) {
-			if (conse.getIdConsejo() == idConsejo) {
+			if (conse.getId() == id) {
 			 consejoEncontrado = conse;
 			 break;
 
@@ -70,14 +68,14 @@ public class ConsejoServiceImp implements IConsejoService {
 	 * consejo es el objeto a modificar enviado por parametro
 	 */
 	@Override
-	public void modificar(Consejo consejo) {
+	public void modificar(Consejo consejo, Long id) {
 		for(Consejo conse : listaConsejos.getConsejos()) {
-			if(conse.getIdConsejo()==consejo.getIdConsejo()) {
+			if(conse.getId()==id) {
 				conse.setCategoria(consejo.getCategoria());
 				conse.setDescripcion(consejo.getDescripcion());
 				conse.setEdadMascota(consejo.getEdadMascota());
 				conse.setSexoMascota(consejo.getSexoMascota());			
-				
+				break;
 			}
 		}
 	}
