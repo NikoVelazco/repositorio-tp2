@@ -1,21 +1,29 @@
 
 package ar.edu.unju.fi.entity;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
+
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
+
 
 @Component 
 @Entity
@@ -25,7 +33,7 @@ public class Producto {
 	@Id/*clave primaria*/
 	@GeneratedValue(strategy=GenerationType.IDENTITY)/*genera valores numericos secuenciales*/
 	@Column(name="Id")	
-	private Long id; 
+	private Long idProducto; 
 
 	//Propiedades de la clase Producto
 	@Column(name="Nombre",length=30,nullable=false)
@@ -40,9 +48,13 @@ public class Producto {
 	@Positive(message="Solo se permiten valores positivos")
 	private double precio;
 	
-	@Column(name="Categoria")
-	@NotBlank(message="Debe seleccionar una categoria")
-	private String categoria;
+	
+	
+	@Autowired
+	@JoinColumn(name="categoria_id")
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+	@NotNull(message="Debe seleccionar una categoria")
+	private Categoria categoria; 
 	
 	@Column(name="Descuento")
 	/*@Min(value=0,message="el valor minimo permitido es 1")*/
@@ -72,48 +84,22 @@ public class Producto {
 		 * @param categoria Categoría del producto
 		 * @param descuento Descuento del producto
 		 */
-		public Producto(String nombre, Long id, double precio, String categoria, int descuento) {
+		
+				
+		public Producto(Long idProducto, String nombre, double precio, Categoria categoria, int descuento, boolean estado) {
 			//inicializamos las propiedades con los valores pasados por párametros
-			this.nombre=nombre;
-			this.id=id;
-			this.precio=precio;
-			this.categoria=categoria;
-			this.descuento=descuento;
-		}
-		
-		//Getters y Setters para las propiedades de la clase
-		/**
-		 * Obtiene el nombre del producto
-		 * @return el nombre del producto
-		 */
-		public String getNombre() {
-			return nombre;
-		}
-		
-		/**
-		 * Establece el nombre del producto
-		 * @param nombre el nuevo nombre
-		 */
-		public void setNombre(String nombre) {
+			super();
+			this.idProducto = idProducto;
 			this.nombre = nombre;
+			this.precio = precio;
+			this.categoria = categoria;
+			this.descuento = descuento;
+			this.estado = estado;
 		}
 
-		/**
-		 * Obtiene el código del producto
-		 * @return el código del producto
-		 */
-		/*public int getCodigo() { cambia
-			return codigo;
-		}
+		//Getters y Setters para las propiedades de la clase
+			
 		
-		/**
-		 * Establece el código del producto
-		 * @param codigo nuevo código
-		 */
-		/**public void setCodigo(int codigo) { cambia
-			this.codigo = codigo;
-		}
-		*/
 		/**
 		 * Obtiene el precio del producto
 		 * @return el precio del producto
@@ -122,6 +108,18 @@ public class Producto {
 			return precio;
 		}
 		
+		public String getNombre() {
+			return nombre;
+		}
+
+		public void setNombre(String nombre) {
+			this.nombre = nombre;
+		}
+
+		public void setIdProducto(Long idProducto) {
+			this.idProducto = idProducto;
+		}
+
 		/**
 		 * Establece el precio del producto
 		 * @param precio nuevo precio
@@ -134,17 +132,13 @@ public class Producto {
 		 * Obtiene la categoría del producto
 		 * @return la categoría del producto
 		 */
-		public String getCategoria() {
-			return categoria;
-		}
+		
 		
 		/**
 		 * Estable la categoría del producto
-		 * @param categoria nueva categoría
+		 * @param unaCategoria nueva categoría
 		 */
-		public void setCategoria(String categoria) {
-			this.categoria = categoria;
-		}
+		
 		
 		/**
 		 * Obtiene el descuento del producto
@@ -183,17 +177,28 @@ public class Producto {
 			this.estado = estado;
 		}
 
-		public Long getId() {
-			return id;
+		public Long getIdProducto() {
+			return idProducto;
 		}
 
-		public void setId(Long id) {
-			this.id = id;
+		public void setId(Long idProducto) {
+			this.idProducto = idProducto;
 		}
+
+		
+
+		public Categoria getCategoria() {
+			return categoria;
+		}
+
+		public void setCategoria(Categoria categoria) {
+			this.categoria = categoria;
+		}
+
+		
 
 		
 		
 }
-
 
 
