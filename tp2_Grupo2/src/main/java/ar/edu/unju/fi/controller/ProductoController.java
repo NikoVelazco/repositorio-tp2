@@ -59,7 +59,8 @@ public class ProductoController {
 	
 	@GetMapping("/listado")
 	public String getListadoProductosPage(Model model) {		
-		model.addAttribute("productos",productoService.getListaProducto());		
+		model.addAttribute("productos",productoService.getListaProducto());	
+		model.addAttribute("categoria", categoriaService.getListaCategoria());
 		return "productos";
 	}
 	
@@ -90,7 +91,7 @@ public class ProductoController {
 	public ModelAndView getGuardarProductoPage(@Valid @ModelAttribute("produ") Producto producto, BindingResult result ){ 
 		unaCategoria = categoriaService.findByCategoriaId(producto.getCategoria().getId());
 		producto.setCategoria(unaCategoria);
-		ModelAndView modelView =new ModelAndView("produ"); 
+		ModelAndView modelView =new ModelAndView("productos"); 
 		if(result.hasErrors()) { /*verificacion de errores*/
 			modelView.setViewName("nuevo_producto");
 			modelView.addObject("produ", producto);

@@ -26,6 +26,7 @@ public class ProductoServiceMysqlImp implements IProductoService {
 
 	@Override
 	public void guardar(Producto producto) {
+		producto.setEstado(true);
 		productoRepository.save(producto);
 	}
 
@@ -37,6 +38,7 @@ public class ProductoServiceMysqlImp implements IProductoService {
 
 	@Override
 	public void modificar(Producto producto) {
+		producto.setEstado(true);
 		productoRepository.save(producto);
 
 	}
@@ -45,7 +47,7 @@ public class ProductoServiceMysqlImp implements IProductoService {
 	public void eliminar(Producto productoEncontrado) {
 		// eliminacion logica
 		productoEncontrado.setEstado(false);
-		productoRepository.save(producto);
+		productoRepository.save(productoEncontrado);
 
 	}
 

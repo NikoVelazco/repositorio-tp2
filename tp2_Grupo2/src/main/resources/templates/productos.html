@@ -26,7 +26,7 @@
 				<div class="row justify-content-center titulo-paseo">		 	  			
 			 	 			<h1 >PRODUCTOS DISPONIBLES</h1>			 					
 					</div>	
-					
+			
 			<div class="container my-3">
 			<div class="row justify-content-center">
 				<h4 class="p-3">FILTRAR POR CATEGORIA</h4>
@@ -34,22 +34,23 @@
 				 	<form class="row g-2 needs-validation" th:action="@{/productos/buscar}" method="post">					
 						<div class="mb-3 row">
     						<select class="form-select" id="categorias" name="cate" >						
-									<option value="Alimento">ALIMENTO</option>
+									 <option th:each="c: ${categoria}" th:value="${c.id}" th:text="${c.categoria}"></option>
+							   <!--		<option value="Alimento">ALIMENTO</option>
 									<option value="Martes">JUGUETES</option>
 									<option value="Miércoles">ROPA</option>
-									<option value="Jueves">OTROS</option>
+									<option value="Jueves">OTROS</option>--> 
 									
 								</select>
   						</div>
-  						</form>
+											    
+					</form>
 					 <div class="col-12">
 								<input type="submit" class="btn btn-success" th:value="'BUSCAR'">
 							</div>	
 				</div>
-   				</div>
-   				</div>
-   				</div>
-   				
+			</div>
+			
+   			</div>	</div>
    		<div class="container-fluid">
 	 		 <div class="row d-flex" >
 	  	  
@@ -66,8 +67,8 @@
 						   			
 						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
 						  		  
-						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.id}" role="button">Editar</a>								
-										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.id}" role="button">Eliminar</a>	
+						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.idProducto}" role="button">Editar</a>								
+										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.idProducto}" role="button">Eliminar</a>	
 						  				</div>
 						  				<br>
 						  				  </div>
@@ -76,8 +77,8 @@
 		  				</section>
 		  				</div>
 				</div>
-	 		 
-	 		 <a  id="enlace-altam" class="btn btn-primary d-grid col-3 mx-auto" th:href="@{/productos/nuevo}" role="button">AGREGAR NUEVO PRODUCTO</a>	
+	 		  <a  id="enlace-altam" class="btn btn-primary d-grid col-3 mx-auto" th:href="@{/productos/nuevo}" role="button">AGREGAR NUEVO PRODUCTO</a>	
+		
 	
 		<div class="container-fluid pie-pagina">
 	    		 <footer th:replace="~{layouts/footer :: footer}"></footer>

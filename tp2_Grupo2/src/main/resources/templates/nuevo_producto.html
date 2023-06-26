@@ -34,10 +34,10 @@
 		          		 </div>
 		            </div>
 		
-		       <div class="row mb-3">
-		                <label for="id" class="form-label">ID:</label>
+		       <div class="row mb-3" th:if="${edicion}">
+		                <label for="id_pro" class="form-label">ID:</label>
 		                 <div class="col-sm-10">
-		                 <input type="text" class="form-control" name="id_produ" th:value="${produ.idProducto}" readonly>
+		                 <input type="text" class="form-control" id="id_pro" name="id_produ" th:value="${produ.idProducto}" readonly>
         			    <input type="hidden" th:field="*{idProducto}">
 		                <div class="text-danger" th:if="${#fields.hasErrors('idProducto')}" th:errors="*{idProducto}"></div>
 		            
@@ -56,10 +56,12 @@
 		                 <div class="col-sm-10">
 		               
 		                     <select id="categoria" class="form-select" name="categoria_produ" th:field="*{categoria.id}">
-		                    <option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">Alimento</option>
-		                    <option value="juguete pollo.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">Juguetes</option>
-		                    <option value="campera.jpg" th:selected="${produ.categoria == 'campera.jpg'}">Ropa</option>
-		                    <option value="disfraz.webp" th:selected="${produ.categoria == 'diszfraz.webp'}">Otros</option>
+		                    <option th:each="c: ${categoria}" th:value="${c.id}" th:text="${c.categoria}"></option>
+		                    
+		               <!--      <option value="advancealim.jpg" th:selected="${produ.categoria == 'advancealim.jpg'}">ALIMENTO</option>
+		                    <option value="juguete pollo.jpg" th:selected="${produ.categoria == 'juguete pollo.jpg'}">JUGUETES</option>
+		                    <option value="campera.jpg" th:selected="${produ.categoria == 'campera.jpg'}">ROPA</option>
+		                    <option value="disfraz.webp" th:selected="${produ.categoria == 'diszfraz.webp'}">OTROS</option> --> 
 		                </select>
 		                     
 		                      
