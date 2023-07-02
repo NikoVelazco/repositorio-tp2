@@ -13,10 +13,10 @@ import ar.edu.unju.fi.entity.Provincia;
  */
 
 public interface IProvinciaService {
-	List<Provincia> getListaProvincia();/*metodo abstracto para obtener el listado de Provincias*/
-	Provincia getProvincia(); /*metodo abstracto para obtener un objeto tipo Provincia*/
-	void guardarProvincia(Provincia provincia); /*metodo abstracto para guardar una Provincia*/
-	public Provincia findProvinciaById(Long id); /*metodo abstracto para buscar una provincia por su id*/
-	void cargarProvincia(); /*metodo abstracto para cargar una provincia*/
+	List<Provincia> getListaProvincia();
+	Provincia getProvincia(); 
+	void guardarProvincia(Provincia provincia); 
+	public Provincia findProvinciaById(Long id); 
+	void cargarProvincia(); 
 
 }
