@@ -11,12 +11,12 @@ import ar.edu.unju.fi.entity.Paseo;
 
 public interface IPaseoService {
 	
-	List <Paseo> getListaPaseo(); /*metodo abstracto para obtener la lista de servicios*/
-	void guardar (Paseo paseo); /*metodo abstracto para guardar un paseador a la lista de servicios*/
-	Paseo getBy(Long id); /*metodo abstracto para buscar un paseador dentro de la lista de servicios*/
-	void modificar (Paseo paseo, Long id); /*metodo abstracto para modificar un paseador dentro de la lista de servicios*/
-	void eliminar (Paseo paseoEncontrado); /*metodo abstracto para eliminar un paseador de la lista de servicios*/
-	Paseo getPaseo(); /*metodo abstracto para obtener un objeto tipo servicios*/
-	List<Paseo> getListaPaseoFiltrada(String diadesemana); /*metodo abstracto para obtener un lista filtarada por dia*/
+	List <Paseo> getListaPaseo(); 
+	void guardar (Paseo paseo); 
+	Paseo getBy(Long id); 
+	void modificar (Paseo paseo, Long id); 
+	void eliminar (Paseo paseoEncontrado); 
+	Paseo getPaseo(); 
+	List<Paseo> getListaPaseoFiltrada(String diadesemana); 
 	
 }
