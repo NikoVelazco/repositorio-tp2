@@ -31,16 +31,20 @@
 			<div class="row justify-content-center">
 				<h4 class="p-3">FILTRAR POR CATEGORIA</h4>
 				<div class="col-5">		
-				<div class="mb-3 row">
-    					<select class="form-select" id="categorias" name="categorias">
-        					<option value="">Seleccione una categoría</option>
-        					<option th:each="c: ${categoria}" th:value="${c.id}" th:text="${c.categoria}"></option>
-    					</select>
-				</div>
-
-				<div class="col-12">
-				    <button class="btn btn-success" onclick="buscarProductos()">BUSCAR</button>
-				</div>		
+				 	<form class="row g-2 " th:action="@{/productos/buscar}" method="post">					
+						<div class="mb-3 row">
+    						<select class="form-select" id="cate_nombre" name="cate_nombre" >						
+									 <option th:each="c: ${categoria}" th:value="${c.categoria}" th:text="${c.categoria}"></option>
+							   
+									
+								</select>
+  						</div>
+  						<div class="col-12">
+								<input type="submit" class="btn btn-success" th:value="'BUSCAR'">
+					</div>
+											    
+					</form>
+					 	
 				 	
 					 
 				</div>
