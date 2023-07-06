@@ -14,5 +14,6 @@ public interface ICategoriaRepository extends CrudRepository<Categoria, Long>{
 	
 
 	public List<Categoria> findByEstado(boolean estado);
+	public List<Categoria> findByCategoriaAndEstado(String categoria, boolean estado);
 	
 }

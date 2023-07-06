@@ -1,4 +1,6 @@
 package ar.edu.unju.fi.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 
@@ -100,6 +102,7 @@ public class ProductoController {
 		}
 		productoService.guardar(producto); 
 		modelView.addObject("productos",productoService.getListaProducto());
+		modelView.addObject("categoria", categoriaService.getListaCategoria());/**modificacion**/
 		return modelView;
 	}
 
@@ -151,12 +154,18 @@ public class ProductoController {
 		return "redirect:/productos/listado";		
 	}
 	
-	@PostMapping("/buscar")
-	public String findByCategoria(@RequestParam("categoria") String categoria, Model model) {
-		model.addAttribute("categoria", categoria);
-		model.addAttribute("productos", productoService.getListaProductoPorCategoria(categoria));
+
+
+	@GetMapping("/buscar/{categoriaId}")
+	public String findByCategoria(@PathVariable("categoriaId") Long categoriaId, Model model) {
+	    Categoria categoria = categoriaService.findByCategoriaId(categoriaId);
+	    List<Producto> productos = productoService.getListaProductoPorCategoria(categoria.getCategoria());
+	    model.addAttribute("productos", productos);
+	    model.addAttribute("categoria", categoriaService.getListaCategoria());
 	    return "productos";
 	}
+	
+	
 }
 
 
