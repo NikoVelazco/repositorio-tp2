@@ -154,16 +154,6 @@ public class ProductoController {
 		return "redirect:/productos/listado";		
 	}
 	
-
-
-	/**@GetMapping("/buscar/{categoriaId}")
-	public String findByCategoria(@PathVariable("categoriaId") Long categoriaId, Model model) {
-	    Categoria categoria = categoriaService.findByCategoriaId(categoriaId);
-	    List<Producto> productos = productoService.getListaProductoPorCategoria(categoria.getCategoria());
-	    model.addAttribute("productos", productos);
-	    model.addAttribute("categoria", categoriaService.getListaCategoria());
-	    return "productos";
-	}**/
 	
 	@PostMapping("/buscar")
 	public String findByCategoria(@RequestParam("cate_nombre") String categoria, Model model) {

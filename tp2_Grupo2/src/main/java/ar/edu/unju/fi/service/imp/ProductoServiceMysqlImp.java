@@ -72,12 +72,7 @@ public class ProductoServiceMysqlImp implements IProductoService {
 		}
 		return productoFiltrado;
 		
-	}
-	
-	
+	}	
 
-	/**@Override
-	public List<Producto> getListaProductoPorCategoria(String categoria) {
-	    return productoRepository.findByCategoriaAndEstado(categoria, true);
-	}**/
+	
 }
