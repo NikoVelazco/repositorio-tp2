@@ -24,6 +24,6 @@ public interface IProductoService {
 	void modificar (Producto producto); 
 	void eliminar (Producto productoEncontrado); 
 	Producto getProducto();	
-	List<Producto> getListaProductoPorCategoria(String categoria);
+	List<Producto> getListaProductoPorCategoria(String categoria,boolean estado);
 
 }

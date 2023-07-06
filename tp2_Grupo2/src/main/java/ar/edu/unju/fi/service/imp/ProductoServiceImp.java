@@ -107,7 +107,7 @@ public class ProductoServiceImp implements IProductoService {
 	}
 
 	@Override
-	public List<Producto> getListaProductoPorCategoria(String categoria) {
+	public List<Producto> getListaProductoPorCategoria(String categoria, boolean estado) {
 		return listaProductos.getProductos();
 	}
 	

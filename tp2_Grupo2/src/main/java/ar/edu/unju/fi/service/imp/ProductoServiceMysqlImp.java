@@ -59,10 +59,10 @@ public class ProductoServiceMysqlImp implements IProductoService {
 		
 		return producto;
 	}
-	/**@Override
-	public List<Producto> getListaProductoPorCategoria(String categoria) {
+	@Override
+	public List<Producto> getListaProductoPorCategoria(String categoria,boolean estado) {
 		productoFiltrado.removeAll(productoFiltrado);
-		List<Producto> productos =productoRepository.findByEstado(true);
+		List<Producto> productos =productoRepository.findByEstado(estado);
 		for(Producto p:productos) {
 			if (p.getCategoria().getCategoria().equals(categoria)) {
 				productoFiltrado.add(p);
@@ -71,13 +71,13 @@ public class ProductoServiceMysqlImp implements IProductoService {
 			}
 		}
 		return productoFiltrado;
-		/**return productoRepository.findByEstado(true);**/
-/**	}**/
+		
+	}
 	
 	
 
-	@Override
+	/**@Override
 	public List<Producto> getListaProductoPorCategoria(String categoria) {
 	    return productoRepository.findByCategoriaAndEstado(categoria, true);
-	}
+	}**/
 }
