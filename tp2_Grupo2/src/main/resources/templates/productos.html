@@ -30,21 +30,21 @@
 			<div class="container my-3">
 			<div class="row justify-content-center">
 				<h4 class="p-3">FILTRAR POR CATEGORIA</h4>
-				<div class="col-5">				
-				 	<form class="row g-2 needs-validation" th:action="@{/productos/buscar}" method="post">					
-						<div class="mb-3 row">
-    						<select class="form-select" id="categorias" name="cate" >						
-									 <option th:each="c: ${categoria}" th:value="${c.id}" th:text="${c.categoria}"></option>
-							   
-									
-								</select>
-  						</div>
-											    
-					</form>
-					 <div class="col-12">
-								<input type="submit" class="btn btn-success" th:value="'BUSCAR'">
-							</div>	
+				<div class="col-5">		
+				<div class="mb-3 row">
+    					<select class="form-select" id="categorias" name="categorias">
+        					<option value="">Seleccione una categoría</option>
+        					<option th:each="c: ${categoria}" th:value="${c.id}" th:text="${c.categoria}"></option>
+    					</select>
 				</div>
+
+				<div class="col-12">
+				    <button class="btn btn-success" onclick="buscarProductos()">BUSCAR</button>
+				</div>		
+				 	
+					 
+				</div>
+				
 			</div>
 			
    			</div>	</div>
@@ -62,7 +62,7 @@
 						  			<h4 class="precioDescu">PRECIO CON DESCUENTO: $<span th:text="${produ.calcularDescuento()}"> </span></h4>
 						   			<div class="text-center">
 						   			
-						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria}}" width="250" height="241"> <br>
+						   			<img class="rounded mx-auto d-block" alt="Foto" th:src="@{'/images/'+${produ.categoria.categoria + '.jpg'}}" width="250" height="241"> <br>
 						  		  
 						  				<a class="btn btn-outline-secondary" th:href="@{/productos/modificar/}+${produ.idProducto}" role="button">Editar</a>								
 										<a class="btn btn-outline-danger" th:href="@{/productos/eliminar/}+${produ.idProducto}" role="button">Eliminar</a>	

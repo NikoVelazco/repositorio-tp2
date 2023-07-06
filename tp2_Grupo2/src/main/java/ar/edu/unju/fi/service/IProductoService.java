@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Categoria;
 import ar.edu.unju.fi.entity.Producto;
 
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unju.fi.entity.Categoria;
 import ar.edu.unju.fi.entity.Producto;
 import ar.edu.unju.fi.repository.IProductoRepository;
 import ar.edu.unju.fi.service.IProductoService;
@@ -17,6 +18,8 @@ public class ProductoServiceMysqlImp implements IProductoService {
 	
 	@Autowired
 	Producto producto;
+	@Autowired
+	List<Producto> productoFiltrado;
 	
 	@Override
 	public List<Producto> getListaProducto() {
@@ -56,8 +59,25 @@ public class ProductoServiceMysqlImp implements IProductoService {
 		
 		return producto;
 	}
+	/**@Override
+	public List<Producto> getListaProductoPorCategoria(String categoria) {
+		productoFiltrado.removeAll(productoFiltrado);
+		List<Producto> productos =productoRepository.findByEstado(true);
+		for(Producto p:productos) {
+			if (p.getCategoria().getCategoria().equals(categoria)) {
+				productoFiltrado.add(p);
+				
+				
+			}
+		}
+		return productoFiltrado;
+		/**return productoRepository.findByEstado(true);**/
+/**	}**/
+	
+	
+
 	@Override
 	public List<Producto> getListaProductoPorCategoria(String categoria) {
-		return productoRepository.findByEstado(true);
+	    return productoRepository.findByCategoriaAndEstado(categoria, true);
 	}
 }

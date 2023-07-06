@@ -12,5 +12,7 @@ public interface IProductoRepository extends CrudRepository<Producto,Long> {
 
 	/*recupera lista sucursal*/
 	public List<Producto> findByEstado(boolean estado);
+
+	public List<Producto> findByCategoriaAndEstado(String categoria, boolean b);
 }
 
